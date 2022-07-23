@@ -1,8 +1,15 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme } from 'styles/Theme';
+import GlobalStyles from 'styles/GlobalStyles';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <GlobalStyles />
+      <Component {...pageProps} />;
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;
