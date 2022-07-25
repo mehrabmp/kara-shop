@@ -2,6 +2,19 @@
   "name": "kara-shop",
   "version": "0.1.0",
   "private": true,
+  "description": "KARA - Ecommerce created with NextJs, TypeScript",
+  "author": "Mehrab Mahmoudpour <mehrabmpdev@gmail.com>",
+  "homepage": "https://karashop.vercel.app/",
+  "bugs": "https://github.com/mehrabmp/kara-shop/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mehrabmp/kara-shop"
+  },
+  "engines": {
+    "node": "^14.15.0 || >=16.10.0",
+    "yarn": ">=1.22.4 <2",
+    "npm": "Please use yarn instead of NPM to install dependencies"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
