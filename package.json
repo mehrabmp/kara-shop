@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "description": "KARA - Ecommerce created with NextJs, TypeScript",
-  "author": "Mehrab Mahmoudpour <mehrabmpdev@gmail.com>",
+  "author": {
+    "name": "Mehrab Mahmoudpour",
+    "email": "mehrabmpdev@gmail.com"
+  },
   "homepage": "https://karashop.vercel.app/",
-  "bugs": "https://github.com/mehrabmp/kara-shop/issues",
+  "bugs": {
+    "url": "https://github.com/mehrabmp/kara-shop/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mehrabmp/kara-shop"
+    "url": "git+https://github.com/mehrabmp/kara-shop.git"
   },
   "engines": {
     "node": "^14.15.0 || >=16.10.0",
@@ -30,7 +35,8 @@
     "format:check": "npm run prettier -- --check",
     "typecheck": "tsc -b",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=d69c05eb9192"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -62,6 +68,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.7.1",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
     "eslint-config-prettier": "^8.5.0",
