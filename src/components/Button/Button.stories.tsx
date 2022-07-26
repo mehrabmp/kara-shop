@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from './Button';
-import { lightTheme } from 'styles/Theme';
 
 export default {
   title: 'Components/Button',
@@ -9,7 +8,7 @@ export default {
   argTypes: {
     variant: {
       control: 'select',
-      options: Object.keys(lightTheme.colors),
+      options: ['primary', 'secondary', 'tertiary'],
     },
     block: {
       control: 'boolean',
@@ -32,7 +31,17 @@ Secondary.args = {
   variant: 'secondary',
 };
 
-export const BlockButton = Template.bind({});
-BlockButton.args = {
-  block: true,
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  variant: 'tertiary',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
+};
+
+export const FullButton = Template.bind({});
+FullButton.args = {
+  full: true,
 };
