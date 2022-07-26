@@ -16,9 +16,10 @@ const GlobalStyles = createGlobalStyle`
   
   body {
     background-color: ${({ theme }) => theme.colors.body};
-    color: ${({ theme }) => theme.text.primary100};
+    color: ${({ theme }) => theme.colors.neutral90};
     font-size: ${({ theme }) => theme.fontSizes.body};
     font-family: ${({ theme }) => theme.fontFamily};
+    font-weight: ${({ theme }) => theme.fontWeights.body};
     min-height: 100vh;
     scroll-behavior: smooth;
   }
@@ -28,7 +29,14 @@ const GlobalStyles = createGlobalStyle`
     border-radius: ${({ theme }) => theme.borderRadius};
     padding: 1.25rem;
     border: none;
-    outline: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 
