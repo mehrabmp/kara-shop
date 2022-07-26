@@ -7,17 +7,17 @@ test('should render button', () => {
   render(<Button label="test" />);
   const button = screen.getByRole('button', { name: /test/i });
   expect(button).toBeInTheDocument();
-  expect(button).toHaveStyle({ backgroundColor: lightTheme.colors.primary });
+  expect(button).toHaveStyle({ backgroundColor: lightTheme.colors.primary100 });
 });
 
 test('should render button with given variant', () => {
   render(<Button label="test" variant="secondary" />);
   const button = screen.getByRole('button', { name: /test/i });
-  expect(button).toHaveStyle({ backgroundColor: lightTheme.colors.secondary });
+  expect(button).toHaveStyle({ backgroundColor: lightTheme.colors.neutral10 });
 });
 
 test('should render button with full width if passed block prop', () => {
-  render(<Button label="test" block />);
+  render(<Button label="test" full />);
   const button = screen.getByRole('button', { name: /test/i });
   expect(button).toHaveStyle({ width: '100%' });
 });
