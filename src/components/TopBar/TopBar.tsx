@@ -60,6 +60,10 @@ const StyledTopBar = styled.div`
   background: #222831;
   color: #fff;
   font-size: 1.4rem;
+
+  @media (max-width: 1000px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Container = styled.div`
@@ -67,18 +71,25 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 1.25rem 1rem;
   display: flex;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
 `;
 
 const Title = styled.p``;
 
-const List = styled.ul`
-  margin-left: auto;
-  display: flex;
-`;
-
 const ListGroup = styled.div`
   margin-left: 2rem;
   display: flex;
+
+  @media (max-width: 1000px) {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+  }
 `;
 
 const ListItem = styled.li`
@@ -87,6 +98,26 @@ const ListItem = styled.li`
 
   svg {
     margin: 0 0.5rem;
+  }
+
+  @media (max-width: 1000px) {
+    margin: 0 0.75rem;
+  }
+`;
+
+const List = styled.ul`
+  margin-left: auto;
+  display: flex;
+
+  @media (max-width: 1000px) {
+    margin-left: 0;
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+
+    ${ListGroup}:first-of-type ${ListItem} {
+      margin-bottom: 0.5rem;
+    }
   }
 `;
 
