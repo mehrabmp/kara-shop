@@ -48,14 +48,6 @@ const defaultTheme = {
     h1: '2rem',
     h2: '1.8rem',
   },
-  fontWeights: {
-    thin: 300,
-    body: 400,
-    subheading: 500,
-    link: 600,
-    bold: 700,
-    heading: 800,
-  },
   lineHeights: {
     body: 1.5,
     heading: 1.3,

@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colors.neutral90};
     font-size: ${({ theme }) => theme.fontSizes.body};
     font-family: ${({ theme }) => theme.fontFamily};
-    font-weight: ${({ theme }) => theme.fontWeights.body};
+    font-weight: normal;
     min-height: 100vh;
     scroll-behavior: smooth;
   }
