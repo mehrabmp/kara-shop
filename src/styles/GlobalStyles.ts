@@ -31,13 +31,15 @@ const GlobalStyles = createGlobalStyle`
     border: none;
   }
 
+  ol,
   ul {
     list-style: none;
   }
 
   a {
     text-decoration: none;
-  }
+    color: inherit;
+  } 
 `;
 
 export default GlobalStyles;
