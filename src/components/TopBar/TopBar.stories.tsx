@@ -9,4 +9,4 @@ export default {
 
 const Template: ComponentStory<typeof TopBar> = args => <TopBar {...args} />;
 
-export const Topbar = Template.bind({});
+export const Base = Template.bind({});
