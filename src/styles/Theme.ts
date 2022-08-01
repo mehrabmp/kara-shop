@@ -1,6 +1,7 @@
 const defaultTheme = {
   fontFamily: 'Noto Sans, sans-serif',
   borderRadius: '10px',
+  containerWidth: '1500px',
   boxShadow:
     'rgb(50 50 93 / 2%) 0px 2px 5px -1px, rgb(0 0 0 / 5%) 0px 1px 3px -1px',
   colors: {
@@ -59,7 +60,7 @@ export const lightTheme = {
   ...defaultTheme,
   colors: {
     ...defaultTheme.colors,
-    body: '#FFF',
+    body: '#f1f1f1',
     card: '#FFFFFF',
   },
 };

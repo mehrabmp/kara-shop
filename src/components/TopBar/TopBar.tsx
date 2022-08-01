@@ -59,7 +59,7 @@ const StyledTopBar = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 1550px;
+  max-width: ${({ theme }) => theme.containerWidth};
   margin: 0 auto;
   padding: 1rem;
   display: flex;
