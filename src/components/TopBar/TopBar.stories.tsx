@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TopBar } from './TopBar';
 
 export default {
-  title: 'Components/TopBar',
+  title: 'Navigation/TopBar',
   component: TopBar,
 } as ComponentMeta<typeof TopBar>;
 
