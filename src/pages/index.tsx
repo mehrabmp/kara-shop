@@ -1,15 +1,18 @@
-import type { NextPage } from 'next';
+import type { ReactElement } from 'react';
+import type { NextPageWithLayout } from './_app';
 import styled from 'styled-components';
-import { TopBar } from 'components';
+import { PrimaryLayout } from 'components';
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
+  return <h1></h1>;
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
   return (
-    <Container>
-      <TopBar></TopBar>
-    </Container>
+    <PrimaryLayout title="Kara Shop" description="Home page of Kara Shop">
+      {page}
+    </PrimaryLayout>
   );
 };
 
 export default Home;
-
-const Container = styled.div``;
