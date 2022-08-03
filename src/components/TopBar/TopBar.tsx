@@ -53,8 +53,8 @@ export const TopBar: React.FC = () => {
 };
 
 const StyledTopBar = styled.div`
-  background: #03140f;
-  color: #fff;
+  background-color: #212121;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
 `;
 
@@ -91,7 +91,8 @@ const ListItem = styled.li`
 
   &:hover,
   &:hover .icon {
-    color: ${({ theme }) => theme.colors.primary40} !important;
+    /* color: ${({ theme }) => theme.colors.primary40} !important; */
+    color: #fff !important;
   }
 
   &:nth-of-type(3),
