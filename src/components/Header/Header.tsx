@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { TopBar, Search } from 'components';
+import { Search } from './Search';
+import { TopBar } from './TopBar';
 import { IconType } from 'react-icons';
 import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
 
