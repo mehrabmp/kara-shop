@@ -29,7 +29,12 @@ export const TopBar: React.FC = () => {
             <ListItem key={label}>
               <Link href={href}>
                 <a>
-                  {Icon && <Icon className="icon" color="#fff"></Icon>}
+                  {Icon && (
+                    <Icon
+                      className="icon"
+                      color="rgba(255, 255, 255, 0.9)"
+                    ></Icon>
+                  )}
                   <span>{label}</span>
                 </a>
               </Link>
@@ -91,7 +96,6 @@ const ListItem = styled.li`
 
   &:hover,
   &:hover .icon {
-    /* color: ${({ theme }) => theme.colors.primary40} !important; */
     color: #fff !important;
   }
 
