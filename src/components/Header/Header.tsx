@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { TopBar } from 'components';
+import { TopBar, Search } from 'components';
 import { IconType } from 'react-icons';
-import { FiUser, FiHeart, FiSearch, FiShoppingBag } from 'react-icons/fi';
+import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
 
 export const Header: React.FC = () => {
   return (
@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
             <MenuItem>3 Stripe Life</MenuItem>
           </MainMenu>
           <SideMenu>
-            <SideMenuItem href="#" Icon={FiSearch} />
+            <Search onSearch={value => console.log(value)} />
             <SideMenuItem href="/account/wishlist" Icon={FiHeart} />
             <SideMenuItem href="/account/cart" Icon={FiShoppingBag} />
             <SideMenuItem href="/account/login" Icon={FiUser} />
@@ -45,7 +45,6 @@ const Container = styled.div`
   padding: 1rem;
   height: 100%;
   display: flex;
-  justify-content: space-between;
 `;
 
 const Logo = styled.a`
@@ -58,15 +57,17 @@ const Logo = styled.a`
 const MainMenu = styled.ul`
   display: flex;
   align-items: center;
+  margin-left: 10rem;
 `;
 
 const MenuItem = styled.li`
-  font-size: 1.6rem;
   font-weight: 500;
   margin: 0 2rem;
   color: ${({ theme }) => theme.colors.neutral80};
   transition: all 0.2s;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary100};
@@ -76,6 +77,7 @@ const MenuItem = styled.li`
 const SideMenu = styled.ul`
   display: flex;
   align-items: center;
+  margin-left: auto;
 `;
 
 interface IconButtonProps {
@@ -88,7 +90,7 @@ interface IconButtonProps {
 const IconButton: React.FC<IconButtonProps> = ({ href, className, Icon }) => (
   <Link href={href}>
     <a className={className}>
-      <Icon size="2rem" className="icon" />
+      <Icon size="2.25rem" className="icon" />
     </a>
   </Link>
 );
