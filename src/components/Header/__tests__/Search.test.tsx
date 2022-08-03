@@ -44,3 +44,12 @@ test('should call onSearch when search icon clicked', async () => {
   await userEvent.click(searchIcon);
   expect(handler).toBeCalledTimes(1);
 });
+
+test('should not call onSearch when submited empty', async () => {
+  render(<Search onSearch={handler} />);
+  const search = screen.getByRole('textbox', {
+    name: /search on kara/i,
+  });
+  await userEvent.type(search, '{enter}');
+  expect(handler).toBeCalledTimes(0);
+});
