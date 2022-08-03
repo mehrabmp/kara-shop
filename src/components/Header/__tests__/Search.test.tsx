@@ -30,17 +30,24 @@ test('should show the typed text', async () => {
   expect(search).toHaveValue('black jeans');
 });
 
-test('should call onSearch when submited', async () => {
-  render(<Search onSearch={handler} />);
-  await typeInSearchInput('black jeans{enter}');
-  expect(handler).toBeCalledTimes(1);
-});
-
-test('should call onSearch when search icon clicked', async () => {
+test('should change search icon to clear when typed', async () => {
   render(<Search onSearch={handler} />);
   await typeInSearchInput('black jeans');
-  const searchIcon = screen.getByTestId('search-icon');
-  await userEvent.click(searchIcon);
+  const clearIcon = screen.getByTestId('clear');
+  expect(clearIcon).toBeInTheDocument();
+});
+
+test('should clear text when clicked on clear icon', async () => {
+  render(<Search onSearch={handler} />);
+  const search = await typeInSearchInput('black jeans');
+  const clearIcon = screen.getByTestId('clear');
+  await userEvent.click(clearIcon);
+  expect(search).toHaveValue('');
+});
+
+test('should call onSearch when pressed enter', async () => {
+  render(<Search onSearch={handler} />);
+  await typeInSearchInput('black jeans{enter}');
   expect(handler).toBeCalledTimes(1);
 });
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
+import React, { useState, useRef } from 'react';
+import { FiSearch, FiX } from 'react-icons/fi';
 import styled from 'styled-components';
 
 interface Props {
@@ -8,10 +8,16 @@ interface Props {
 
 export const Search: React.FC<Props> = ({ onSearch }) => {
   const [value, setValue] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (value) onSearch(value);
+  };
+
+  const handleClearInput = () => {
+    setValue('');
+    if (inputRef.current) inputRef.current.focus();
   };
 
   return (
@@ -24,14 +30,14 @@ export const Search: React.FC<Props> = ({ onSearch }) => {
           placeholder="Search on KARA"
           aria-label="Search on KARA"
           value={value}
+          ref={inputRef}
           onChange={e => setValue(e.target.value)}
         />
-        <FiSearch
-          className="search-icon"
-          size="2rem"
-          onClick={() => value && onSearch(value)}
-          data-testid="search-icon"
-        />
+        {value ? (
+          <FiX size="2rem" data-testid="clear" onClick={handleClearInput} />
+        ) : (
+          <FiSearch size="2rem" />
+        )}
       </Form>
     </StyledSearch>
   );
@@ -48,7 +54,7 @@ const Form = styled.form`
   justify-content: space-between;
   align-items: center;
 
-  .search-icon {
+  svg {
     color: ${({ theme }) => theme.colors.neutral50};
     margin-right: 1rem;
     flex-shrink: 0;
