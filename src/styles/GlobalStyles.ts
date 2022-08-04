@@ -43,6 +43,11 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   } 
+
+  #nprogress .bar {
+    background: ${({ theme }) => theme.colors.primary80} !important;
+    height: 3px !important;
+  }
 `;
 
 export default GlobalStyles;
