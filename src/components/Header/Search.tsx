@@ -6,7 +6,7 @@ interface Props {
   onSearch: (value: string) => void;
 }
 
-export const Search: React.FC<Props> = ({ onSearch }) => {
+export const Search = ({ onSearch }: Props) => {
   const [value, setValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 

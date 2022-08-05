@@ -7,6 +7,6 @@ export default {
   component: TopBar,
 } as ComponentMeta<typeof TopBar>;
 
-const Template: ComponentStory<typeof TopBar> = args => <TopBar {...args} />;
+const Template: ComponentStory<typeof TopBar> = () => <TopBar />;
 
 export const Base = Template.bind({});

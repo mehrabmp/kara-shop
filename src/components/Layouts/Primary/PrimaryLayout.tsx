@@ -13,7 +13,7 @@ interface PrimaryLayoutProps {
   image?: string;
 }
 
-export const PrimaryLayout: React.FC<PrimaryLayoutProps> = ({
+export const PrimaryLayout = ({
   children,
   title = 'Kara Shop',
   description = 'Kara Shop - Ecommerce created by NextJS, TypeScript',
@@ -21,7 +21,7 @@ export const PrimaryLayout: React.FC<PrimaryLayoutProps> = ({
   type = 'website',
   url = 'https://karashop.vercel.app',
   image,
-}) => {
+}: PrimaryLayoutProps) => {
   return (
     <>
       <Head>

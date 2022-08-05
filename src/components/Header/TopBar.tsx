@@ -11,7 +11,7 @@ interface TobBarItem {
   Icon?: IconType;
 }
 
-export const TopBar: React.FC = () => {
+export const TopBar = () => {
   const topbarItems: TobBarItem[] = [
     { label: 'Careers', href: '#' },
     { label: 'Help', href: '#' },
