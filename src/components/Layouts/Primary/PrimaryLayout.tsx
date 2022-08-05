@@ -3,8 +3,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { Header, Footer } from 'components';
 
-interface PrimaryLayoutProps {
-  children: React.ReactNode;
+interface PrimaryLayoutProps extends React.PropsWithChildren {
   title?: string;
   description?: string;
   keywords?: string;
