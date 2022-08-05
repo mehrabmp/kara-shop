@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export interface Props {
+export interface Props extends React.ComponentPropsWithoutRef<'button'> {
   /** Button text */
   label: string;
   /** Button color variants */
@@ -10,33 +10,18 @@ export interface Props {
   full?: boolean;
   /** Disabled button */
   disabled?: boolean;
-  /** Type of button */
-  type?: 'button' | 'submit' | 'reset' | undefined;
-  /** Optional children elements */
-  children?: React.ReactNode;
-  /** Optional click handler */
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Button: React.FC<Props> = ({
+export const Button = ({
   label,
   children,
   variant = 'primary',
   full = false,
   disabled = false,
-  type,
-  onClick,
   ...props
-}) => {
+}: Props) => {
   return (
-    <StyledButton
-      variant={variant}
-      full={full}
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      {...props}
-    >
+    <StyledButton variant={variant} full={full} disabled={disabled} {...props}>
       {label || children}
     </StyledButton>
   );
