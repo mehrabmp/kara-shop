@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mehrabmp/kara-shop.git"
+    "url": "https://github.com/mehrabmp/kara-shop.git"
   },
   "engines": {
     "node": "^16.15.0",
