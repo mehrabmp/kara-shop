@@ -1,5 +1,7 @@
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
+import { GetServerSideProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styled from 'styled-components';
 import { PrimaryLayout } from 'components';
 
@@ -13,6 +15,16 @@ Home.getLayout = function getLayout(page: ReactElement) {
       {page}
     </PrimaryLayout>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({
+  locale = 'en',
+}) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale)),
+    },
+  };
 };
 
 export default Home;

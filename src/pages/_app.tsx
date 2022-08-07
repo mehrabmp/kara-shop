@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from 'styles/Theme';
+import { appWithTranslation } from 'next-i18next';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
@@ -50,4 +51,4 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
