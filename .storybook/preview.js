@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../src/styles/GlobalStyles';
 import { lightTheme } from '../src/styles/Theme';
+import i18n from './i18next.js';
 
 export const decorators = [
   Story => (
@@ -31,5 +32,11 @@ export const parameters = {
         value: '#000',
       },
     ],
+  },
+  i18n,
+  locale: 'en',
+  locales: {
+    en: 'English',
+    de: 'German',
   },
 };
