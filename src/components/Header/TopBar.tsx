@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { useTranslation } from 'next-i18next';
 import { IconType } from 'react-icons';
 import { FiPhone, FiGrid, FiChevronDown } from 'react-icons/fi';
 
@@ -12,18 +13,20 @@ interface TobBarItem {
 }
 
 export const TopBar = () => {
+  const { t } = useTranslation('topbar');
+
   const topbarItems: TobBarItem[] = [
-    { label: 'Careers', href: '#' },
-    { label: 'Help', href: '#' },
-    { label: 'Buyer Protection', href: '#' },
-    { label: 'Download Mobile App', href: '#', Icon: FiGrid },
-    { label: '+0125 258 192 502', href: '#', Icon: FiPhone },
+    { label: t('careers'), href: '#' },
+    { label: t('help'), href: '#' },
+    { label: t('buyer'), href: '#' },
+    { label: t('download'), href: '#', Icon: FiGrid },
+    { label: t('phone'), href: '#', Icon: FiPhone },
   ];
 
   return (
     <StyledTopBar>
       <Container>
-        <Title>Get 25% discount on a first purchase.</Title>
+        <Title>{t('discount')}</Title>
         <List>
           {topbarItems.map(({ label, href, Icon }) => (
             <ListItem key={label}>
@@ -48,7 +51,7 @@ export const TopBar = () => {
               width={17}
               height={17}
             />
-            <span>ENG</span>
+            <span>EN</span>
             <FiChevronDown color="#fff"></FiChevronDown>
           </SelectLang>
         </List>
