@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import TransitionStyles from './TransitionStyles';
 
 const GlobalStyles = createGlobalStyle`
+  ${TransitionStyles}
+
   *,
   *::before,
   *::after {
