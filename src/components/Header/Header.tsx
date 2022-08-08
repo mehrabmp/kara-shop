@@ -31,7 +31,13 @@ export const Header = () => {
         <Container>
           <Link href="/" passHref>
             <Logo>
-              <Image src="/logo.png" alt="logo" width={100} height={35} />
+              <Image
+                priority
+                src="/logo.png"
+                alt="logo"
+                width={100}
+                height={35}
+              />
             </Logo>
           </Link>
           <MainMenu>

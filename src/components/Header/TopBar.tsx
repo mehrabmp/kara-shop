@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { useTranslation } from 'next-i18next';
-import { IconType } from 'react-icons';
 import { FiPhone, FiGrid, FiChevronDown } from 'react-icons/fi';
-
-interface TobBarItem {
-  label: string;
-  href: string;
-  Icon?: IconType;
-}
+import { ChangeLocale } from './ChangeLocale';
 
 export const TopBar = () => {
+  const router = useRouter();
+
+  const [isChangeLocaleOpen, setIsChangeLocaleOpen] = useState(false);
+
   const { t } = useTranslation('topbar');
 
-  const topbarItems: TobBarItem[] = [
+  const topbarItems = [
     { label: t('careers'), href: '#' },
     { label: t('help'), href: '#' },
     { label: t('buyer'), href: '#' },
@@ -43,16 +42,21 @@ export const TopBar = () => {
               </Link>
             </ListItem>
           ))}
-          <SelectLang>
+          <SelectLang onClick={() => setIsChangeLocaleOpen(prev => !prev)}>
             <Image
+              priority
               className="flag"
-              src="/eng-flag.svg"
-              alt="English language"
+              src={`/assets/${router.locale}-flag.svg`}
+              alt={`${router.locale} locale`}
               width={17}
               height={17}
             />
-            <span>EN</span>
+            <span>{router.locale?.toUpperCase()}</span>
             <FiChevronDown color="#fff"></FiChevronDown>
+            <ChangeLocale
+              isOpen={isChangeLocaleOpen}
+              onClose={() => setIsChangeLocaleOpen(prev => !prev)}
+            />
           </SelectLang>
         </List>
       </Container>
@@ -135,6 +139,7 @@ const SelectLang = styled.div`
   align-items: center;
   cursor: pointer;
   margin-left: 1rem;
+  position: relative;
 
   span {
     margin-left: 0.5rem;
