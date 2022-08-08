@@ -1,4 +1,5 @@
 import { render, screen } from 'utils/test-utils';
+import userEvent from '@testing-library/user-event';
 import { TopBar } from '../TopBar';
 
 test('should render TopBar component', () => {
@@ -7,5 +8,14 @@ test('should render TopBar component', () => {
     name: /careers/i,
   });
   expect(topBarItem).toBeInTheDocument();
-  expect(topBarItem).toHaveAttribute('href', '/#');
+});
+
+test('should open change locale menu when clicked on language', async () => {
+  render(<TopBar />);
+  const flag = screen.getByRole('img', {
+    name: /en locale/i,
+  });
+  await userEvent.click(flag);
+  const changeLocaleMenu = await screen.findByText(/german/i);
+  expect(changeLocaleMenu).toBeInTheDocument();
 });
