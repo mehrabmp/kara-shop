@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FiSearch, FiX } from 'react-icons/fi';
 import styled from 'styled-components';
+import { useTranslation } from 'next-i18next';
 
 interface Props {
   onSearch: (value: string) => void;
@@ -9,6 +10,8 @@ interface Props {
 export const Search = ({ onSearch }: Props) => {
   const [value, setValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const { t } = useTranslation('common');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,7 +30,7 @@ export const Search = ({ onSearch }: Props) => {
           type="text"
           name="search"
           id="search"
-          placeholder="Search on KARA"
+          placeholder={`${t('search_on_kara')}`}
           aria-label="Search on KARA"
           value={value}
           ref={inputRef}
