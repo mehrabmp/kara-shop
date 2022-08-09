@@ -19,7 +19,7 @@ Home.getLayout = function getLayout(page: ReactElement) {
 export const getServerSideProps = async ({ locale }: { locale: string }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'topbar'])),
+      ...(await serverSideTranslations(locale, ['common', 'header'])),
     },
   };
 };

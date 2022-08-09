@@ -12,20 +12,20 @@ export const TopBar = () => {
 
   const [isChangeLocaleOpen, setIsChangeLocaleOpen] = useState(false);
 
-  const { t } = useTranslation('topbar');
+  const { t } = useTranslation('header');
 
   const topbarItems = [
-    { label: t('careers'), href: '#' },
-    { label: t('help'), href: '#' },
-    { label: t('buyer'), href: '#' },
-    { label: t('download'), href: '#', Icon: FiGrid },
-    { label: t('phone'), href: '#', Icon: FiPhone },
+    { label: t('topbar.careers'), href: '#' },
+    { label: t('topbar.help'), href: '#' },
+    { label: t('topbar.buyer'), href: '#' },
+    { label: t('topbar.download'), href: '#', Icon: FiGrid },
+    { label: t('topbar.phone'), href: '#', Icon: FiPhone },
   ];
 
   return (
     <StyledTopBar>
       <Container>
-        <Title>{t('discount')}</Title>
+        <Title>{t('topbar.discount')}</Title>
         <List>
           {topbarItems.map(({ label, href, Icon }) => (
             <ListItem key={label}>
