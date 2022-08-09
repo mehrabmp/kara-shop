@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { useTranslation } from 'next-i18next';
 import { CSSTransition } from 'react-transition-group';
 import { IconType } from 'react-icons';
-import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
+import { FiUser, FiHeart, FiShoppingBag, FiChevronDown } from 'react-icons/fi';
 import { Search } from './Search';
 import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
@@ -12,13 +13,15 @@ import { MegaMenu } from './MegaMenu';
 export const Header = () => {
   const [currentMenuItem, setCurrentMenuItem] = useState('');
 
+  const { t } = useTranslation('header');
+
   const menuItems = [
-    { label: 'Men', href: '/men', hasSubMenu: true },
-    { label: 'Women', href: '/women', hasSubMenu: true },
-    { label: 'Kids', href: '/kids', hasSubMenu: true },
-    { label: 'Sale', href: '/sale' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Contacts', href: '/contacts' },
+    { label: t('men'), href: '/men', hasSubMenu: true },
+    { label: t('women'), href: '/women', hasSubMenu: true },
+    { label: t('kids'), href: '/kids', hasSubMenu: true },
+    { label: t('sale'), href: '/sale' },
+    { label: t('blog'), href: '/blog' },
+    { label: t('contacts'), href: '/contacts' },
   ];
 
   const handleShowMenu = (value: string) => setCurrentMenuItem(value);
@@ -37,6 +40,7 @@ export const Header = () => {
                 alt="logo"
                 width={100}
                 height={35}
+                layout="fixed"
               />
             </Logo>
           </Link>
@@ -49,7 +53,10 @@ export const Header = () => {
                 onMouseLeave={handleCloseMenu}
               >
                 <Link href={href}>
-                  <a>{label}</a>
+                  <a>
+                    {label}
+                    {hasSubMenu && <FiChevronDown className="chevron-down" />}
+                  </a>
                 </Link>
               </MenuItem>
             ))}
@@ -91,12 +98,17 @@ const Container = styled.div`
 const Logo = styled.a`
   display: flex;
   align-items: center;
+  margin-right: 2rem;
 `;
 
 const MainMenu = styled.ul`
   display: flex;
   margin-left: auto;
   height: 100%;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 interface MenuItemProps {
@@ -115,6 +127,12 @@ const MenuItem = styled.li<MenuItemProps>`
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
+  }
+
+  .chevron-down {
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+    color: ${({ theme }) => theme.colors.neutral50};
   }
 
   &:hover {
@@ -171,5 +189,9 @@ const SideMenuItem = styled(IconButton)`
 
   &:hover .icon {
     color: ${({ theme }) => theme.colors.primary100};
+  }
+
+  @media (max-width: 900px) {
+    display: none;
   }
 `;

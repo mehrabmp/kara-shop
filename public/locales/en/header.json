@@ -6,5 +6,11 @@
     "buyer": "Buyer Protection",
     "download": "Download Mobile App",
     "phone": "+0125 258 192 502"
-  }
+  },
+  "men": "Men",
+  "women": "Women",
+  "kids": "Kids",
+  "sale": "Sale",
+  "blog": "Blog",
+  "contacts": "Contacts"
 }
