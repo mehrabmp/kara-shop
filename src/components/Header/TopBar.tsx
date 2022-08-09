@@ -43,14 +43,14 @@ export const TopBar = () => {
             </ListItem>
           ))}
           <SelectLang onClick={() => setIsChangeLocaleOpen(prev => !prev)}>
-            <Image
-              priority
-              className="flag"
-              src={`/assets/${router.locale}-flag.svg`}
-              alt={`${router.locale} locale`}
-              width={17}
-              height={17}
-            />
+            <div className="flag">
+              <Image
+                priority
+                src={`/assets/${router.locale}-flag.svg`}
+                alt={`${router.locale} locale`}
+                layout="fill"
+              />
+            </div>
             <span>{router.locale?.toUpperCase()}</span>
             <FiChevronDown color="#fff"></FiChevronDown>
             <ChangeLocale
@@ -80,6 +80,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 0.5rem 1rem;
+    font-size: 1rem;
   }
 `;
 
@@ -99,6 +100,7 @@ const ListItem = styled.li`
   .icon {
     margin: 0 0.5rem;
     transition: all 0.2s;
+    font-size: 1.4rem;
   }
 
   &:hover,
@@ -116,6 +118,12 @@ const ListItem = styled.li`
       margin: 0 0.5rem;
     }
   }
+
+  @media (max-width: 800px) {
+    .icon {
+      font-size: 1rem;
+    }
+  }
 `;
 
 const List = styled.ul`
@@ -124,7 +132,6 @@ const List = styled.ul`
 
   @media (max-width: 800px) {
     margin-left: 0;
-    margin-top: 1rem;
     justify-content: center;
     flex-wrap: wrap;
 
@@ -142,7 +149,17 @@ const SelectLang = styled.div`
   margin-left: 1rem;
   position: relative;
 
-  span {
-    margin-left: 0.5rem;
+  .flag {
+    position: relative;
+    width: 17px;
+    height: 17px;
+    margin-right: 0.5rem;
+  }
+
+  @media (max-width: 800px) {
+    .flag {
+      width: 14px;
+      height: 14px;
+    }
   }
 `;
