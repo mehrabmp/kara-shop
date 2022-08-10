@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useTranslation } from 'next-i18next';
 import { CSSTransition } from 'react-transition-group';
 import { IconType } from 'react-icons';
-import { FiUser, FiHeart, FiShoppingBag, FiChevronDown } from 'react-icons/fi';
+import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
 import { Search } from './Search';
 import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 
 export const Header = () => {
   const [currentMenuItem, setCurrentMenuItem] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { t } = useTranslation('header');
 
@@ -24,8 +25,15 @@ export const Header = () => {
     { label: t('contacts'), href: '/contacts' },
   ];
 
-  const handleShowMenu = (value: string) => setCurrentMenuItem(value);
-  const handleCloseMenu = () => setCurrentMenuItem('');
+  const handleShowMenu = (value: string, hasSubMenu: boolean) => {
+    setCurrentMenuItem(value);
+    if (hasSubMenu) setIsMenuOpen(true);
+  };
+
+  const handleCloseMenu = () => {
+    setCurrentMenuItem('');
+    setIsMenuOpen(false);
+  };
 
   return (
     <header>
@@ -45,18 +53,15 @@ export const Header = () => {
             </Logo>
           </Link>
           <MainMenu>
-            {menuItems.map(({ label, href, hasSubMenu }, index) => (
+            {menuItems.map(({ label, href, hasSubMenu = false }, index) => (
               <MenuItem
                 key={index}
                 active={currentMenuItem === label}
-                onMouseEnter={() => hasSubMenu && handleShowMenu(label)}
+                onMouseEnter={() => handleShowMenu(label, hasSubMenu)}
                 onMouseLeave={handleCloseMenu}
               >
                 <Link href={href}>
-                  <a>
-                    {label}
-                    {hasSubMenu && <FiChevronDown className="chevron-down" />}
-                  </a>
+                  <a>{label}</a>
                 </Link>
               </MenuItem>
             ))}
@@ -68,10 +73,10 @@ export const Header = () => {
             <SideMenuItem href="/account/login" Icon={FiUser} />
           </SideMenu>
         </Container>
-        <CSSTransition timeout={0} in={Boolean(currentMenuItem)} unmountOnExit>
+        <CSSTransition timeout={0} in={isMenuOpen} unmountOnExit>
           <MegaMenu
-            menuItem={currentMenuItem}
-            onShowMenu={() => handleShowMenu(currentMenuItem)}
+            currentMenuItem={currentMenuItem}
+            onShowMenu={() => handleShowMenu(currentMenuItem, true)}
             onCloseMenu={handleCloseMenu}
           ></MegaMenu>
         </CSSTransition>
@@ -82,7 +87,7 @@ export const Header = () => {
 
 const NavBar = styled.div`
   background: #fff;
-  height: 60px;
+  height: 55px;
   box-shadow: rgb(0 0 0 / 10%) 0px 15px 20px -20px;
 `;
 
@@ -116,41 +121,17 @@ interface MenuItemProps {
 }
 
 const MenuItem = styled.li<MenuItemProps>`
-  font-weight: 500;
+  background-color: ${({ theme, active }) => active && theme.colors.primary10};
   color: ${({ theme, active }) =>
     active ? theme.colors.primary100 : theme.colors.neutral80};
+  font-weight: 500;
   transition: all 0.2s;
-  position: relative;
 
   a {
     height: 100%;
-    padding: 0 1.5rem;
     display: flex;
     align-items: center;
-  }
-
-  .chevron-down {
-    margin-left: 0.5rem;
-    margin-top: 0.25rem;
-    color: ${({ theme }) => theme.colors.neutral50};
-  }
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary100};
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: ${({ active }) => (active ? '100%' : 0)};
-    height: 3px;
-    background-color: ${({ theme }) => theme.colors.primary100};
-  }
-
-  &:is(:hover)::before {
-    width: 100%;
+    padding: 0 2rem;
   }
 `;
 

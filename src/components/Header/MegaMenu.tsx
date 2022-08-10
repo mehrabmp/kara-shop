@@ -4,13 +4,17 @@ import styled from 'styled-components';
 interface Props {
   onCloseMenu: () => void;
   onShowMenu: () => void;
-  menuItem: string;
+  currentMenuItem: string;
 }
 
-export const MegaMenu = ({ onCloseMenu, onShowMenu, menuItem }: Props) => {
+export const MegaMenu = ({
+  onCloseMenu,
+  onShowMenu,
+  currentMenuItem,
+}: Props) => {
   return (
-    <StyledMegaMenu onMouseOver={onShowMenu} onMouseOut={onCloseMenu}>
-      <h1>{menuItem}</h1>
+    <StyledMegaMenu onMouseEnter={onShowMenu} onMouseLeave={onCloseMenu}>
+      <h1>{currentMenuItem}</h1>
     </StyledMegaMenu>
   );
 };
