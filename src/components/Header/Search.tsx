@@ -24,56 +24,59 @@ export const Search = ({ onSearch }: Props) => {
   };
 
   return (
-    <StyledSearch>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          name="search"
-          id="search"
-          placeholder={`${t('search_on_kara')}`}
-          aria-label="Search on KARA"
-          value={value}
-          ref={inputRef}
-          onChange={e => setValue(e.target.value)}
-        />
-        {value ? (
-          <FiX size="2rem" data-testid="clear" onClick={handleClearInput} />
-        ) : (
-          <FiSearch size="2rem" />
-        )}
-      </Form>
-    </StyledSearch>
+    <Form onSubmit={handleSubmit}>
+      <Input
+        type="text"
+        name="search"
+        id="search"
+        placeholder={`${t('search')}`}
+        value={value}
+        ref={inputRef}
+        onChange={e => setValue(e.target.value)}
+      />
+      {value ? (
+        <FiX data-testid="clear" onClick={handleClearInput} />
+      ) : (
+        <FiSearch />
+      )}
+    </Form>
   );
 };
-
-const StyledSearch = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutral05};
-  border-radius: ${({ theme }) => theme.borderRadius};
-  max-width: 250px;
-`;
 
 const Form = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 200px;
+  height: 40px;
+  position: relative;
 
   svg {
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    right: 0;
+    padding-right: 1rem;
     color: ${({ theme }) => theme.colors.neutral50};
-    margin-right: 1rem;
-    flex-shrink: 0;
     cursor: pointer;
   }
 `;
 
 const Input = styled.input`
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.colors.neutral05};
+  border: 1px solid transparent;
   color: ${({ theme }) => theme.colors.neutral90};
-  font-size: 1.4rem;
-  outline: none;
-  max-width: 220px;
   width: 100%;
+  height: 100%;
+  padding-right: 3.5rem;
+  outline: none;
+  transition: border 0.2s;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.neutral60};
+  }
+
+  &:focus {
+    border: 1px solid ${({ theme }) => theme.colors.primary100};
   }
 `;

@@ -25,10 +25,15 @@ const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     min-height: 100vh;
     scroll-behavior: smooth;
+
+    @media (max-width: 900px) {
+      font-size: 1.4rem;
+    }
   }
   
   input, Button {
     font-family: ${({ theme }) => theme.fontFamily};
+    font-size: inherit;
     border-radius: ${({ theme }) => theme.borderRadius};
     padding: 1.25rem;
     border: none;
