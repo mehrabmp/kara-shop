@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { useTranslation } from 'next-i18next';
 import { CSSTransition } from 'react-transition-group';
 import { IconType } from 'react-icons';
 import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
 import { Search } from './Search';
-import { TopBar } from './TopBar';
+import { BaseContainer, TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 
 export const Header = () => {
@@ -40,18 +40,20 @@ export const Header = () => {
       <TopBar />
       <NavBar>
         <Container>
-          <Link href="/" passHref>
-            <Logo>
-              <Image
-                priority
-                src="/logo.png"
-                alt="logo"
-                width={100}
-                height={35}
-                layout="fixed"
-              />
-            </Logo>
-          </Link>
+          <Logo>
+            <Link href="/" passHref>
+              <a>
+                <Image
+                  priority
+                  src="/logo.png"
+                  alt="logo"
+                  width={100}
+                  height={35}
+                  layout="fixed"
+                />
+              </a>
+            </Link>
+          </Logo>
           <MainMenu>
             {menuItems.map(({ label, href, hasSubMenu = false }, index) => (
               <MenuItem
@@ -91,19 +93,18 @@ const NavBar = styled.div`
   box-shadow: rgb(0 0 0 / 10%) 0px 15px 20px -20px;
 `;
 
-const Container = styled.div`
-  max-width: ${({ theme }) => theme.containerWidth};
-  margin: 0 auto;
-  padding: 0 1rem;
+const Container = styled(BaseContainer)`
   height: 100%;
   display: flex;
   align-items: center;
 `;
 
-const Logo = styled.a`
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
+const Logo = styled.div`
+  a {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+  }
 `;
 
 const MainMenu = styled.ul`

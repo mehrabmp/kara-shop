@@ -64,15 +64,19 @@ export const TopBar = () => {
   );
 };
 
+export const BaseContainer = styled.div`
+  max-width: ${({ theme }) => theme.containerWidth};
+  margin: 0 auto;
+  padding: 0 1rem;
+`;
+
 const StyledTopBar = styled.div`
   background-color: #212121;
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
 `;
 
-const Container = styled.div`
-  max-width: ${({ theme }) => theme.containerWidth};
-  margin: 0 auto;
+const Container = styled(BaseContainer)`
   padding: 1rem;
   display: flex;
 
