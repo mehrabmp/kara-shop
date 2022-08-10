@@ -9,18 +9,14 @@ afterEach(() => {
 });
 
 const typeInSearchInput = async (text: string) => {
-  const search = screen.getByRole('textbox', {
-    name: /search on kara/i,
-  });
+  const search = screen.getByRole('textbox');
   await userEvent.type(search, text);
   return search;
 };
 
 test('should render Search component', () => {
   render(<Search onSearch={handler} />);
-  const search = screen.getByRole('textbox', {
-    name: /search on kara/i,
-  });
+  const search = screen.getByRole('textbox');
   expect(search).toBeInTheDocument();
 });
 
@@ -37,7 +33,7 @@ test('should change search icon to clear when typed', async () => {
   expect(clearIcon).toBeInTheDocument();
 });
 
-test('should clear text when clicked on clear icon', async () => {
+test('should clear input when clicked on clear icon', async () => {
   render(<Search onSearch={handler} />);
   const search = await typeInSearchInput('black jeans');
   const clearIcon = screen.getByTestId('clear');
