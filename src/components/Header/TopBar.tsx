@@ -31,18 +31,13 @@ export const TopBar = () => {
             <ListItem key={label}>
               <Link href={href}>
                 <a>
-                  {Icon && (
-                    <Icon
-                      className="icon"
-                      color="rgba(255, 255, 255, 0.9)"
-                    ></Icon>
-                  )}
+                  {Icon && <Icon className="icon"></Icon>}
                   <span>{label}</span>
                 </a>
               </Link>
             </ListItem>
           ))}
-          <SelectLang onClick={() => setIsChangeLocaleOpen(prev => !prev)}>
+          <SelectLocale onClick={() => setIsChangeLocaleOpen(prev => !prev)}>
             <div className="flag">
               <Image
                 priority
@@ -57,7 +52,7 @@ export const TopBar = () => {
               isOpen={isChangeLocaleOpen}
               onClose={() => setIsChangeLocaleOpen(prev => !prev)}
             />
-          </SelectLang>
+          </SelectLocale>
         </List>
       </Container>
     </StyledTopBar>
@@ -71,8 +66,8 @@ export const BaseContainer = styled.div`
 `;
 
 const StyledTopBar = styled.div`
-  background-color: #212121;
-  color: rgba(255, 255, 255, 0.9);
+  background-color: #232323;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.2rem;
 `;
 
@@ -89,27 +84,38 @@ const Container = styled(BaseContainer)`
 `;
 
 const Title = styled.p`
-  font-weight: 300;
+  @media (max-width: 800px) {
+    margin-bottom: 0.75rem;
+  }
+`;
+
+const List = styled.ul`
+  display: flex;
+  margin-left: auto;
+
+  @media (max-width: 800px) {
+    margin-left: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 `;
 
 const ListItem = styled.li`
   margin-right: 2rem;
+  transition: all 0.2s;
 
   a {
-    transition: all 0.2s;
     display: flex;
     align-items: center;
   }
 
   .icon {
     margin: 0 0.5rem;
-    transition: all 0.2s;
     font-size: 1.4rem;
   }
 
-  &:hover,
-  &:hover .icon {
-    color: #fff !important;
+  &:hover {
+    color: rgba(255, 255, 255, 1);
   }
 
   &:nth-of-type(3),
@@ -124,29 +130,15 @@ const ListItem = styled.li`
   }
 
   @media (max-width: 800px) {
+    padding-bottom: 0.2rem;
+
     .icon {
       font-size: 1rem;
     }
   }
 `;
 
-const List = styled.ul`
-  margin-left: auto;
-  display: flex;
-
-  @media (max-width: 800px) {
-    margin-left: 0;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    ${ListItem} {
-      margin-top: 0.25rem;
-      margin-bottom: 0.25rem;
-    }
-  }
-`;
-
-const SelectLang = styled.div`
+const SelectLocale = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -161,6 +153,8 @@ const SelectLang = styled.div`
   }
 
   @media (max-width: 800px) {
+    padding-bottom: 0.2rem;
+
     .flag {
       width: 14px;
       height: 14px;
