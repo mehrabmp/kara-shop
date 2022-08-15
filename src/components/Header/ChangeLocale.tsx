@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
-import useOnClickOutside from 'hooks/useOnClickOutside';
+import { useClickAway } from 'react-use';
 
 interface Props {
   isOpen: boolean;
@@ -13,7 +13,7 @@ interface Props {
 export const ChangeLocale = ({ isOpen, onClose }: Props) => {
   const ref = useRef<HTMLUListElement>(null);
 
-  useOnClickOutside(ref, onClose);
+  useClickAway(ref, onClose);
 
   return (
     <CSSTransition
@@ -33,24 +33,6 @@ export const ChangeLocale = ({ isOpen, onClose }: Props) => {
     </CSSTransition>
   );
 };
-
-interface ItemProps {
-  className?: string;
-  locale: string;
-  label: string;
-  iconURL: string;
-}
-
-const Item = ({ className, locale, label, iconURL }: ItemProps) => (
-  <li className={className}>
-    <Link href="/" locale={locale}>
-      <a>
-        <Image src={iconURL} alt={`${locale} locale`} width={15} height={15} />
-        <span>{label}</span>
-      </a>
-    </Link>
-  </li>
-);
 
 const StyledChangeLocale = styled.ul`
   display: flex;
@@ -73,6 +55,24 @@ const StyledChangeLocale = styled.ul`
     opacity: 0.3;
   }
 `;
+
+interface ItemProps {
+  className?: string;
+  locale: string;
+  label: string;
+  iconURL: string;
+}
+
+const Item = ({ className, locale, label, iconURL }: ItemProps) => (
+  <li className={className}>
+    <Link href="/" locale={locale}>
+      <a>
+        <Image src={iconURL} alt={`${locale} locale`} width={15} height={15} />
+        <span>{label}</span>
+      </a>
+    </Link>
+  </li>
+);
 
 const StyledItem = styled(Item)`
   padding: 0.5rem 1rem;

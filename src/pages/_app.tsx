@@ -9,7 +9,6 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import GlobalStyles from 'styles/GlobalStyles';
-// import useDarkMode from 'hooks/useDarkMode';
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
@@ -20,7 +19,6 @@ export type NextPageWithLayout<P = unknown> = NextPage<P> & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  // const { isDarkMode } = useDarkMode(false);
   const getLayout = Component.getLayout ?? (page => page);
 
   NProgress.configure({
