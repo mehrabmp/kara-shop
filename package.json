@@ -38,6 +38,7 @@
     "chromatic": "npx chromatic --project-token=d69c05eb9192"
   },
   "dependencies": {
+    "@prisma/client": "^4.2.1",
     "axios": "^0.27.2",
     "i18next-http-backend": "^1.4.1",
     "next": "12.2.4",
