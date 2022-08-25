@@ -37,6 +37,9 @@
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic --project-token=d69c05eb9192"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
     "@prisma/client": "^4.2.1",
     "axios": "^0.27.2",
@@ -94,6 +97,7 @@
     "prisma": "^4.2.1",
     "storybook-addon-next": "^1.6.7",
     "storybook-react-i18next": "^1.1.2",
+    "ts-node": "^10.9.1",
     "typescript": "4.7.4"
   },
   "resolutions": {

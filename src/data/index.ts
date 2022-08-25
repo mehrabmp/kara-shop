@@ -1,0 +1,1 @@
+export { collections } from './collections';

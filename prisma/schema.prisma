@@ -10,22 +10,32 @@ datasource db {
 model Product {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime @updatedAt
   title       String   @db.VarChar(255)
   description String
   published   Boolean  @default(false)
 }
 
 model Collection {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime
-  title     String   @db.VarChar(255)
+  id            Int             @id @default(autoincrement())
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  title         String          @db.VarChar(255)
+  type          CollectionType
+  SubCollection SubCollection[]
 }
 
 model SubCollection {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime
-  title     String   @db.VarChar(255)
+  id           Int         @id @default(autoincrement())
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  title        String      @db.VarChar(255)
+  collection   Collection? @relation(fields: [collectionId], references: [id])
+  collectionId Int?
+}
+
+enum CollectionType {
+  MEN
+  WOMEN
+  KIDS
 }
