@@ -79,7 +79,7 @@
     "babel-loader": "^8.2.5",
     "chromatic": "^6.7.3",
     "eslint": "8.21.0",
-    "eslint-config-next": "12.2.4",
+    "eslint-config-next": "12.2.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^26.8.2",
     "eslint-plugin-jest-dom": "^4.0.2",
