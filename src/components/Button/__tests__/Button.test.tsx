@@ -27,5 +27,5 @@ test('should call onClick when clicked', async () => {
   render(<Button label="test" onClick={handler} />);
   const button = screen.getByRole('button', { name: /test/i });
   await userEvent.click(button);
-  expect(handler).toBeCalledTimes(1);
+  expect(handler).toHaveBeenCalledTimes(1);
 });

@@ -44,11 +44,11 @@ test('should clear input when clicked on clear icon', async () => {
 test('should call onSearch when pressed enter', async () => {
   render(<Search onSearch={handler} />);
   await typeInSearchInput('black jeans{enter}');
-  expect(handler).toBeCalledTimes(1);
+  expect(handler).toHaveBeenCalledTimes(1);
 });
 
 test('should not call onSearch when submited empty', async () => {
   render(<Search onSearch={handler} />);
   await typeInSearchInput('{enter}');
-  expect(handler).toBeCalledTimes(0);
+  expect(handler).toHaveBeenCalledTimes(0);
 });
