@@ -1,8 +1,8 @@
 {
   "name": "kara-shop",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "description": "KARA - Ecommerce created with NextJs, TypeScript",
+  "description": "KARA - FullStack E-commerce made using NextJS, TypeScript, Prisma, NextAuth",
   "author": {
     "name": "Mehrab Mahmoudpour",
     "email": "mehrabmpdev@gmail.com"
@@ -34,8 +34,7 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc -b",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=d69c05eb9192"
+    "build-storybook": "build-storybook"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
