@@ -17,11 +17,11 @@ model Product {
 }
 
 model Collection {
-  id            Int             @id @default(autoincrement())
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  title         String          @db.VarChar(255)
-  type          CollectionType
+  id            Int              @id @default(autoincrement())
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  title         String           @db.VarChar(255)
+  type          CollectionType[]
   SubCollection SubCollection[]
 }
 
