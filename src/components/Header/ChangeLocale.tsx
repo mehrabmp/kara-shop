@@ -3,17 +3,13 @@ import { CSSTransition } from 'react-transition-group';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { useClickAway } from 'react-use';
 
 interface Props {
   isOpen: boolean;
-  onClose: () => void;
 }
 
-export const ChangeLocale = ({ isOpen, onClose }: Props) => {
-  const ref = useRef<HTMLUListElement>(null);
-
-  useClickAway(ref, onClose);
+export const ChangeLocale = ({ isOpen }: Props) => {
+  const ref = useRef(null);
 
   return (
     <CSSTransition
@@ -75,12 +71,11 @@ const Item = ({ className, locale, label, iconURL }: ItemProps) => (
 );
 
 const StyledItem = styled(Item)`
-  padding: 0.5rem 1rem;
-
   a {
     color: #fff;
     display: flex;
     align-items: center;
+    padding: 0.5rem 1rem;
   }
 
   span {

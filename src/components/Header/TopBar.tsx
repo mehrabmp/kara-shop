@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'next-i18next';
 import { FiPhone, FiGrid, FiChevronDown } from 'react-icons/fi';
 import { ChangeLocale } from './ChangeLocale';
+import { useClickAway } from 'react-use';
 
 export const TopBar = () => {
   const router = useRouter();
@@ -22,6 +23,10 @@ export const TopBar = () => {
     { label: t('topbar.phone'), href: '#', Icon: FiPhone },
   ];
 
+  const ref = useRef<HTMLDivElement>(null);
+
+  useClickAway(ref, () => setIsChangeLocaleOpen(false));
+
   return (
     <StyledTopBar>
       <Container>
@@ -37,7 +42,10 @@ export const TopBar = () => {
               </Link>
             </ListItem>
           ))}
-          <SelectLocale onClick={() => setIsChangeLocaleOpen(prev => !prev)}>
+          <SelectLocale
+            ref={ref}
+            onClick={() => setIsChangeLocaleOpen(prev => !prev)}
+          >
             <div className="flag">
               <Image
                 priority
@@ -48,10 +56,7 @@ export const TopBar = () => {
             </div>
             <span>{router.locale?.toUpperCase()}</span>
             <FiChevronDown color="#fff"></FiChevronDown>
-            <ChangeLocale
-              isOpen={isChangeLocaleOpen}
-              onClose={() => setIsChangeLocaleOpen(prev => !prev)}
-            />
+            <ChangeLocale isOpen={isChangeLocaleOpen} />
           </SelectLocale>
         </List>
       </Container>
