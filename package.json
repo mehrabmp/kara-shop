@@ -40,7 +40,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^4.3.0",
+    "@prisma/client": "^4.3.1",
     "axios": "^0.27.2",
     "i18next-http-backend": "^1.4.1",
     "next": "12.2.5",
