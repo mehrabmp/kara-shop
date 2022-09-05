@@ -8,34 +8,40 @@ datasource db {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  title       String   @db.VarChar(255)
-  description String
-  published   Boolean  @default(false)
+  id              Int              @id @default(autoincrement())
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  title           String           @db.VarChar(255)
+  description     String
+  published       Boolean          @default(false)
+  type            CollectionType[]
+  collection      Collection       @relation(fields: [collectionId], references: [id])
+  collectionId    Int
+  subCollection   SubCollection    @relation(fields: [subCollectionId], references: [id])
+  subCollectionId Int
 }
 
 model Collection {
-  id            Int              @id @default(autoincrement())
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
-  title         String           @db.VarChar(255)
-  type          CollectionType[]
-  SubCollection SubCollection[]
+  id             Int             @id @default(autoincrement())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  title          String          @db.VarChar(255)
+  subCollections SubCollection[]
+  products       Product[]
 }
 
 model SubCollection {
-  id           Int         @id @default(autoincrement())
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  title        String      @db.VarChar(255)
-  collection   Collection? @relation(fields: [collectionId], references: [id])
-  collectionId Int?
+  id           Int              @id @default(autoincrement())
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  title        String           @db.VarChar(255)
+  type         CollectionType[]
+  collection   Collection       @relation(fields: [collectionId], references: [id])
+  collectionId Int
+  products     Product[]
 }
 
 enum CollectionType {
   MEN
   WOMEN
-  KIDS
 }
