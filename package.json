@@ -52,7 +52,7 @@
     "react-icons": "^4.4.0",
     "react-transition-group": "^4.4.5",
     "react-use": "^17.4.0",
-    "sharp": "^0.30.7",
+    "sharp": "^0.31.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
