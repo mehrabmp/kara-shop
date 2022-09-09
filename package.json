@@ -44,7 +44,7 @@
     "@prisma/client": "^4.3.1",
     "axios": "^0.27.2",
     "i18next-http-backend": "^1.4.1",
-    "next": "12.2.5",
+    "next": "12.3.0",
     "next-i18next": "^12.0.1",
     "nprogress": "^0.2.0",
     "react": "18.2.0",
