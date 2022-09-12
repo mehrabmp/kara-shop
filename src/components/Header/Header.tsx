@@ -19,7 +19,7 @@ export const Header = () => {
   const menuItems = [
     { label: t('men'), href: '/men', hasSubMenu: true },
     { label: t('women'), href: '/women', hasSubMenu: true },
-    { label: t('kids'), href: '/kids', hasSubMenu: true },
+    { label: t('kids'), href: '/kids' },
     { label: t('sale'), href: '/sale' },
     { label: t('blog'), href: '/blog' },
     { label: t('contacts'), href: '/contacts' },
