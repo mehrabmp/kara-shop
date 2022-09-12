@@ -73,7 +73,7 @@
     "@types/jest": "^29.0.1",
     "@types/node": "18.7.16",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "18.0.18",
+    "@types/react": "18.0.19",
     "@types/react-dom": "18.0.6",
     "@types/react-transition-group": "^4.4.5",
     "@types/styled-components": "^5.1.26",
