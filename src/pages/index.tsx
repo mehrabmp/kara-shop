@@ -3,6 +3,7 @@ import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PrimaryLayout } from 'components';
+import { trpc } from 'utils/trpc';
 
 export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
   return {
@@ -13,7 +14,11 @@ export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
 };
 
 const Home: NextPageWithLayout = () => {
-  return <h1></h1>;
+  const { data, isLoading } = trpc.useQuery(['healthz']);
+
+  if (isLoading) return <h1>Loading...</h1>;
+
+  return <h1>{data}</h1>;
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {
