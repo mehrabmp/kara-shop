@@ -14,11 +14,27 @@ export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
 };
 
 const Home: NextPageWithLayout = () => {
-  const { data, isLoading } = trpc.useQuery(['healthz']);
+  const { data, isLoading } = trpc.useQuery(['collection.all']);
 
   if (isLoading) return <h1>Loading...</h1>;
 
-  return <h1>{data}</h1>;
+  return (
+    <ul>
+      {data?.map(collection => (
+        <li key={collection.id}>
+          <h3>{collection.title}</h3>
+          <ul>
+            {collection.subCollections.map(subCollection => (
+              <li key={subCollection.id}>
+                {subCollection.title} --------- {subCollection.type} -----------{' '}
+                {subCollection.createdAt.toLocaleDateString()}
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {
