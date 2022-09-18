@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { FiSearch, FiX } from 'react-icons/fi';
-import styled from 'styled-components';
 import { useTranslation } from 'next-i18next';
 
 interface Props {
@@ -9,6 +8,7 @@ interface Props {
 
 export const Search = ({ onSearch }: Props) => {
   const [value, setValue] = useState('');
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const { t } = useTranslation('common');
@@ -24,8 +24,12 @@ export const Search = ({ onSearch }: Props) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Input
+    <form
+      className="flex content-between items-center max-w-[200px] h-10 relative"
+      onSubmit={handleSubmit}
+    >
+      <input
+        className="bg-neutral-100 border border-solid border-transparent focus:border-violet-500 transition-colors outline-none p-2.5 rounded-lg text-neutral-900 w-full h-full pr-9 placeholder-neutral-500"
         type="text"
         name="search"
         id="search"
@@ -35,48 +39,14 @@ export const Search = ({ onSearch }: Props) => {
         onChange={e => setValue(e.target.value)}
       />
       {value ? (
-        <FiX data-testid="clear" onClick={handleClearInput} />
+        <FiX
+          className="absolute w-[30px] h-full right-0 pr-2.5 text-neutral-500 cursor-pointer"
+          data-testid="clear"
+          onClick={handleClearInput}
+        />
       ) : (
-        <FiSearch />
+        <FiSearch className="absolute w-[30px] h-full right-0 pr-2.5 text-neutral-500 cursor-pointer" />
       )}
-    </Form>
+    </form>
   );
 };
-
-const Form = styled.form`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 200px;
-  height: 40px;
-  position: relative;
-
-  svg {
-    position: absolute;
-    width: 30px;
-    height: 100%;
-    right: 0;
-    padding-right: 1rem;
-    color: ${({ theme }) => theme.colors.neutral50};
-    cursor: pointer;
-  }
-`;
-
-const Input = styled.input`
-  background-color: ${({ theme }) => theme.colors.neutral05};
-  border: 1px solid transparent;
-  color: ${({ theme }) => theme.colors.neutral90};
-  width: 100%;
-  height: 100%;
-  padding-right: 3.5rem;
-  outline: none;
-  transition: border 0.2s;
-
-  &::placeholder {
-    color: ${({ theme }) => theme.colors.neutral60};
-  }
-
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.primary100};
-  }
-`;

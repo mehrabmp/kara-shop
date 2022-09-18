@@ -1,15 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
 export const Footer = () => {
   return (
-    <StyledFooter>
+    <footer className="bg-black h-[100px]">
       <h1>footer</h1>
-    </StyledFooter>
+    </footer>
   );
 };
-
-const StyledFooter = styled.footer`
-  background: #000;
-  height: 100px;
-`;

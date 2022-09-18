@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 interface Props {
   onCloseMenu: () => void;
@@ -13,16 +12,12 @@ export const MegaMenu = ({
   currentMenuItem,
 }: Props) => {
   return (
-    <StyledMegaMenu onMouseEnter={onShowMenu} onMouseLeave={onCloseMenu}>
+    <div
+      onMouseEnter={onShowMenu}
+      onMouseLeave={onCloseMenu}
+      className="bg-white p-12 h-[300px] shadow-md shadow-neutral-300 border-t border-solid border-neutral-200 absolute w-full"
+    >
       <h1>{currentMenuItem}</h1>
-    </StyledMegaMenu>
+    </div>
   );
 };
-
-const StyledMegaMenu = styled.div`
-  background-color: white;
-  border-top: 1px solid ${({ theme }) => theme.colors.neutral10};
-  box-shadow: rgb(0 0 0 / 10%) 0px 15px 20px -20px;
-  padding: 5rem;
-  height: 300px;
-`;

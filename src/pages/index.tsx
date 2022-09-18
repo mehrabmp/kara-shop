@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
 };
 
 const Home: NextPageWithLayout = () => {
-  return <h1 className="flex bg-slate-100"></h1>;
+  return <h1 className="flex text-black">hello</h1>;
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {
