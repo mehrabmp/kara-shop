@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import styled from 'styled-components';
 import { Header, Footer } from 'components';
 
 interface PrimaryLayoutProps extends React.PropsWithChildren {
@@ -44,15 +43,11 @@ export const PrimaryLayout = ({
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+      <div className="min-h-screen">
         <Header />
         <main>{children}</main>
-      </Layout>
+      </div>
       <Footer />
     </>
   );
 };
-
-const Layout = styled.div`
-  min-height: 100vh;
-`;
