@@ -3,7 +3,6 @@ import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PrimaryLayout } from 'components';
-import { trpc } from 'utils/trpc';
 
 export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
   return {
@@ -14,27 +13,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
 };
 
 const Home: NextPageWithLayout = () => {
-  const { data, isLoading } = trpc.useQuery(['collection.all']);
-
-  if (isLoading) return <h1>Loading...</h1>;
-
-  return (
-    <ul>
-      {data?.map(collection => (
-        <li key={collection.id}>
-          <h3>{collection.title}</h3>
-          <ul>
-            {collection.subCollections.map(subCollection => (
-              <li key={subCollection.id}>
-                {subCollection.title} --------- {subCollection.type} -----------{' '}
-                {subCollection.createdAt.toLocaleDateString()}
-              </li>
-            ))}
-          </ul>
-        </li>
-      ))}
-    </ul>
-  );
+  return <h1 className="flex bg-slate-100"></h1>;
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {
