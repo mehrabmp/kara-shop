@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styled from 'styled-components';
 import { useTranslation } from 'next-i18next';
 import { CSSTransition } from 'react-transition-group';
 import { IconType } from 'react-icons';
 import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
 import { Search } from './Search';
-import { BaseContainer, TopBar } from './TopBar';
+import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 
 export const Header = () => {
@@ -25,6 +24,12 @@ export const Header = () => {
     { label: t('contacts'), href: '/contacts' },
   ];
 
+  const sideMenuItems: [string, IconType][] = [
+    ['/account/wishlist', FiHeart],
+    ['/account/cart', FiShoppingBag],
+    ['/account/login', FiUser],
+  ];
+
   const handleShowMenu = (value: string, hasSubMenu: boolean) => {
     setCurrentMenuItem(value);
     if (hasSubMenu) setIsMenuOpen(true);
@@ -38,11 +43,11 @@ export const Header = () => {
   return (
     <header>
       <TopBar />
-      <NavBar>
-        <Container>
-          <Logo>
+      <div className="bg-white h-14 shadow-md shadow-neutral-300 relative">
+        <div className="mx-auto px-4 xl:container h-full flex items-center">
+          <div>
             <Link href="/" passHref>
-              <a>
+              <a className="flex items-center mr-5">
                 <Image
                   priority
                   src="/logo.png"
@@ -53,28 +58,37 @@ export const Header = () => {
                 />
               </a>
             </Link>
-          </Logo>
-          <MainMenu>
+          </div>
+          <ul className="hidden h-full ml-auto md:flex">
             {menuItems.map(({ label, href, hasSubMenu = false }, index) => (
-              <MenuItem
+              <li
+                className={`text-neutral-700 font-medium transition-colors ${
+                  currentMenuItem === label && 'bg-violet-100 text-violet-700'
+                }`}
                 key={index}
-                active={currentMenuItem === label}
                 onMouseEnter={() => handleShowMenu(label, hasSubMenu)}
                 onMouseLeave={handleCloseMenu}
               >
                 <Link href={href}>
-                  <a>{label}</a>
+                  <a className="h-full flex items-center px-5">{label}</a>
                 </Link>
-              </MenuItem>
+              </li>
             ))}
-          </MainMenu>
-          <SideMenu>
+          </ul>
+          <ul className="items-center ml-auto md:flex">
             <Search onSearch={value => console.log(value)} />
-            <SideMenuItem href="/account/wishlist" Icon={FiHeart} />
-            <SideMenuItem href="/account/cart" Icon={FiShoppingBag} />
-            <SideMenuItem href="/account/login" Icon={FiUser} />
-          </SideMenu>
-        </Container>
+            {sideMenuItems.map(([url, Icon]) => (
+              <Link key={url} href={url}>
+                <a className="hidden md:block ml-5 first-of-type:ml-8">
+                  <Icon
+                    className="text-neutral-700 transition-colors hover:text-violet-700"
+                    size="20px"
+                  />
+                </a>
+              </Link>
+            ))}
+          </ul>
+        </div>
         <CSSTransition timeout={0} in={isMenuOpen} unmountOnExit>
           <MegaMenu
             currentMenuItem={currentMenuItem}
@@ -82,98 +96,7 @@ export const Header = () => {
             onCloseMenu={handleCloseMenu}
           ></MegaMenu>
         </CSSTransition>
-      </NavBar>
+      </div>
     </header>
   );
 };
-
-const NavBar = styled.div`
-  background: #fff;
-  height: 55px;
-  box-shadow: rgb(0 0 0 / 10%) 0px 15px 20px -20px;
-`;
-
-const Container = styled(BaseContainer)`
-  height: 100%;
-  display: flex;
-  align-items: center;
-`;
-
-const Logo = styled.div`
-  a {
-    display: flex;
-    align-items: center;
-    margin-right: 2rem;
-  }
-`;
-
-const MainMenu = styled.ul`
-  display: flex;
-  margin-left: auto;
-  height: 100%;
-
-  @media (max-width: 900px) {
-    display: none;
-  }
-`;
-
-interface MenuItemProps {
-  active: boolean;
-}
-
-const MenuItem = styled.li<MenuItemProps>`
-  background-color: ${({ theme, active }) => active && theme.colors.primary10};
-  color: ${({ theme, active }) =>
-    active ? theme.colors.primary100 : theme.colors.neutral80};
-  font-weight: 500;
-  transition: all 0.2s;
-
-  a {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 2rem;
-  }
-`;
-
-const SideMenu = styled.ul`
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-`;
-
-interface IconButtonProps {
-  href: string;
-  className?: string;
-  Icon: IconType;
-}
-
-const IconButton = ({ href, className, Icon }: IconButtonProps) => (
-  <Link href={href}>
-    <a className={className}>
-      <Icon size="2rem" className="icon" />
-    </a>
-  </Link>
-);
-
-const SideMenuItem = styled(IconButton)`
-  margin-left: 2rem;
-  margin-top: 0.5rem;
-
-  &:first-of-type {
-    margin-left: 3rem;
-  }
-
-  .icon {
-    color: ${({ theme }) => theme.colors.neutral80};
-    transition: all 0.2s;
-  }
-
-  &:hover .icon {
-    color: ${({ theme }) => theme.colors.primary100};
-  }
-
-  @media (max-width: 900px) {
-    display: none;
-  }
-`;

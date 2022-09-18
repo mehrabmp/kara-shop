@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Link from 'next/link';
 import Image from 'next/image';
-import styled from 'styled-components';
 
 interface Props {
   isOpen: boolean;
@@ -10,6 +9,11 @@ interface Props {
 
 export const ChangeLocale = ({ isOpen }: Props) => {
   const ref = useRef(null);
+
+  const locales = [
+    ['en', 'English', '/assets/en-flag.svg'],
+    ['de', 'German', '/assets/de-flag.svg'],
+  ];
 
   return (
     <CSSTransition
@@ -19,70 +23,21 @@ export const ChangeLocale = ({ isOpen }: Props) => {
       unmountOnExit
       nodeRef={ref}
     >
-      <StyledChangeLocale ref={ref}>
-        <StyledItem label="English" locale="en" iconURL="/assets/en-flag.svg" />
-        <li>
-          <div className="divider"></div>
-        </li>
-        <StyledItem label="German" locale="de" iconURL="/assets/de-flag.svg" />
-      </StyledChangeLocale>
+      <ul
+        ref={ref}
+        className="flex flex-col bg-black rounded-lg absolute overflow-hidden z-50 text-[11px] md:text-xs w-[90px] top-[120%] md:top-[130%] right-0 shadow-md shadow-neutral-400"
+      >
+        {locales.map(([locale, label, flagURL]) => (
+          <li key={locale} className="hover:bg-neutral-600 transition-colors">
+            <Link href="/" locale={locale}>
+              <a className="text-white flex items-center py-1 px-2">
+                <Image src={flagURL} alt="en locale" width={17} height={17} />
+                <span className="ml-2">{label}</span>
+              </a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </CSSTransition>
   );
 };
-
-const StyledChangeLocale = styled.ul`
-  display: flex;
-  flex-direction: column;
-  background-color: #000;
-  border-radius: 10px;
-  box-shadow: 0 8px 40px rgb(13 77 91 / 6%);
-  top: 150%;
-  right: 0;
-  width: 90px;
-  font-size: 1.2rem;
-  position: absolute;
-  overflow: hidden;
-  z-index: 300;
-
-  .divider {
-    background: #e5e5e5;
-    width: 100%;
-    height: 1px;
-    opacity: 0.3;
-  }
-`;
-
-interface ItemProps {
-  className?: string;
-  locale: string;
-  label: string;
-  iconURL: string;
-}
-
-const Item = ({ className, locale, label, iconURL }: ItemProps) => (
-  <li className={className}>
-    <Link href="/" locale={locale}>
-      <a>
-        <Image src={iconURL} alt={`${locale} locale`} width={15} height={15} />
-        <span>{label}</span>
-      </a>
-    </Link>
-  </li>
-);
-
-const StyledItem = styled(Item)`
-  a {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-  }
-
-  span {
-    margin-left: 0.5rem;
-  }
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-`;
