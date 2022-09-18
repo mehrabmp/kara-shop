@@ -2,8 +2,6 @@ import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme } from 'styles/Theme';
 import { appWithTranslation } from 'next-i18next';
 import { withTRPC } from '@trpc/next';
 import { AppRouter } from 'server/routers/_app';
@@ -14,7 +12,7 @@ import superjson from 'superjson';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import GlobalStyles from 'styles/GlobalStyles';
+import 'styles/globals.css';
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
@@ -47,12 +45,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     };
   }, []);
 
-  return (
-    <ThemeProvider theme={lightTheme}>
-      <GlobalStyles />
-      {getLayout(<Component {...pageProps} />)}
-    </ThemeProvider>
-  );
+  return <>{getLayout(<Component {...pageProps} />)}</>;
 }
 
 function getBaseUrl() {
