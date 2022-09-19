@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { useTranslation } from 'next-i18next';
 import { FiPhone, FiGrid, FiChevronDown } from 'react-icons/fi';
 import { ChangeLocale } from './ChangeLocale';
@@ -55,7 +55,7 @@ export const TopBar = () => {
                 priority
                 src={`/assets/${router.locale}-flag.svg`}
                 alt={`${router.locale} locale`}
-                layout="fill"
+                fill
               />
             </div>
             <span>{router.locale?.toUpperCase()}</span>

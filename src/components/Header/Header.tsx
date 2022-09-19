@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { useTranslation } from 'next-i18next';
 import { CSSTransition } from 'react-transition-group';
 import { IconType } from 'react-icons';
@@ -45,16 +45,15 @@ export const Header = () => {
       <TopBar />
       <div className="bg-white h-14 shadow-md shadow-neutral-300 relative">
         <div className="mx-auto px-4 xl:container h-full flex items-center">
-          <div>
-            <Link href="/" passHref>
-              <a className="flex items-center mr-5">
+          <div className="flex items-center shrink-0 mr-5">
+            <Link href="/">
+              <a>
                 <Image
                   priority
                   src="/logo.png"
                   alt="logo"
                   width={100}
                   height={35}
-                  layout="fixed"
                 />
               </a>
             </Link>

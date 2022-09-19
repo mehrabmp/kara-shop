@@ -1,7 +1,7 @@
+import Link from 'next/link';
+import Image from 'next/future/image';
 import { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import Link from 'next/link';
-import Image from 'next/image';
 
 interface Props {
   isOpen: boolean;
@@ -31,7 +31,13 @@ export const ChangeLocale = ({ isOpen }: Props) => {
           <li key={locale} className="hover:bg-neutral-600 transition-colors">
             <Link href="/" locale={locale}>
               <a className="text-white flex items-center py-1 px-2">
-                <Image src={flagURL} alt="en locale" width={17} height={17} />
+                <Image
+                  priority
+                  src={flagURL}
+                  alt="en locale"
+                  width={17}
+                  height={17}
+                />
                 <span className="ml-2">{label}</span>
               </a>
             </Link>
