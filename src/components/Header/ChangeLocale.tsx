@@ -22,10 +22,7 @@ export const ChangeLocale = ({ isOpen }: Props) => {
       leaveFrom="opacity-100 translate-y-3"
       leaveTo="opacity-0 translate-y-1"
     >
-      <ul
-        // ref={ref}
-        className="flex flex-col bg-black rounded-lg absolute overflow-hidden text-[11px] md:text-xs w-[90px]  right-0 shadow-md shadow-neutral-400 translate-y-1"
-      >
+      <ul className="flex flex-col bg-black rounded-lg absolute overflow-hidden text-xs w-[90px] right-0 shadow-md shadow-neutral-400">
         {locales.map(([locale, label, flagURL]) => (
           <li key={locale} className="hover:bg-neutral-600 transition-colors">
             <Link href="/" locale={locale}>
