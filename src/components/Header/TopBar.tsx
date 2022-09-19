@@ -46,7 +46,7 @@ export const TopBar = () => {
             </li>
           ))}
           <div
-            className="flex items-center cursor-pointer ml-2.5 relative"
+            className="flex items-center cursor-pointer ml-2.5 relative z-50"
             ref={ref}
             onClick={() => setIsChangeLocaleOpen(prev => !prev)}
           >

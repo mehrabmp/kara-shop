@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/future/image';
 import { useTranslation } from 'next-i18next';
-import { CSSTransition } from 'react-transition-group';
+import { Transition } from '@headlessui/react';
 import { IconType } from 'react-icons';
 import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
 import { Search } from './Search';
@@ -88,13 +88,13 @@ export const Header = () => {
             ))}
           </ul>
         </div>
-        <CSSTransition timeout={0} in={isMenuOpen} unmountOnExit>
+        <Transition show={isMenuOpen}>
           <MegaMenu
             currentMenuItem={currentMenuItem}
             onShowMenu={() => handleShowMenu(currentMenuItem, true)}
             onCloseMenu={handleCloseMenu}
           ></MegaMenu>
-        </CSSTransition>
+        </Transition>
       </div>
     </header>
   );

@@ -1,31 +1,30 @@
 import Link from 'next/link';
 import Image from 'next/future/image';
-import { useRef } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import { Transition } from '@headlessui/react';
 
 interface Props {
   isOpen: boolean;
 }
 
 export const ChangeLocale = ({ isOpen }: Props) => {
-  const ref = useRef(null);
-
   const locales = [
     ['en', 'English', '/assets/en-flag.svg'],
     ['de', 'German', '/assets/de-flag.svg'],
   ];
 
   return (
-    <CSSTransition
-      in={isOpen}
-      timeout={300}
-      classNames="fadedown"
-      unmountOnExit
-      nodeRef={ref}
+    <Transition
+      show={isOpen}
+      enter="transition-all duration-300"
+      enterFrom="opacity-0 translate-y-1"
+      enterTo="opacity-100 translate-y-3"
+      leave="transition-all duration-300"
+      leaveFrom="opacity-100 translate-y-3"
+      leaveTo="opacity-0 translate-y-1"
     >
       <ul
-        ref={ref}
-        className="flex flex-col bg-black rounded-lg absolute overflow-hidden z-50 text-[11px] md:text-xs w-[90px] top-[120%] md:top-[130%] right-0 shadow-md shadow-neutral-400"
+        // ref={ref}
+        className="flex flex-col bg-black rounded-lg absolute overflow-hidden text-[11px] md:text-xs w-[90px]  right-0 shadow-md shadow-neutral-400 translate-y-1"
       >
         {locales.map(([locale, label, flagURL]) => (
           <li key={locale} className="hover:bg-neutral-600 transition-colors">
@@ -44,6 +43,6 @@ export const ChangeLocale = ({ isOpen }: Props) => {
           </li>
         ))}
       </ul>
-    </CSSTransition>
+    </Transition>
   );
 };
