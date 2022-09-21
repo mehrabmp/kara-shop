@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { Header, Footer } from 'components';
+import { trpc } from 'utils/trpc';
 
 interface PrimaryLayoutProps extends React.PropsWithChildren {
   title?: string;
@@ -20,6 +21,8 @@ export const PrimaryLayout = ({
   url = 'https://karashop.vercel.app',
   image,
 }: PrimaryLayoutProps) => {
+  const { data } = trpc.collection.all.useQuery();
+
   return (
     <>
       <Head>
@@ -44,7 +47,7 @@ export const PrimaryLayout = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="min-h-screen">
-        <Header />
+        <Header collections={data} />
         <main>{children}</main>
       </div>
       <Footer />
