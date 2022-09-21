@@ -1,9 +1,11 @@
-import { createRouter } from '../createRouter';
-import superjson from 'superjson';
+/**
+ * This file contains the root router of your tRPC-backend
+ */
+import { t } from '../trpc';
 import { collectionRouter } from './collection';
 
-export const appRouter = createRouter()
-  .transformer(superjson)
-  .merge('collection.', collectionRouter);
+export const appRouter = t.router({
+  collection: collectionRouter,
+});
 
 export type AppRouter = typeof appRouter;
