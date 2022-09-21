@@ -101,30 +101,30 @@ export const trpc = createTRPCNext<AppRouter, SSRContext>({
   /**
    * @link https://trpc.io/docs/ssr
    */
-  ssr: true,
+  ssr: false,
   /**
    * Set headers or status code when doing SSR
    */
-  responseMeta(opts) {
-    const ctx = opts.ctx as SSRContext;
+  // responseMeta(opts) {
+  //   const ctx = opts.ctx as SSRContext;
 
-    if (ctx.status) {
-      // If HTTP status set, propagate that
-      return {
-        status: ctx.status,
-      };
-    }
+  //   if (ctx.status) {
+  //     // If HTTP status set, propagate that
+  //     return {
+  //       status: ctx.status,
+  //     };
+  //   }
 
-    const error = opts.clientErrors[0];
-    if (error) {
-      // Propagate http first error from API calls
-      return {
-        status: error.data?.httpStatus ?? 500,
-      };
-    }
+  //   const error = opts.clientErrors[0];
+  //   if (error) {
+  //     // Propagate http first error from API calls
+  //     return {
+  //       status: error.data?.httpStatus ?? 500,
+  //     };
+  //   }
 
-    // for app caching with SSR see https://trpc.io/docs/caching
+  //   // for app caching with SSR see https://trpc.io/docs/caching
 
-    return {};
-  },
+  //   return {};
+  // },
 });
