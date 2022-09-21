@@ -20,12 +20,13 @@ const defaultCollectionSelect = Prisma.validator<Prisma.CollectionSelect>()({
 });
 
 export const collectionRouter = t.router({
-  all: t.procedure.query(() =>
-    prisma.collection.findMany({
-      select: defaultCollectionSelect,
-      orderBy: {
-        id: 'asc',
-      },
-    })
+  all: t.procedure.query(
+    async () =>
+      await prisma.collection.findMany({
+        select: defaultCollectionSelect,
+        orderBy: {
+          id: 'asc',
+        },
+      })
   ),
 });
