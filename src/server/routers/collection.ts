@@ -1,8 +1,6 @@
 import { t } from '../trpc';
 import { Prisma } from '@prisma/client';
 import { prisma } from 'server/prisma';
-// import { TRPCError } from '@trpc/server';
-// import { z } from 'zod';
 
 /**
  * Default selector for Collection.
@@ -12,9 +10,13 @@ import { prisma } from 'server/prisma';
 const defaultCollectionSelect = Prisma.validator<Prisma.CollectionSelect>()({
   id: true,
   title: true,
-  subCollections: true,
-  createdAt: true,
-  updatedAt: true,
+  subCollections: {
+    select: {
+      id: true,
+      title: true,
+      type: true,
+    },
+  },
 });
 
 export const collectionRouter = t.router({
