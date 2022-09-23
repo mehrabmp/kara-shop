@@ -2,35 +2,15 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true,
-    "jest/globals": true
+    "node": true
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "jest",
-    "jest-dom",
-    "testing-library"
-  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
     "prettier"
-  ],
-  "overrides": [
-    {
-      "files": [
-        "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[jt]s?(x)"
-      ],
-      "extends": [
-        "plugin:jest/recommended",
-        "plugin:jest-dom/recommended",
-        "plugin:testing-library/react"
-      ]
-    }
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -40,6 +20,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "@typescript-eslint/no-var-requires": "off"
   }
