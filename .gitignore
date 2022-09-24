@@ -35,5 +35,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# storybook
-build-storybook.log
+/test-results/
+/playwright-report/
+/playwright/.cache/
