@@ -63,7 +63,7 @@
     "@types/jest": "^29.0.1",
     "@types/node": "18.7.18",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "18.0.20",
+    "@types/react": "18.0.21",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
     "autoprefixer": "^10.4.11",
