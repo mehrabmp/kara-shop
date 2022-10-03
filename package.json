@@ -39,7 +39,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.2",
     "@prisma/client": "^4.3.1",
-    "@tanstack/react-query": "^4.6.1",
+    "@tanstack/react-query": "^4.9.0",
     "@trpc/client": "^10.0.0-proxy-beta.0",
     "@trpc/next": "^10.0.0-proxy-beta.0",
     "@trpc/react": "^10.0.0-proxy-beta.0",
@@ -52,7 +52,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "react-use": "^17.4.0",
-    "sharp": "^0.31.0",
+    "sharp": "^0.31.1",
     "superjson": "^1.9.1",
     "zod": "^3.19.1"
   },
