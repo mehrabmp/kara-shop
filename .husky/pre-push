@@ -3,5 +3,5 @@
 
 echo 'running pre-pushing checks...'
 
-yarn test
 yarn build
+yarn test-prod
