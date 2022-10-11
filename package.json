@@ -29,6 +29,8 @@
     "test": "run-s test:*",
     "test:unit": "jest --passWithNoTests",
     "test:e2e": "playwright test",
+    "test-dev": "start-server-and-test dev 3000 test",
+    "test-prod": "start-server-and-test start 3000 test",
     "prepare": "husky install",
     "postinstall": "prisma generate",
     "vercel-build": "prisma migrate deploy && next build"
@@ -80,6 +82,7 @@
     "postcss": "^8.4.17",
     "prettier": "2.7.1",
     "prisma": "^4.3.1",
+    "start-server-and-test": "^1.14.0",
     "tailwindcss": "^3.1.8",
     "ts-node": "^10.9.1",
     "typescript": "4.8.4"
