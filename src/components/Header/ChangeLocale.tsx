@@ -30,7 +30,7 @@ export const ChangeLocale = ({ isOpen }: Props) => {
                 <Image
                   priority
                   src={flagURL}
-                  alt="en locale"
+                  alt={`${locale} locale`}
                   width={17}
                   height={17}
                 />
