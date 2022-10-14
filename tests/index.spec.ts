@@ -13,6 +13,7 @@ test.describe('Header', () => {
 
     await expect(page.getByRole('link', { name: 'Hilfe' })).toBeVisible();
     await expect(page.getByPlaceholder('Suche')).toBeEditable();
+    await expect(page.getByRole('link', { name: 'Kinder' })).toBeVisible();
   });
 
   test('should change language to En', async ({ page }) => {
@@ -25,6 +26,7 @@ test.describe('Header', () => {
 
     await expect(page.getByRole('link', { name: 'Help' })).toBeVisible();
     await expect(page.getByPlaceholder('Search')).toBeEditable();
+    await expect(page.getByRole('link', { name: 'Kids' })).toBeVisible();
   });
 
   test('should clear search box when clicked the clear icon', async ({
