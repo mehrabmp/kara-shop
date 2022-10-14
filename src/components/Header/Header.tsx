@@ -16,7 +16,7 @@ interface Props {
 }
 
 interface MenuItem {
-  title: string;
+  title: 'men' | 'women' | 'kids' | 'sale' | 'blog' | 'contacts';
   url: string;
   collections?: MenuItemCollection[];
 }
@@ -35,12 +35,12 @@ export const Header = ({ collections }: Props) => {
   const { t } = useTranslation('header');
 
   const [menuItems, setMenuItems] = useState<MenuItem[]>([
-    { title: t('men'), url: 'category/men' },
-    { title: t('women'), url: 'category/women' },
-    { title: t('kids'), url: 'category/kids' },
-    { title: t('sale'), url: '/sale' },
-    { title: t('blog'), url: '/blog' },
-    { title: t('contacts'), url: '/contacts' },
+    { title: 'men', url: 'category/men' },
+    { title: 'women', url: 'category/women' },
+    { title: 'kids', url: 'category/kids' },
+    { title: 'sale', url: '/sale' },
+    { title: 'blog', url: '/blog' },
+    { title: 'contacts', url: '/contacts' },
   ]);
   const [sideMenuItems] = useState<[string, IconType][]>([
     ['/wishlist', FiHeart],
@@ -112,7 +112,7 @@ export const Header = ({ collections }: Props) => {
                 >
                   <Link href={item.url}>
                     <a className="h-full flex items-center px-5">
-                      {item.title}
+                      {t(item.title)}
                     </a>
                   </Link>
                 </li>
