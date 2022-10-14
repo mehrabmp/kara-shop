@@ -1,6 +1,6 @@
 import 'react-i18next';
-import common from '../../public/locales/en/common.json';
-import header from '../../public/locales/en/header.json';
+import common from '../../locales/en/common.json';
+import header from '../../locales/en/header.json';
 
 declare module 'react-i18next' {
   interface CustomTypeOptions {
