@@ -45,7 +45,6 @@ export const subCollections: Prisma.SubCollectionCreateManyInput[] = [
   { title: 'Backpacks Under $50', type: ['MEN', 'WOMEN'], collectionId: 3 },
   { title: 'Baseball', type: ['MEN'], collectionId: 4 },
   { title: 'Basketball', type: ['MEN', 'WOMEN'], collectionId: 4 },
-  { title: 'Basketball', type: ['MEN', 'WOMEN'], collectionId: 4 },
   { title: 'Cycling', type: ['MEN', 'WOMEN'], collectionId: 4 },
   { title: 'Football', type: ['MEN'], collectionId: 4 },
   { title: 'Golf', type: ['MEN', 'WOMEN'], collectionId: 4 },
