@@ -16,11 +16,11 @@ export const TopBar = () => {
   const { t } = useTranslation('header');
 
   const topbarItems: [string, string, IconType?][] = [
-    [t('topbar.careers'), '#'],
-    [t('topbar.help'), '#'],
-    [t('topbar.buyer'), '#'],
-    [t('topbar.download'), '#', FiGrid],
-    [t('topbar.phone'), '#', FiPhone],
+    [t('topbar.careers'), 'careers'],
+    [t('topbar.help'), 'help'],
+    [t('topbar.buyer'), 'buyer'],
+    [t('topbar.download'), 'https://play.google.com/store/apps', FiGrid],
+    [t('topbar.phone'), 'tel:+0125258192502', FiPhone],
   ];
 
   const ref = useRef<HTMLDivElement>(null);
