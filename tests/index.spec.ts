@@ -51,8 +51,39 @@ test.describe('Header', () => {
     await expect(page).toHaveURL('/');
   });
 
+  test('should navigate to the clicked menu item page', async ({ page }) => {
+    await page.getByRole('link', { name: 'Men' }).click();
+
+    await expect(page).toHaveURL('/men');
+  });
+
+  test.describe('Mega Menu', () => {
+    // Hover on menu item to show mega menu before each test
+    test.beforeEach(async ({ page }) => {
+      await page.getByRole('link', { name: 'Men' }).hover();
+    });
+
+    test('should show mega menu when a menu item hovered', async ({ page }) => {
+      await expect(page.getByRole('link', { name: 'Shoes' })).toBeVisible();
+      await expect(page.getByRole('link', { name: "All Men's" })).toBeVisible();
+    });
+
+    test('should navigate to the clicked collection page', async ({ page }) => {
+      await page.getByRole('link', { name: 'Shoes' }).click();
+
+      await expect(page).toHaveURL('/men/shoes');
+    });
+
+    test('should navigate to the clicked subcollection page', async ({
+      page,
+    }) => {
+      await page.getByRole('link', { name: 'Sneakers' }).click();
+
+      await expect(page).toHaveURL('/men/shoes/sneakers');
+    });
+  });
+
   /** Todo
-   * test topbar links and menus
    * test search box functionality
    */
 });
