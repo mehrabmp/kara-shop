@@ -1,5 +1,5 @@
 import { t } from '../trpc';
-import { Prisma } from '@prisma/client';
+import { CollectionType, Prisma } from '@prisma/client';
 import { prisma } from 'server/prisma';
 
 /**
@@ -19,14 +19,41 @@ const defaultCollectionSelect = Prisma.validator<Prisma.CollectionSelect>()({
   },
 });
 
+export interface Collection {
+  id: number;
+  title: string;
+  subCollections: {
+    id: number;
+    title: string;
+    type: CollectionType[];
+  }[];
+}
+
 export const collectionRouter = t.router({
-  all: t.procedure.query(
-    async () =>
-      await prisma.collection.findMany({
-        select: defaultCollectionSelect,
-        orderBy: {
-          id: 'asc',
-        },
-      })
-  ),
+  all: t.procedure.query(async () => {
+    const collections: Collection[] = await prisma.collection.findMany({
+      select: defaultCollectionSelect,
+      orderBy: {
+        id: 'asc',
+      },
+    });
+
+    return {
+      men: getCollectionsByType(collections, 'MEN'),
+      women: getCollectionsByType(collections, 'WOMEN'),
+    };
+  }),
 });
+
+const getCollectionsByType = (
+  collections: Collection[],
+  type: CollectionType
+) =>
+  collections.map(collection => ({
+    id: collection.id,
+    title: collection.title,
+    type,
+    subCollections: collection.subCollections.filter(subCollection =>
+      subCollection.type.includes(type)
+    ),
+  }));

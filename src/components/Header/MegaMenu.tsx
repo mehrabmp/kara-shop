@@ -1,29 +1,31 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
 import { capitalizeFirstLetter, convertToSlug } from 'utils';
-import { MenuItem } from './Header';
+import { Collections } from './Header';
 
 interface Props {
-  currentMenuItem: MenuItem;
-  onShowMenu: (menuItem: MenuItem) => void;
+  type: 'men' | 'women';
+  collections: Collections;
+  onShowMenu: () => void;
   onCloseMenu: () => void;
 }
 
 export const MegaMenu = ({
-  currentMenuItem,
+  type,
+  collections,
   onShowMenu,
   onCloseMenu,
 }: Props) => {
   return (
     <div
-      onMouseEnter={() => onShowMenu(currentMenuItem)}
+      onMouseEnter={onShowMenu}
       onMouseLeave={onCloseMenu}
       className="bg-white shadow-md shadow-neutral-300 border-t border-solid border-neutral-200 absolute w-full"
     >
       <div className="flex max-w-7xl mx-auto">
         <div className="flex-1 flex">
           <div className="py-8 ml-4">
-            <Link href={`${currentMenuItem.title}`}>
+            <Link href={type}>
               <a>
                 <p className="font-bold text-sm uppercase text-neutral-800 tracking-widest leading-4 hover:underline">
                   New & Trending
@@ -80,36 +82,36 @@ export const MegaMenu = ({
           </div>
         </div>
         <div className="flex-[3] flex shadow-neutral-300 border-l border-solid">
-          {currentMenuItem.collections?.map(collection => (
-            <div key={collection.id} className="max-w-[150px] w-full py-8 ml-4">
-              <Link
-                href={`${currentMenuItem.title}/${convertToSlug(
-                  collection.title
-                )}`}
+          {collections &&
+            collections[type].map(collection => (
+              <div
+                key={collection.id}
+                className="max-w-[150px] w-full py-8 ml-4"
               >
-                <a>
-                  <p className="font-bold text-sm uppercase text-neutral-800 tracking-widest leading-4 hover:underline">
-                    {collection.title}
-                  </p>
-                </a>
-              </Link>
-              <ul className="pt-2">
-                {collection.subCollections.map(subCollection => (
-                  <li key={subCollection.id}>
-                    <Link
-                      href={`${currentMenuItem.title}/${convertToSlug(
-                        collection.title
-                      )}/${convertToSlug(subCollection.title)}`}
-                    >
-                      <a className="font-normal text-xs text-neutral-700 mb-1.5 hover:underline">
-                        {subCollection.title}
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                <Link href={`${type}/${convertToSlug(collection.title)}`}>
+                  <a>
+                    <p className="font-bold text-sm uppercase text-neutral-800 tracking-widest leading-4 hover:underline">
+                      {collection.title}
+                    </p>
+                  </a>
+                </Link>
+                <ul className="pt-2">
+                  {collection.subCollections.map(subCollection => (
+                    <li key={subCollection.id}>
+                      <Link
+                        href={`${type}/${convertToSlug(
+                          collection.title
+                        )}/${convertToSlug(subCollection.title)}`}
+                      >
+                        <a className="font-normal text-xs text-neutral-700 mb-1.5 hover:underline">
+                          {subCollection.title}
+                        </a>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
         </div>
       </div>
       <div className="shadow-neutral-300 border-t border-solid">
@@ -124,10 +126,10 @@ export const MegaMenu = ({
           <div className="flex-[3] flex items-center">
             {['shoes', 'clothing', 'accessories', 'sport', ''].map(
               (item, index) => (
-                <Link key={index} href={`${currentMenuItem.title}/${item}`}>
+                <Link key={index} href={`${type}/${item}`}>
                   <a className="font-bold text-xs text-neutral-800 hover:underline max-w-[150px] w-full py-3 ml-4">
                     {`All ${capitalizeFirstLetter(
-                      currentMenuItem.title
+                      type
                     )}'s ${capitalizeFirstLetter(item)}`}
                   </a>
                 </Link>

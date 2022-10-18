@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/future/image';
+import { useState } from 'react';
 import type { inferProcedureOutput } from '@trpc/server';
 import type { AppRouter } from 'server/routers/_app';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { CollectionType } from '@prisma/client';
 import { Transition } from '@headlessui/react';
 import { IconType } from 'react-icons';
 import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
@@ -12,73 +11,40 @@ import { Search } from './Search';
 import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 
+export type Collections =
+  | inferProcedureOutput<AppRouter['collection']['all']>
+  | undefined;
+
 interface Props {
-  collections: inferProcedureOutput<AppRouter['collection']['all']> | undefined;
+  collections: Collections;
 }
 
-export interface MenuItem {
-  title: 'men' | 'women' | 'kids' | 'sale' | 'blog' | 'contacts';
-  collections?: MenuItemCollection[];
-}
-
-interface MenuItemCollection {
-  id: number;
-  title: string;
-  subCollections: {
-    id: number;
-    title: string;
-    type: CollectionType;
-  }[];
+interface NavLink {
+  name: 'men' | 'women' | 'kids' | 'sale' | 'blog' | 'contacts';
+  collapsible?: boolean;
 }
 
 export const Header = ({ collections }: Props) => {
   const { t } = useTranslation('header');
 
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([
-    { title: 'men' },
-    { title: 'women' },
-    { title: 'kids' },
-    { title: 'sale' },
-    { title: 'blog' },
-    { title: 'contacts' },
-  ]);
-  const [sideMenuItems] = useState<[string, IconType][]>([
+  const sideNavLinks: [string, IconType][] = [
     ['wishlist', FiHeart],
     ['cart', FiShoppingBag],
     ['login', FiUser],
+  ];
+  const [navLinks] = useState<NavLink[]>([
+    { name: 'men', collapsible: true },
+    { name: 'women', collapsible: true },
+    { name: 'kids' },
+    { name: 'sale' },
+    { name: 'blog' },
+    { name: 'contacts' },
   ]);
-  const [currentMenuItem, setCurrentMenuItem] = useState<MenuItem | null>();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredNavLink, setHoveredNavLink] = useState<NavLink | null>();
 
-  useEffect(() => {
-    if (collections) {
-      setMenuItems(menuItems => {
-        menuItems[0].collections = getCollectionsByType('MEN');
-        menuItems[1].collections = getCollectionsByType('WOMEN');
-        return menuItems;
-      });
+  const handleShowMenu = (navLink: NavLink) => setHoveredNavLink(navLink);
 
-      const getCollectionsByType = (type: CollectionType) =>
-        collections.map(col => ({
-          id: col.id,
-          title: col.title,
-          type,
-          subCollections: col.subCollections
-            .filter(subCol => subCol.type.includes(type))
-            .map(subCol => ({ ...subCol, type })),
-        }));
-    }
-  }, [collections]);
-
-  const handleShowMenu = (menuItem: MenuItem) => {
-    setCurrentMenuItem(menuItem);
-    if (menuItem.collections) setIsMenuOpen(true);
-  };
-
-  const handleCloseMenu = () => {
-    setCurrentMenuItem(null);
-    setIsMenuOpen(false);
-  };
+  const handleCloseMenu = () => setHoveredNavLink(null);
 
   return (
     <header>
@@ -100,28 +66,26 @@ export const Header = ({ collections }: Props) => {
             </Link>
           </div>
           <ul className="hidden h-full ml-auto md:flex">
-            {menuItems &&
-              menuItems?.length > 0 &&
-              menuItems.map((item, index) => (
-                <li
-                  className={`text-neutral-700 font-medium transition-colors ${
-                    currentMenuItem === item && 'bg-violet-100 text-violet-700'
-                  }`}
-                  key={index}
-                  onMouseEnter={() => handleShowMenu(item)}
-                  onMouseLeave={handleCloseMenu}
-                >
-                  <Link href={item.title}>
-                    <a className="h-full flex items-center px-5">
-                      {t(item.title)}
-                    </a>
-                  </Link>
-                </li>
-              ))}
+            {navLinks.map((item, index) => (
+              <li
+                className={`text-neutral-700 font-medium transition-colors ${
+                  hoveredNavLink === item && 'bg-violet-100 text-violet-700'
+                }`}
+                key={index}
+                onMouseEnter={() => handleShowMenu(item)}
+                onMouseLeave={handleCloseMenu}
+              >
+                <Link href={item.name}>
+                  <a className="h-full flex items-center px-5">
+                    {t(item.name)}
+                  </a>
+                </Link>
+              </li>
+            ))}
           </ul>
           <ul className="items-center ml-auto md:flex">
             <Search onSearch={value => console.log(value)} />
-            {sideMenuItems.map(([url, Icon]) => (
+            {sideNavLinks.map(([url, Icon]) => (
               <Link key={url} href={url}>
                 <a className="hidden md:block ml-5 first-of-type:ml-8">
                   <Icon
@@ -133,11 +97,12 @@ export const Header = ({ collections }: Props) => {
             ))}
           </ul>
         </div>
-        <Transition show={isMenuOpen}>
-          {currentMenuItem && (
+        <Transition show={Boolean(hoveredNavLink?.collapsible)}>
+          {hoveredNavLink && (
             <MegaMenu
-              currentMenuItem={currentMenuItem}
-              onShowMenu={() => handleShowMenu(currentMenuItem)}
+              type={hoveredNavLink.name === 'men' ? 'men' : 'women'}
+              collections={collections}
+              onShowMenu={() => handleShowMenu(hoveredNavLink)}
               onCloseMenu={handleCloseMenu}
             />
           )}
