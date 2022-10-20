@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { Header, Footer } from 'components';
 import { trpc } from 'utils/trpc';
+import { BottomNavigation } from 'components/BottomNavigation/BottomNavigation';
 
 interface PrimaryLayoutProps extends React.PropsWithChildren {
   title?: string;
@@ -51,6 +52,7 @@ export const PrimaryLayout = ({
         <main>{children}</main>
       </div>
       <Footer />
+      <BottomNavigation />
     </>
   );
 };
