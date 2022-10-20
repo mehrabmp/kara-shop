@@ -1,3 +1,8 @@
 {
-  "search": "Search"
+  "search": "Search",
+  "home": "Home",
+  "collections": "Collections",
+  "cart": "Cart",
+  "wishlist": "Wishlist",
+  "profile": "Profile"
 }

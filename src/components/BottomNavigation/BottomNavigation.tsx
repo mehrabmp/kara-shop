@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { IconType } from 'react-icons';
@@ -11,13 +12,14 @@ interface BottomTab {
 
 export const BottomNavigation = () => {
   const router = useRouter();
+  const { t } = useTranslation('common');
 
   const bottomTabs: BottomTab[] = [
-    { title: 'Home', url: '/', Icon: FiHome },
-    { title: 'Collections', url: '/collections', Icon: FiGrid },
-    { title: 'Cart', url: '/cart', Icon: FiShoppingBag },
-    { title: 'Wishlist', url: '/wishlist', Icon: FiHeart },
-    { title: 'Profile', url: '/login', Icon: FiUser },
+    { title: t('home'), url: '/', Icon: FiHome },
+    { title: t('collections'), url: '/collections', Icon: FiGrid },
+    { title: t('cart'), url: '/cart', Icon: FiShoppingBag },
+    { title: t('wishlist'), url: '/wishlist', Icon: FiHeart },
+    { title: t('profile'), url: '/login', Icon: FiUser },
   ];
 
   return (
