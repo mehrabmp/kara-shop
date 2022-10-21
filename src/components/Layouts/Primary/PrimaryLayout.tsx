@@ -52,7 +52,6 @@ export const PrimaryLayout = ({
         <main>{children}</main>
       </div>
       <Footer />
-      <BottomNavigation />
     </>
   );
 };

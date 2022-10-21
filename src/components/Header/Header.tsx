@@ -9,12 +9,13 @@ import { Search } from './Search';
 import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 import { Collections } from 'types';
+import { BottomNavigation } from 'components/BottomNavigation/BottomNavigation';
 
 interface Props {
   collections: Collections;
 }
 
-interface NavLink {
+export interface NavLink {
   name: 'men' | 'women' | 'kids' | 'sale' | 'blog' | 'contacts';
   collapsible?: boolean;
 }
@@ -103,6 +104,7 @@ export const Header = ({ collections }: Props) => {
           )}
         </Transition>
       </div>
+      <BottomNavigation navLinks={navLinks} collections={collections} />
     </header>
   );
 };
