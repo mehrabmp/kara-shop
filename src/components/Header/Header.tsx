@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/future/image';
 import { useState } from 'react';
-import type { inferProcedureOutput } from '@trpc/server';
-import type { AppRouter } from 'server/routers/_app';
 import { useTranslation } from 'next-i18next';
 import { Transition } from '@headlessui/react';
 import { IconType } from 'react-icons';
@@ -10,10 +8,7 @@ import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
 import { Search } from './Search';
 import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
-
-export type Collections =
-  | inferProcedureOutput<AppRouter['collection']['all']>
-  | undefined;
+import { Collections } from 'types';
 
 interface Props {
   collections: Collections;

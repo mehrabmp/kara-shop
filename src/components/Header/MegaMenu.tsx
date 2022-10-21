@@ -1,7 +1,7 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
 import { capitalizeFirstLetter, convertToSlug } from 'utils';
-import { Collections } from './Header';
+import { Collections } from 'types';
 
 interface Props {
   type: 'men' | 'women';
