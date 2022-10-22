@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.3",
-    "@prisma/client": "^4.3.1",
+    "@prisma/client": "^4.5.0",
     "@tanstack/react-query": "^4.12.0",
     "@trpc/client": "^10.0.0-proxy-beta.17",
     "@trpc/next": "^10.0.0-proxy-beta.17",
