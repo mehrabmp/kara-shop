@@ -23,7 +23,12 @@ export const CollectionsPage = ({
     <div className="bg-white w-full h-full top-0 left-0 bottom-0 fixed z-50 px-5 pt-5 overflow-y-auto">
       <div className="flex justify-between">
         <h2 className="text-xl font-medium">{t('common:collections')}</h2>
-        <FiX className="cursor-pointer" size="1.5rem" onClick={onPageClose} />
+        <FiX
+          className="cursor-pointer"
+          size="1.5rem"
+          data-testid="close"
+          onClick={onPageClose}
+        />
       </div>
       <ul className="mt-5 flex flex-col px-2">
         {navLinks.map((item, index) => (

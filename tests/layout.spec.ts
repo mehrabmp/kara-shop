@@ -13,6 +13,14 @@ const TOPBAR_LINKS = [
 
 const MENU_ITEMS = ['Men', 'Women', 'Kids', 'Sale', 'Blog', 'Contacts'];
 
+const BOTTOM_NAVIGATION = [
+  ['Home', '/'],
+  // ['Collections', '/#collections'],
+  ['Cart', '/cart'],
+  ['Wishlist', '/wishlist'],
+  ['Profile', '/login'],
+];
+
 test.describe('Header', () => {
   test.describe('Top Bar', () => {
     test('Links in the top bar should redirect to the correct page', async ({
@@ -103,6 +111,44 @@ test.describe('Header', () => {
   /** Todo
    * test search box functionality
    */
+});
+
+test.describe('Bottom Navigation', () => {
+  // Run tests in this describe block with portrait-like viewport.
+  test.use({ viewport: { width: 400, height: 700 } });
+
+  test('Bottom navigation links should navigate correctly', async ({
+    page,
+  }) => {
+    for (const item of BOTTOM_NAVIGATION) {
+      await testLink(page, item[0], item[1]);
+      if (item[1] !== '/') await page.goBack();
+    }
+  });
+
+  test('Should show the collections page and close by touching the exit icon', async ({
+    page,
+  }) => {
+    await page.getByRole('link', { name: 'Collections' }).click();
+
+    await page.getByTestId('close').click();
+
+    await expect(
+      page.getByRole('heading', { name: 'Collections' })
+    ).not.toBeVisible();
+  });
+
+  test('Menu items in collections page should be able to expand', async ({
+    page,
+  }) => {
+    await page.getByRole('link', { name: 'Collections' }).click();
+
+    await page.getByRole('button', { name: 'Men' }).click();
+    await page.getByRole('button', { name: 'Shoes' }).click();
+
+    await page.getByRole('link', { name: 'Sneakers' }).click();
+    await expect(page).toHaveURL('/men/shoes/sneakers');
+  });
 });
 
 const testLink = async (page: Page, name: string, URL: string) => {
