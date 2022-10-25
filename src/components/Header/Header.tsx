@@ -10,6 +10,7 @@ import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 import { Collections } from 'types';
 import { BottomNavigation } from 'components/BottomNavigation/BottomNavigation';
+import { AnnouncementBar } from './AnnouncementBar';
 
 interface Props {
   collections: Collections;
@@ -44,6 +45,7 @@ export const Header = ({ collections }: Props) => {
 
   return (
     <header>
+      <AnnouncementBar />
       <TopBar />
       <div className="bg-white h-14 shadow-md shadow-neutral-300 relative">
         <div className="mx-auto px-4 xl:container h-full flex items-center">
