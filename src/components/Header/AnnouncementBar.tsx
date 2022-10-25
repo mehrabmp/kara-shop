@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Countdown from 'react-countdown';
 import { FiChevronRight, FiX } from 'react-icons/fi';
 
-export const AnnouncementBar = () => {
+const AnnouncementBar = () => {
   const [isBarOpen, setIsBarOpen] = useState(false);
   const [isBarHovered, setIsBarHovered] = useState(false);
 
@@ -10,9 +11,15 @@ export const AnnouncementBar = () => {
     setTimeout(() => setIsBarOpen(true), 3000);
   }, []);
 
+  const epochMs = new Date(2022, 0).valueOf();
+  const now = Date.now();
+  const msInDay = 86400000;
+  const index = Math.floor((now - epochMs) / msInDay);
+  const nextday = (index + 1) * msInDay + epochMs;
+
   return (
     <div
-      className={`bg-[#e91e63] text-xs md:text-sm text-white flex justify-center items-center relative overflow-hidden transition-all duration-300 ${
+      className={`bg-[#e91e63] text-[10px] md:text-sm font-normal text-white flex justify-center items-center relative overflow-hidden transition-all duration-300 ${
         isBarOpen ? 'h-8 md:h-9' : 'h-0'
       }`}
     >
@@ -22,8 +29,9 @@ export const AnnouncementBar = () => {
           onMouseEnter={() => setIsBarHovered(true)}
           onMouseLeave={() => setIsBarHovered(false)}
         >
-          <h4>
-            Today deal sale off <b>70%</b>. Hurry Up
+          <h4 className="mr-1">
+            Today deal sale off <b>50%</b>. End in{' '}
+            {<b>{<Countdown date={nextday} />}</b>}. Shop Now
           </h4>
           <FiChevronRight
             className={`transition-all duration-200 ${
@@ -38,3 +46,5 @@ export const AnnouncementBar = () => {
     </div>
   );
 };
+
+export default AnnouncementBar;

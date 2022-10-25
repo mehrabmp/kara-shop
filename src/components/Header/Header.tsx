@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/future/image';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { Transition } from '@headlessui/react';
@@ -10,7 +11,9 @@ import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 import { Collections } from 'types';
 import { BottomNavigation } from 'components/BottomNavigation/BottomNavigation';
-import { AnnouncementBar } from './AnnouncementBar';
+const AnnouncementBar = dynamic(() => import('./AnnouncementBar'), {
+  ssr: false,
+});
 
 interface Props {
   collections: Collections;
@@ -47,7 +50,7 @@ export const Header = ({ collections }: Props) => {
     <header>
       <AnnouncementBar />
       <TopBar />
-      <div className="bg-white h-14 shadow-md shadow-neutral-300 relative">
+      <div className="bg-white h-14 shadow-md shadow-gray-200 relative">
         <div className="mx-auto px-4 xl:container h-full flex items-center">
           <div className="flex items-center shrink-0 mr-5">
             <Link href="/">
