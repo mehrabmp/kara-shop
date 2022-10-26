@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
@@ -54,16 +54,14 @@ export const Header = ({ collections }: Props) => {
         <div className="mx-auto px-4 xl:container h-full flex items-center">
           <div className="flex items-center shrink-0 mr-5">
             <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/logo.png"
-                  alt="logo"
-                  width={100}
-                  height={35}
-                  quality={100}
-                />
-              </a>
+              <Image
+                priority
+                src="/logo.png"
+                alt="logo"
+                width={100}
+                height={35}
+                quality={100}
+              />
             </Link>
           </div>
           <ul className="hidden h-full ml-auto md:flex">
@@ -76,10 +74,11 @@ export const Header = ({ collections }: Props) => {
                 onMouseEnter={() => handleShowMenu(item)}
                 onMouseLeave={handleCloseMenu}
               >
-                <Link href={item.name}>
-                  <a className="h-full flex items-center px-5">
-                    {t(item.name)}
-                  </a>
+                <Link
+                  href={item.name}
+                  className="h-full flex items-center px-5"
+                >
+                  {t(item.name)}
                 </Link>
               </li>
             ))}
@@ -87,13 +86,15 @@ export const Header = ({ collections }: Props) => {
           <ul className="items-center ml-auto md:flex">
             <Search onSearch={value => console.log(value)} />
             {sideNavLinks.map(([url, Icon]) => (
-              <Link key={url} href={url}>
-                <a className="hidden md:block ml-5 first-of-type:ml-8">
-                  <Icon
-                    className="text-neutral-700 transition-colors hover:text-violet-700"
-                    size="20px"
-                  />
-                </a>
+              <Link
+                key={url}
+                href={url}
+                className="hidden md:block ml-5 first-of-type:ml-8"
+              >
+                <Icon
+                  className="text-neutral-700 transition-colors hover:text-violet-700"
+                  size="20px"
+                />
               </Link>
             ))}
           </ul>

@@ -90,10 +90,9 @@ export const CollectionsPage = ({
                                                 )}/${convertToSlug(
                                                   subCollection.title
                                                 )}`}
+                                                className="block py-2 border-b border-solid border-neutral-100"
                                               >
-                                                <a className="block py-2 border-b border-solid border-neutral-100">
-                                                  <h3>{subCollection.title}</h3>
-                                                </a>
+                                                <h3>{subCollection.title}</h3>
                                               </Link>
                                             </li>
                                           )
@@ -112,10 +111,11 @@ export const CollectionsPage = ({
                 )}
               </Disclosure>
             ) : (
-              <Link href={item.name}>
-                <a className="block py-4 border-b border-solid border-neutral-100">
-                  <h3>{t(`header:${item.name}`)}</h3>
-                </a>
+              <Link
+                href={item.name}
+                className="block py-4 border-b border-solid border-neutral-100"
+              >
+                <h3>{t(`header:${item.name}`)}</h3>
               </Link>
             )}
           </li>

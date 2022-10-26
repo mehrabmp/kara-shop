@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { capitalizeFirstLetter, convertToSlug } from 'utils';
 import { Collections } from 'types';
@@ -26,11 +26,9 @@ export const MegaMenu = ({
         <div className="flex-1 flex">
           <div className="py-8 ml-4">
             <Link href={type}>
-              <a>
-                <p className="font-bold text-sm uppercase text-neutral-800 tracking-widest leading-4 hover:underline">
-                  New & Trending
-                </p>
-              </a>
+              <p className="font-bold text-sm uppercase text-neutral-800 tracking-widest leading-4 hover:underline">
+                New & Trending
+              </p>
             </Link>
             <ul className="pt-2">
               {[
@@ -41,10 +39,11 @@ export const MegaMenu = ({
                 'Release Dates',
               ].map((item, index) => (
                 <li key={index}>
-                  <Link href={convertToSlug(item)}>
-                    <a className="font-normal text-xs text-neutral-700 mb-1.5 hover:underline">
-                      {item}
-                    </a>
+                  <Link
+                    href={convertToSlug(item)}
+                    className="font-normal text-xs text-neutral-700 mb-1.5 hover:underline"
+                  >
+                    {item}
                   </Link>
                 </li>
               ))}
@@ -58,26 +57,25 @@ export const MegaMenu = ({
                 'Breast Cancer Awareness Collection',
               ].map((item, index) => (
                 <li key={index}>
-                  <Link href={convertToSlug(item)}>
-                    <a className="font-normal text-xs text-neutral-700 mb-1.5 hover:underline">
-                      {item}
-                    </a>
+                  <Link
+                    href={convertToSlug(item)}
+                    className="font-normal text-xs text-neutral-700 mb-1.5 hover:underline"
+                  >
+                    {item}
                   </Link>
                 </li>
               ))}
             </ul>
             <Link href="offer">
-              <a>
-                <Image
-                  priority
-                  src="/assets/offer.webp"
-                  alt="offer"
-                  width={130}
-                  height={100}
-                  quality={100}
-                  style={{ width: 'auto', height: 'auto' }}
-                />
-              </a>
+              <Image
+                priority
+                src="/assets/offer.webp"
+                alt="offer"
+                width={130}
+                height={100}
+                quality={100}
+                style={{ width: 'auto', height: 'auto' }}
+              />
             </Link>
           </div>
         </div>
@@ -89,11 +87,9 @@ export const MegaMenu = ({
                 className="max-w-[150px] w-full py-8 ml-4"
               >
                 <Link href={`${type}/${convertToSlug(collection.title)}`}>
-                  <a>
-                    <p className="font-bold text-sm uppercase text-neutral-800 tracking-widest leading-4 hover:underline">
-                      {collection.title}
-                    </p>
-                  </a>
+                  <p className="font-bold text-sm uppercase text-neutral-800 tracking-widest leading-4 hover:underline">
+                    {collection.title}
+                  </p>
                 </Link>
                 <ul className="pt-2">
                   {collection.subCollections.map(subCollection => (
@@ -102,10 +98,9 @@ export const MegaMenu = ({
                         href={`${type}/${convertToSlug(
                           collection.title
                         )}/${convertToSlug(subCollection.title)}`}
+                        className="font-normal text-xs text-neutral-700 mb-1.5 hover:underline"
                       >
-                        <a className="font-normal text-xs text-neutral-700 mb-1.5 hover:underline">
-                          {subCollection.title}
-                        </a>
+                        {subCollection.title}
                       </Link>
                     </li>
                   ))}
@@ -117,21 +112,24 @@ export const MegaMenu = ({
       <div className="shadow-neutral-300 border-t border-solid">
         <div className="flex max-w-7xl mx-auto">
           <div className="flex-1 flex items-center">
-            <Link href="sale">
-              <a className="font-bold text-xs text-neutral-800 hover:underline max-w-[150px] w-full py-3 ml-4">
-                Sale
-              </a>
+            <Link
+              href="sale"
+              className="font-bold text-xs text-neutral-800 hover:underline max-w-[150px] w-full py-3 ml-4"
+            >
+              Sale
             </Link>
           </div>
           <div className="flex-[3] flex items-center">
             {['shoes', 'clothing', 'accessories', 'sport', ''].map(
               (item, index) => (
-                <Link key={index} href={`${type}/${item}`}>
-                  <a className="font-bold text-xs text-neutral-800 hover:underline max-w-[150px] w-full py-3 ml-4">
-                    {`All ${capitalizeFirstLetter(
-                      type
-                    )}'s ${capitalizeFirstLetter(item)}`}
-                  </a>
+                <Link
+                  key={index}
+                  href={`${type}/${item}`}
+                  className="font-bold text-xs text-neutral-800 hover:underline max-w-[150px] w-full py-3 ml-4"
+                >
+                  {`All ${capitalizeFirstLetter(
+                    type
+                  )}'s ${capitalizeFirstLetter(item)}`}
                 </Link>
               )
             )}

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { FiPhone, FiGrid, FiChevronDown } from 'react-icons/fi';
 import { ChangeLocale } from './ChangeLocale';
@@ -37,11 +37,12 @@ export const TopBar = () => {
               key={label}
               className="mx-1 pb-px md:mr-2.5 lg:[&:nth-of-type(3)]:mr-10 lg:[&:nth-of-type(5)]:mr-10"
             >
-              <Link href={url}>
-                <a className="flex items-center hover:text-white transition-colors">
-                  {Icon && <Icon className="mx-1 md:text-sm"></Icon>}
-                  <span>{label}</span>
-                </a>
+              <Link
+                href={url}
+                className="flex items-center hover:text-white transition-colors"
+              >
+                {Icon && <Icon className="mx-1 md:text-sm"></Icon>}
+                <span>{label}</span>
               </Link>
             </li>
           ))}

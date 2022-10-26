@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { Transition } from '@headlessui/react';
 
 interface Props {
@@ -25,17 +25,19 @@ export const ChangeLocale = ({ isOpen }: Props) => {
       <ul className="flex flex-col bg-black rounded-lg absolute overflow-hidden text-xs w-[90px] right-0 shadow-md shadow-neutral-400">
         {locales.map(([locale, label, flagURL]) => (
           <li key={locale} className="hover:bg-neutral-600 transition-colors">
-            <Link href="/" locale={locale}>
-              <a className="text-white flex items-center py-1 px-2">
-                <Image
-                  priority
-                  src={flagURL}
-                  alt={`${locale} locale`}
-                  width={17}
-                  height={17}
-                />
-                <span className="ml-2">{label}</span>
-              </a>
+            <Link
+              href="/"
+              locale={locale}
+              className="text-white flex items-center py-1 px-2"
+            >
+              <Image
+                priority
+                src={flagURL}
+                alt={`${locale} locale`}
+                width={17}
+                height={17}
+              />
+              <span className="ml-2">{label}</span>
             </Link>
           </li>
         ))}
