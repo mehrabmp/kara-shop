@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <div className="bg-gray-100">
       <div className="min-h-[80vh] max-w-7xl mx-auto px-4 flex flex-col md:flex-row">
-        <div className="flex-1 flex flex-col justify-center items-center px-4 pt-10 md:items-start md:pt-0">
+        <div className="flex-1 flex flex-col justify-center items-center pt-10 md:items-start md:pt-0 md:px-4">
           <span className="bg-blue-100 text-blue-600 font-semibold text-sm rounded-md py-1 px-4 mb-2.5 md:mb-5">
             Sale 70%
           </span>
@@ -24,7 +24,7 @@ export const Hero = () => {
             <FiShoppingCart />
             <span className="ml-2">Start Shopping</span>
           </Link>
-          <div className="flex justify-between w-full mb-10">
+          <div className="flex flex-wrap justify-center w-full mb-5 md:justify-between">
             {['bazaar', 'bustle', 'versace', 'instyle'].map((brand, index) => (
               <Image
                 key={index}
@@ -32,12 +32,19 @@ export const Hero = () => {
                 alt={`${brand} brand`}
                 width={90}
                 height={90}
+                className={'mx-4 my-1'}
               />
             ))}
           </div>
         </div>
         <div className="flex-1 flex justify-start items-end">
-          <Image src="/assets/hero.svg" alt="hero" width={600} height={600} />
+          <Image
+            src="/assets/hero.webp"
+            alt="hero"
+            quality={100}
+            width={550}
+            height={550}
+          />
         </div>
       </div>
     </div>
