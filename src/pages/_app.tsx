@@ -6,8 +6,10 @@ import { appWithTranslation } from 'next-i18next';
 import { trpc } from 'utils/trpc';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import AOS from 'aos';
 import 'nprogress/nprogress.css';
 import 'styles/globals.css';
+import 'aos/dist/aos.css';
 
 export type NextPageWithLayout<P = unknown> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -25,6 +27,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   });
 
   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
     const handleRouteStart = () => NProgress.start();
     const handleRouteDone = () => NProgress.done();
 
