@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-neutral-200;
+  background-color: #fff;
 }
 
 #nprogress .bar {

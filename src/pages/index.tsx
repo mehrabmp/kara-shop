@@ -2,7 +2,7 @@ import type { GetStaticProps } from 'next';
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { PrimaryLayout } from 'components';
+import { Hero, PrimaryLayout } from 'components';
 
 export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
   return {
@@ -13,7 +13,12 @@ export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
 };
 
 const Home: NextPageWithLayout = () => {
-  return <h1 className="flex text-black">hello</h1>;
+  return (
+    <>
+      <Hero />
+      <div className="h-[500px]">content</div>
+    </>
+  );
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {
