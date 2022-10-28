@@ -28,7 +28,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   useEffect(() => {
     AOS.init({
-      delay: 200,
       duration: 1000,
       once: true,
     });
