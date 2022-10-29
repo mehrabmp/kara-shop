@@ -20,7 +20,7 @@ export const MegaMenu = ({
     <div
       onMouseEnter={onShowMenu}
       onMouseLeave={onCloseMenu}
-      className="bg-white shadow-md shadow-neutral-300 border-t border-solid border-neutral-200 absolute w-full"
+      className="bg-white shadow-md shadow-neutral-300 border-t border-solid border-neutral-200 absolute w-full z-[500]"
     >
       <div className="flex max-w-7xl mx-auto">
         <div className="flex-1 flex">
