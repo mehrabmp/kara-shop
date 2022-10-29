@@ -7,7 +7,7 @@ import { Hero, PrimaryLayout } from 'components';
 export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'header'])),
+      ...(await serverSideTranslations(locale, ['common', 'header', 'home'])),
     },
   };
 };
