@@ -1,4 +1,4 @@
 export * from './Layouts/Primary/PrimaryLayout';
-export * from './Header/Header';
-export * from './Footer/Footer';
-export * from './Hero/Hero';
+export * from './Layouts/Header/Header';
+export * from './Layouts/Footer/Footer';
+export * from './Home/Hero/Hero';

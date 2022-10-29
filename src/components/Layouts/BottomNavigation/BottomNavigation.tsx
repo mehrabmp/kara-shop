@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { IconType } from 'react-icons';
 import { FiHome, FiUser, FiHeart, FiShoppingBag, FiGrid } from 'react-icons/fi';
 import { Collections } from 'types';
-import { NavLink } from 'components/Header/Header';
+import { NavLink } from 'components/Layouts/Header/Header';
 import { CollectionsPage } from './CollectionsPage';
 
 interface Props {

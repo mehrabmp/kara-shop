@@ -10,7 +10,7 @@ import { Search } from './Search';
 import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 import { Collections } from 'types';
-import { BottomNavigation } from 'components/BottomNavigation/BottomNavigation';
+import { BottomNavigation } from 'components/Layouts/BottomNavigation/BottomNavigation';
 const AnnouncementBar = dynamic(() => import('./AnnouncementBar'), {
   ssr: false,
 });

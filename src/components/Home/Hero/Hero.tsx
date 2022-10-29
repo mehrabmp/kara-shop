@@ -10,7 +10,7 @@ export const Hero = () => {
           <span
             data-aos="fade-down"
             data-aos-delay="700"
-            className="bg-blue-100 text-blue-600 font-semibold text-sm rounded-md py-1 px-4 mb-2.5 md:mb-5"
+            className="bg-violet-100 text-violet-600 font-semibold text-sm rounded-md py-1 px-4 mb-2.5 md:mb-5"
           >
             Sale 70%
           </span>

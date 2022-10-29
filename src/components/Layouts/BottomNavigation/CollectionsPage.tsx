@@ -3,7 +3,7 @@ import { Disclosure, Transition } from '@headlessui/react';
 import { useTranslation } from 'next-i18next';
 import { FiChevronDown, FiX } from 'react-icons/fi';
 import { Collections } from 'types';
-import { NavLink } from 'components/Header/Header';
+import { NavLink } from 'components/Layouts/Header/Header';
 import { convertToSlug } from 'utils';
 
 interface Props {
