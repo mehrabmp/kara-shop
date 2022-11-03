@@ -55,7 +55,7 @@ export const Footer = () => {
               <Image
                 priority
                 src="/logo.png"
-                alt="logo"
+                alt="kara shop logo"
                 width={100}
                 height={35}
                 quality={100}
