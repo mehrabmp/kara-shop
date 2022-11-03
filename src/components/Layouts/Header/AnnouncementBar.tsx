@@ -8,7 +8,7 @@ const AnnouncementBar = () => {
   const [isBarHovered, setIsBarHovered] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setIsBarOpen(true), 3000);
+    setTimeout(() => setIsBarOpen(true), 1000);
   }, []);
 
   const epochMs = new Date(2022, 0).valueOf();
