@@ -1,0 +1,25 @@
+{
+  "kara": "Small, artisan label that offers a thoughtfully curated collection of high quality everyday essentials made.",
+  "company": "Company",
+  "companyLinks": {
+    "about": "About",
+    "termOfUse": "Term of Use",
+    "privacyPolicy": "Privacy Policy",
+    "howItWorks": "How it Works",
+    "contactUs": "Contact Us"
+  },
+  "support": "Support",
+  "supportLinks": {
+    "supportCareer": "Support Career",
+    "service": "24h Service",
+    "quickChat": "Quick Chat"
+  },
+  "contact": "Contact",
+  "contactLinks": {
+    "whatsapp": "Whatsapp",
+    "support": "Support 24"
+  },
+  "copyright": "Copyright © 2022 KARA Shop",
+  "createdBy": "Created By",
+  "reserved": "All Right Reserved"
+}

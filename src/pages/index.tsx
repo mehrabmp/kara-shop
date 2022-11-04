@@ -7,7 +7,7 @@ import { Hero, PrimaryLayout, Promotions } from 'components';
 export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'header', 'home'])),
+      ...(await serverSideTranslations(locale)),
     },
   };
 };

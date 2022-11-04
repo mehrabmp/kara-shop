@@ -1,0 +1,25 @@
+{
+  "kara": "Kleines, handwerkliches Label, das eine sorgfältig kuratierte Kollektion hochwertiger Alltagsutensilien anbietet.",
+  "company": "Gesellschaft",
+  "companyLinks": {
+    "about": "Um",
+    "termOfUse": "Nutzungsbedingungen",
+    "privacyPolicy": "Datenschutz-Bestimmungen",
+    "howItWorks": "Wie es Funktioniert",
+    "contactUs": "Kontaktiere Uns"
+  },
+  "support": "Unterstützung",
+  "supportLinks": {
+    "supportCareer": "Karriere Unterstützen",
+    "service": "24h Service",
+    "quickChat": "Schneller Chat"
+  },
+  "contact": "Kontakt",
+  "contactLinks": {
+    "whatsapp": "Whatsapp",
+    "support": "Unterstützung 24"
+  },
+  "copyright": "Urheberrechte © 2022 KARA Shop",
+  "createdBy": "Erstellt Von",
+  "reserved": "Alle Rechte Vorbehalten"
+}
