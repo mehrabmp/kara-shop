@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -17,35 +18,37 @@ const socialMedias: [IconType, string][] = [
   [BsLinkedin, 'https://linkedin.com'],
 ];
 
-const footerLinks = [
-  {
-    label: 'Company',
-    links: [
-      ['About', '/about'],
-      ['Term of Use', '/term-of-use'],
-      ['Privacy Policy', '/privacy-policy'],
-      ['How it Works', '/how-works'],
-      ['Contact Us', '/contact-us'],
-    ],
-  },
-  {
-    label: 'Support',
-    links: [
-      ['Support Carrer', '/support'],
-      ['24h Service', '/24-service'],
-      ['Quick Chat', '/quick-chat'],
-    ],
-  },
-  {
-    label: 'Contact',
-    links: [
-      ['Whatsapp', '/whatsapp'],
-      ['Support 24', '/24-service'],
-    ],
-  },
-];
-
 export const Footer = () => {
+  const { t } = useTranslation('footer');
+
+  const footerLinks = [
+    {
+      label: t('company'),
+      links: [
+        [t('companyLinks.about'), '/about'],
+        [t('companyLinks.termOfUse'), '/term-of-use'],
+        [t('companyLinks.privacyPolicy'), '/privacy-policy'],
+        [t('companyLinks.howItWorks'), '/how-works'],
+        [t('companyLinks.contactUs'), '/contact-us'],
+      ],
+    },
+    {
+      label: t('support'),
+      links: [
+        [t('supportLinks.supportCareer'), '/support'],
+        [t('supportLinks.service'), '/24-service'],
+        [t('supportLinks.quickChat'), '/quick-chat'],
+      ],
+    },
+    {
+      label: t('contact'),
+      links: [
+        [t('contactLinks.whatsapp'), '/whatsapp'],
+        [t('contactLinks.support'), '/24-service'],
+      ],
+    },
+  ];
+
   return (
     <footer className="mb-16 md:mb-0">
       <div className="max-w-7xl mx-auto px-4 py-10">
@@ -62,8 +65,7 @@ export const Footer = () => {
               />
             </Link>
             <p className="text-sm font-normal text-neutral-500 py-4">
-              Small, artisan label that offers a thoughtfully curated collection
-              of high quality everyday essentials made.
+              {t('kara')}
             </p>
             <div className="flex justify-center my-5 md:justify-start">
               {socialMedias.map(([Icon, href]) => (
@@ -81,10 +83,10 @@ export const Footer = () => {
           <div className="flex justify-between mt-5 md:flex-[2] md:justify-around md:mt-0">
             {footerLinks.map(({ label, links }) => (
               <div key={label} className="flex flex-col">
-                <strong className="mb-5 text-neutral-600 font-bold text-base">
+                <strong className="mb-5 text-neutral-600 font-bold text-sm md:text-base">
                   {label}
                 </strong>
-                <ul className="flex flex-col gap-2 font-normal text-sm text-neutral-500">
+                <ul className="flex flex-col gap-2 font-normal text-xs text-neutral-500 md:text-sm">
                   {links.map(([label, href]) => (
                     <Link
                       key={href}
@@ -103,19 +105,19 @@ export const Footer = () => {
       <div className="bg-neutral-100">
         <div className="max-w-7xl mx-auto px-2 py-3">
           <div className="flex flex-col gap-3 justify-between items-center text-neutral-700 font-medium text-xs md:flex-row">
-            <p>Copyright © 2022 KARA Shop</p>
+            <p>{t('copyright')}</p>
             <Link href="https://github.com/mehrabmp/kara-shop" target="_blank">
               <BsGithub size="1.25rem" />
             </Link>
             <p>
-              Created By{' '}
+              {`${t('createdBy')} `}
               <strong>
                 <Link href="https://github.com/mehrabmp" target="_blank">
                   Mehrab
                 </Link>
               </strong>
               {'. '}
-              All Right Reserved{' '}
+              {t('reserved')}
             </p>
           </div>
         </div>
