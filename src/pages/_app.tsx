@@ -4,12 +4,15 @@ import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { appWithTranslation } from 'next-i18next';
 import { trpc } from 'utils/trpc';
+import { Inter } from '@next/font/google';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import AOS from 'aos';
 import 'nprogress/nprogress.css';
 import 'styles/globals.css';
 import 'aos/dist/aos.css';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export type NextPageWithLayout<P = unknown> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -47,7 +50,16 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     };
   }, []);
 
-  return <>{getLayout(<Component {...pageProps} />)}</>;
+  return (
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${inter.style.fontFamily};
+        }
+      `}</style>
+      {getLayout(<Component {...pageProps} />)}
+    </>
+  );
 }
 
 export default trpc.withTRPC(appWithTranslation(MyApp));
