@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { appWithTranslation } from 'next-i18next';
 import { trpc } from 'utils/trpc';
 import { Inter } from '@next/font/google';
+import { SessionProvider } from 'next-auth/react';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import AOS from 'aos';
@@ -57,7 +58,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           font-family: ${inter.style.fontFamily};
         }
       `}</style>
-      {getLayout(<Component {...pageProps} />)}
+      <SessionProvider session={pageProps.session}>
+        {getLayout(<Component {...pageProps} />)}
+      </SessionProvider>
     </>
   );
 }
