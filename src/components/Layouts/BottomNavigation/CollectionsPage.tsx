@@ -20,7 +20,7 @@ export const CollectionsPage = ({
   const { t } = useTranslation();
 
   return (
-    <div className="bg-white w-full h-full top-0 left-0 bottom-0 fixed z-50 px-5 pt-5 overflow-y-auto">
+    <div className="fixed top-0 left-0 bottom-0 z-50 h-full w-full overflow-y-auto bg-white px-5 pt-5">
       <div className="flex justify-between">
         <h2 className="text-xl font-medium">{t('common:collections')}</h2>
         <FiX
@@ -32,12 +32,12 @@ export const CollectionsPage = ({
       </div>
       <ul className="mt-5 flex flex-col px-2">
         {navLinks.map((item, index) => (
-          <li key={index} className="text-neutral-800 font-medium">
+          <li key={index} className="font-medium text-neutral-800">
             {item.collapsible ? (
               <Disclosure>
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className="flex w-full justify-between items-center py-4 border-b border-solid border-neutral-100">
+                    <Disclosure.Button className="flex w-full items-center justify-between border-b border-solid border-neutral-100 py-4">
                       <span>{t(`header:${item.name}`)}</span>
                       <FiChevronDown
                         className={`transition-transform duration-200 ${
@@ -61,7 +61,7 @@ export const CollectionsPage = ({
                             <Disclosure key={collection.id}>
                               {({ open }) => (
                                 <>
-                                  <Disclosure.Button className="flex w-full justify-between items-center py-4 border-b border-solid border-neutral-100">
+                                  <Disclosure.Button className="flex w-full items-center justify-between border-b border-solid border-neutral-100 py-4">
                                     <span>{collection.title}</span>
                                     <FiChevronDown
                                       className={`transition-transform duration-200 ${
@@ -90,7 +90,7 @@ export const CollectionsPage = ({
                                                 )}/${convertToSlug(
                                                   subCollection.title
                                                 )}`}
-                                                className="block py-2 border-b border-solid border-neutral-100"
+                                                className="block border-b border-solid border-neutral-100 py-2"
                                               >
                                                 <h3>{subCollection.title}</h3>
                                               </Link>
@@ -113,7 +113,7 @@ export const CollectionsPage = ({
             ) : (
               <Link
                 href={item.name}
-                className="block py-4 border-b border-solid border-neutral-100"
+                className="block border-b border-solid border-neutral-100 py-4"
               >
                 <h3>{t(`header:${item.name}`)}</h3>
               </Link>

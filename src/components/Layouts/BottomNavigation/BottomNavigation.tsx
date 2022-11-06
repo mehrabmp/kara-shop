@@ -35,13 +35,13 @@ export const BottomNavigation = ({ navLinks, collections }: Props) => {
 
   return (
     <>
-      <div className="bg-white h-16 fixed bottom-0 right-0 left-0 z-50 drop-shadow-[0_-15px_20px_rgba(0,0,0,0.10)] md:hidden">
+      <div className="fixed bottom-0 right-0 left-0 z-50 h-16 bg-white drop-shadow-[0_-15px_20px_rgba(0,0,0,0.10)] md:hidden">
         <ul className="flex h-full">
           {bottomTabs.map((tab, index) => (
             <li key={index} className="flex-1">
               <Link
                 href={tab.url}
-                className={`flex flex-col text-xs text-neutral-700 hover:text-violet-700 font-medium justify-center items-center h-full w-full ${
+                className={`flex h-full w-full flex-col items-center justify-center text-xs font-medium text-neutral-700 hover:text-violet-700 ${
                   router.pathname === tab.url && 'text-violet-700'
                 }`}
                 onClick={() => setCurrentTab(tab.url)}

@@ -7,27 +7,27 @@ export const Hero = () => {
   const { t } = useTranslation('home');
 
   return (
-    <div className="bg-gray-100 overflow-hidden">
-      <div className="min-h-[80vh] max-w-7xl mx-auto px-4 flex flex-col md:flex-row">
-        <div className="flex-1 flex flex-col justify-center items-center pt-10 md:items-start md:pt-0 md:px-4">
+    <div className="overflow-hidden bg-gray-100">
+      <div className="mx-auto flex min-h-[80vh] max-w-7xl flex-col px-4 md:flex-row">
+        <div className="flex flex-1 flex-col items-center justify-center pt-10 md:items-start md:px-4 md:pt-0">
           <span
             data-aos="fade-down"
             data-aos-delay="700"
-            className="bg-violet-100 text-violet-600 font-semibold text-sm rounded-md py-1 px-4 mb-2.5 md:mb-5"
+            className="mb-2.5 rounded-md bg-violet-100 py-1 px-4 text-sm font-semibold text-violet-600 md:mb-5"
           >
             {t('hero.discount')}
           </span>
           <h2
             data-aos="fade-right"
             data-aos-delay="700"
-            className="font-bold text-black mb-5 text-[2.5rem] leading-tight text-center md:text-left md:text-5xl"
+            className="mb-5 text-center text-[2.5rem] font-bold leading-tight text-black md:text-left md:text-5xl"
           >
             {t('hero.title')}
           </h2>
           <h3
             data-aos="fade-right"
             data-aos-delay="700"
-            className="font-regular text-lg text-neutral-700 mb-5 leading-tight text-center md:text-left md:mb-10"
+            className="font-regular mb-5 text-center text-lg leading-tight text-neutral-700 md:mb-10 md:text-left"
           >
             {t('hero.description')}
           </h3>
@@ -35,12 +35,12 @@ export const Hero = () => {
             href={''}
             data-aos="fade-up"
             data-aos-delay="700"
-            className="font-normal text-white text-base bg-zinc-900 flex items-center py-2.5 px-8 mb-10 rounded shadow-sm shadow-zinc-500"
+            className="mb-10 flex items-center rounded bg-zinc-900 py-2.5 px-8 text-base font-normal text-white shadow-sm shadow-zinc-500"
           >
             <FiShoppingCart />
             <span className="ml-2">{t('hero.shop')}</span>
           </Link>
-          <div className="flex flex-wrap justify-center w-full mb-5 md:justify-between">
+          <div className="mb-5 flex w-full flex-wrap justify-center md:justify-between">
             {['bazaar', 'bustle', 'versace', 'instyle'].map((brand, index) => (
               <Image
                 key={index}
@@ -49,14 +49,14 @@ export const Hero = () => {
                 alt={`${brand} brand`}
                 width={0}
                 height={0}
-                className={'mx-4 my-1 w-auto h-auto'}
+                className={'mx-4 my-1 h-auto w-auto'}
                 data-aos="flip-right"
                 data-aos-delay="700"
               />
             ))}
           </div>
         </div>
-        <div className="flex-1 flex justify-start items-end">
+        <div className="flex flex-1 items-end justify-start">
           <Image
             priority
             src="/assets/hero.webp"

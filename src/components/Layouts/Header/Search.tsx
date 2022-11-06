@@ -25,11 +25,11 @@ export const Search = ({ onSearch }: Props) => {
 
   return (
     <form
-      className="flex content-between items-center max-w-[200px] h-10 relative"
+      className="relative flex h-10 max-w-[200px] content-between items-center"
       onSubmit={handleSubmit}
     >
       <input
-        className="bg-neutral-100 border border-solid border-transparent focus:border-violet-500 transition-colors outline-none p-2.5 rounded-lg text-neutral-900 w-full h-full pr-9 placeholder-neutral-500"
+        className="h-full w-full rounded-lg border border-solid border-transparent bg-neutral-100 p-2.5 pr-9 text-neutral-900 placeholder-neutral-500 outline-none transition-colors focus:border-violet-500"
         type="text"
         name="search"
         id="search"
@@ -40,12 +40,12 @@ export const Search = ({ onSearch }: Props) => {
       />
       {value ? (
         <FiX
-          className="absolute w-[30px] h-full right-0 pr-2.5 text-neutral-500 cursor-pointer"
+          className="absolute right-0 h-full w-[30px] cursor-pointer pr-2.5 text-neutral-500"
           data-testid="clear"
           onClick={handleClearInput}
         />
       ) : (
-        <FiSearch className="absolute w-[30px] h-full right-0 pr-2.5 text-neutral-500 cursor-pointer" />
+        <FiSearch className="absolute right-0 h-full w-[30px] cursor-pointer pr-2.5 text-neutral-500" />
       )}
     </form>
   );

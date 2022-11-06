@@ -50,9 +50,9 @@ export const Header = ({ collections }: Props) => {
     <header>
       <AnnouncementBar />
       <TopBar />
-      <div className="bg-white h-14 shadow-md shadow-gray-200 relative">
-        <div className="mx-auto px-4 xl:container h-full flex items-center">
-          <div className="flex items-center shrink-0 mr-5">
+      <div className="relative h-14 bg-white shadow-md shadow-gray-200">
+        <div className="mx-auto flex h-full items-center px-4 xl:container">
+          <div className="mr-5 flex shrink-0 items-center">
             <Link href="/">
               <Image
                 priority
@@ -64,10 +64,10 @@ export const Header = ({ collections }: Props) => {
               />
             </Link>
           </div>
-          <ul className="hidden h-full ml-auto md:flex">
+          <ul className="ml-auto hidden h-full md:flex">
             {navLinks.map((item, index) => (
               <li
-                className={`text-neutral-700 font-medium transition-colors ${
+                className={`font-medium text-neutral-700 transition-colors ${
                   hoveredNavLink === item && 'bg-violet-100 text-violet-700'
                 }`}
                 key={index}
@@ -76,20 +76,20 @@ export const Header = ({ collections }: Props) => {
               >
                 <Link
                   href={item.name}
-                  className="h-full flex items-center px-5"
+                  className="flex h-full items-center px-5"
                 >
                   {t(item.name)}
                 </Link>
               </li>
             ))}
           </ul>
-          <ul className="items-center ml-auto md:flex">
+          <ul className="ml-auto items-center md:flex">
             <Search onSearch={value => console.log(value)} />
             {sideNavLinks.map(([url, Icon]) => (
               <Link
                 key={url}
                 href={url}
-                className="hidden md:block ml-5 first-of-type:ml-8"
+                className="ml-5 hidden first-of-type:ml-8 md:block"
               >
                 <Icon
                   className="text-neutral-700 transition-colors hover:text-violet-700"
