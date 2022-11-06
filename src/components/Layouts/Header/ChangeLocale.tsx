@@ -22,13 +22,13 @@ export const ChangeLocale = ({ isOpen }: Props) => {
       leaveFrom="opacity-100 translate-y-3"
       leaveTo="opacity-0 translate-y-1"
     >
-      <ul className="flex flex-col bg-black rounded-lg absolute overflow-hidden text-xs w-[90px] right-0 shadow-md shadow-neutral-400">
+      <ul className="absolute right-0 flex w-[90px] flex-col overflow-hidden rounded-lg bg-black text-xs shadow-md shadow-neutral-400">
         {locales.map(([locale, label, flagURL]) => (
-          <li key={locale} className="hover:bg-neutral-600 transition-colors">
+          <li key={locale} className="transition-colors hover:bg-neutral-600">
             <Link
               href="/"
               locale={locale}
-              className="text-white flex items-center py-1 px-2"
+              className="flex items-center py-1 px-2 text-white"
             >
               <Image
                 priority

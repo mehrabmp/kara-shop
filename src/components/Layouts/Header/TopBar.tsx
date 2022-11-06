@@ -28,10 +28,10 @@ export const TopBar = () => {
   useClickAway(ref, () => setIsChangeLocaleOpen(false));
 
   return (
-    <div className="bg-[#232323] text-gray-300 text-[10px] md:text-xs">
-      <div className="mx-auto px-4 py-1 flex flex-col items-center md:flex-row md:py-2.5 xl:container">
+    <div className="bg-[#232323] text-[10px] text-gray-300 md:text-xs">
+      <div className="mx-auto flex flex-col items-center px-4 py-1 md:flex-row md:py-2.5 xl:container">
         <p className="pb-2 md:pb-0">{t('topbar.discount')}</p>
-        <ul className="flex justify-center flex-wrap md:ml-auto">
+        <ul className="flex flex-wrap justify-center md:ml-auto">
           {topbarItems.map(([label, url, Icon]) => (
             <li
               key={label}
@@ -39,7 +39,7 @@ export const TopBar = () => {
             >
               <Link
                 href={url}
-                className="flex items-center hover:text-white transition-colors"
+                className="flex items-center transition-colors hover:text-white"
               >
                 {Icon && <Icon className="mx-1 md:text-sm"></Icon>}
                 <span>{label}</span>
@@ -47,11 +47,11 @@ export const TopBar = () => {
             </li>
           ))}
           <div
-            className="flex items-center cursor-pointer ml-2.5 relative z-50"
+            className="relative z-50 ml-2.5 flex cursor-pointer items-center"
             ref={ref}
             onClick={() => setIsChangeLocaleOpen(prev => !prev)}
           >
-            <div className="relative mr-1.5 w-3.5 h-3.5 md:w-[17px] md:h-[17px]">
+            <div className="relative mr-1.5 h-3.5 w-3.5 md:h-[17px] md:w-[17px]">
               <Image
                 priority
                 src={`/assets/${router.locale}-flag.svg`}

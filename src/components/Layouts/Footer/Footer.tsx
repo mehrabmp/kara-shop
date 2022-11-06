@@ -51,7 +51,7 @@ export const Footer = () => {
 
   return (
     <footer className="mb-16 md:mb-0">
-      <div className="max-w-7xl mx-auto px-4 py-10">
+      <div className="mx-auto max-w-7xl px-4 py-10">
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col md:flex-1">
             <Link href="/">
@@ -64,34 +64,34 @@ export const Footer = () => {
                 quality={100}
               />
             </Link>
-            <p className="text-sm font-normal text-neutral-500 py-4">
+            <p className="py-4 text-sm font-normal text-neutral-500">
               {t('kara')}
             </p>
-            <div className="flex justify-center my-5 md:justify-start">
+            <div className="my-5 flex justify-center md:justify-start">
               {socialMedias.map(([Icon, href]) => (
                 <Link
                   key={href}
                   href={href}
                   target="_blank"
-                  className="bg-neutral-200 text-neutral-600 rounded-lg p-2 mr-2 hover:bg-neutral-300 hover:text-neutral-700 transition"
+                  className="mr-2 rounded-lg bg-neutral-200 p-2 text-neutral-600 transition hover:bg-neutral-300 hover:text-neutral-700"
                 >
                   <Icon />
                 </Link>
               ))}
             </div>
           </div>
-          <div className="flex justify-between mt-5 md:flex-[2] md:justify-around md:mt-0">
+          <div className="mt-5 flex justify-between md:mt-0 md:flex-[2] md:justify-around">
             {footerLinks.map(({ label, links }) => (
               <div key={label} className="flex flex-col">
-                <strong className="mb-5 text-neutral-600 font-bold text-sm md:text-base">
+                <strong className="mb-5 text-sm font-bold text-neutral-600 md:text-base">
                   {label}
                 </strong>
-                <ul className="flex flex-col gap-2 font-normal text-xs text-neutral-500 md:text-sm">
+                <ul className="flex flex-col gap-2 text-xs font-normal text-neutral-500 md:text-sm">
                   {links.map(([label, href]) => (
                     <Link
                       key={href}
                       href={href}
-                      className="hover:text-neutral-700 transition"
+                      className="transition hover:text-neutral-700"
                     >
                       {label}
                     </Link>
@@ -103,8 +103,8 @@ export const Footer = () => {
         </div>
       </div>
       <div className="bg-neutral-100">
-        <div className="max-w-7xl mx-auto px-2 py-3">
-          <div className="flex flex-col gap-3 justify-between items-center text-neutral-700 font-medium text-xs md:flex-row">
+        <div className="mx-auto max-w-7xl px-2 py-3">
+          <div className="flex flex-col items-center justify-between gap-3 text-xs font-medium text-neutral-700 md:flex-row">
             <p>{t('copyright')}</p>
             <Link href="https://github.com/mehrabmp/kara-shop" target="_blank">
               <BsGithub size="1.25rem" />

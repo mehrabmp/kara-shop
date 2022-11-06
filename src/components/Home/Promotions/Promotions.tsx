@@ -10,21 +10,21 @@ export const Promotions = () => {
   const { t } = useTranslation('home');
 
   return (
-    <div className="mx-auto px-4 py-10 md:container flex flex-col items-center">
+    <div className="mx-auto flex flex-col items-center px-4 py-10 md:container">
       <span
         data-aos="fade-up"
-        className="font-bold text-sm text-violet-700 uppercase mb-4"
+        className="mb-4 text-sm font-bold uppercase text-violet-700"
       >
         {t('promotions.promotions')}
       </span>
       <h2
         data-aos="fade-up"
         data-aos-delay="200"
-        className="font-bold text-3xl text-black text-center mb-6 md:text-4xl"
+        className="mb-6 text-center text-3xl font-bold text-black md:text-4xl"
       >
         {t('promotions.title')}
       </h2>
-      <div className="grid gap-3 max-w-[1150px] w-full md:grid-cols-4">
+      <div className="grid w-full max-w-[1150px] gap-3 md:grid-cols-4">
         <Link href="/" className="col-span-2" data-aos="fade">
           <Image src={promobanner1} alt="promo banner 1 image" />
         </Link>
