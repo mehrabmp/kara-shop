@@ -23,20 +23,25 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "prisma-studio": "prisma studio",
+    "prisma-generate": "prisma generate",
+    "db-seed": "prisma db seed",
+    "db-reset": "prisma migrate reset",
+    "build": "run-s migrate && next build",
+    "migrate-dev": "prisma migrate dev",
+    "migrate": "prisma migrate deploy",
     "test": "run-s test:*",
     "test:unit": "jest --passWithNoTests",
     "test:e2e": "playwright test",
     "test-dev": "start-server-and-test dev 3000 test",
     "test-prod": "start-server-and-test start 3000 test",
     "prepare": "husky install",
-    "postinstall": "prisma generate",
-    "vercel-build": "prisma migrate deploy && next build"
+    "postinstall": "prisma generate"
   },
   "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.3",
@@ -91,7 +96,7 @@
     "prisma": "^4.3.1",
     "start-server-and-test": "^1.14.0",
     "tailwindcss": "^3.2.1",
-    "ts-node": "^10.9.1",
+    "tsx": "^3.11.0",
     "typescript": "4.8.4"
   }
 }
