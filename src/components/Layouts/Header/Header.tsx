@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { Transition } from '@headlessui/react';
 import { IconType } from 'react-icons';
@@ -11,6 +11,8 @@ import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 import { Collections } from 'types';
 import { BottomNavigation } from 'components/Layouts/BottomNavigation/BottomNavigation';
+import { signIn, useSession } from 'next-auth/react';
+
 const AnnouncementBar = dynamic(() => import('./AnnouncementBar'), {
   ssr: false,
 });
@@ -27,10 +29,15 @@ export interface NavLink {
 export const Header = ({ collections }: Props) => {
   const { t } = useTranslation('header');
 
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    console.log(status, session);
+  }, [status, session]);
+
   const sideNavLinks: [string, IconType][] = [
     ['wishlist', FiHeart],
     ['cart', FiShoppingBag],
-    ['login', FiUser],
   ];
   const [navLinks] = useState<NavLink[]>([
     { name: 'men', collapsible: true },
@@ -86,17 +93,19 @@ export const Header = ({ collections }: Props) => {
           <ul className="ml-auto items-center md:flex">
             <Search onSearch={value => console.log(value)} />
             {sideNavLinks.map(([url, Icon]) => (
-              <Link
-                key={url}
-                href={url}
-                className="ml-5 hidden first-of-type:ml-8 md:block"
-              >
+              <Link key={url} href={url} className="ml-5 hidden md:block">
                 <Icon
                   className="text-neutral-700 transition-colors hover:text-violet-700"
                   size="20px"
                 />
               </Link>
             ))}
+            <button className="ml-5 hidden md:block" onClick={() => signIn()}>
+              <FiUser
+                className="text-neutral-700 transition-colors hover:text-violet-700"
+                size="20px"
+              />
+            </button>
           </ul>
         </div>
         <Transition show={Boolean(hoveredNavLink?.collapsible)}>
