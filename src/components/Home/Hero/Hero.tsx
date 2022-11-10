@@ -40,7 +40,11 @@ export const Hero = () => {
             <FiShoppingCart />
             <span className="ml-2">{t('hero.shop')}</span>
           </Link>
-          <div className="mb-5 flex w-full flex-wrap justify-center md:justify-between">
+          <div
+            className="mb-5 flex w-full flex-wrap justify-center md:justify-between"
+            data-aos-delay="600"
+            data-aos="fade"
+          >
             {['bazaar', 'bustle', 'versace', 'instyle'].map((brand, index) => (
               <Image
                 key={index}
@@ -49,8 +53,6 @@ export const Hero = () => {
                 width={0}
                 height={0}
                 className={'mx-4 my-1 h-auto w-auto'}
-                data-aos="fade"
-                data-aos-delay="600"
               />
             ))}
           </div>
