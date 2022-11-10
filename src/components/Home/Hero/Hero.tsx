@@ -47,6 +47,7 @@ export const Hero = () => {
           >
             {['bazaar', 'bustle', 'versace', 'instyle'].map((brand, index) => (
               <Image
+                priority
                 key={index}
                 src={`/assets/${brand}.svg`}
                 alt={`${brand} brand`}
