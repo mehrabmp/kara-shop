@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
-import promobanner1 from '../../../../public/assets/promo-banner-1.svg';
-import promobanner2 from '../../../../public/assets/promo-banner-2.svg';
-import promobanner3 from '../../../../public/assets/promo-banner-3.svg';
-import promobanner4 from '../../../../public/assets/promo-banner-4.svg';
+import promobanner1 from '../../../../public/assets/promo-banner-1.webp';
+import promobanner2 from '../../../../public/assets/promo-banner-2.webp';
+import promobanner3 from '../../../../public/assets/promo-banner-3.webp';
+import promobanner4 from '../../../../public/assets/promo-banner-4.webp';
 
 export const Promotions = () => {
   const { t } = useTranslation('home');
