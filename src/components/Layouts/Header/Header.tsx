@@ -11,39 +11,42 @@ import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 import { Collections } from 'types';
 import { BottomNavigation } from 'components/Layouts/BottomNavigation/BottomNavigation';
+import { Signin } from './Signin';
+import { useSession, signOut } from 'next-auth/react';
 const AnnouncementBar = dynamic(() => import('./AnnouncementBar'), {
   ssr: false,
 });
-
-interface Props {
-  collections: Collections;
-}
 
 export interface NavLink {
   name: 'men' | 'women' | 'kids' | 'sale' | 'blog' | 'contacts';
   collapsible?: boolean;
 }
 
-export const Header = ({ collections }: Props) => {
+const navLinks: NavLink[] = [
+  { name: 'men', collapsible: true },
+  { name: 'women', collapsible: true },
+  { name: 'kids' },
+  { name: 'sale' },
+  { name: 'blog' },
+  { name: 'contacts' },
+];
+
+const sideNavLinks: [string, IconType][] = [
+  ['wishlist', FiHeart],
+  ['cart', FiShoppingBag],
+];
+
+export const Header = ({ collections }: { collections: Collections }) => {
   const { t } = useTranslation('header');
 
-  const sideNavLinks: [string, IconType][] = [
-    ['wishlist', FiHeart],
-    ['cart', FiShoppingBag],
-    ['login', FiUser],
-  ];
-  const [navLinks] = useState<NavLink[]>([
-    { name: 'men', collapsible: true },
-    { name: 'women', collapsible: true },
-    { name: 'kids' },
-    { name: 'sale' },
-    { name: 'blog' },
-    { name: 'contacts' },
-  ]);
+  const { data: session } = useSession();
+
+  console.log(session);
+
   const [hoveredNavLink, setHoveredNavLink] = useState<NavLink | null>();
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
   const handleShowMenu = (navLink: NavLink) => setHoveredNavLink(navLink);
-
   const handleCloseMenu = () => setHoveredNavLink(null);
 
   return (
@@ -86,17 +89,40 @@ export const Header = ({ collections }: Props) => {
           <ul className="ml-auto items-center md:flex">
             <Search onSearch={value => console.log(value)} />
             {sideNavLinks.map(([url, Icon]) => (
-              <Link
-                key={url}
-                href={url}
-                className="ml-5 hidden first-of-type:ml-8 md:block"
-              >
+              <Link key={url} href={url} className="ml-5 hidden md:block">
                 <Icon
                   className="text-neutral-700 transition-colors hover:text-violet-700"
                   size="20px"
                 />
               </Link>
             ))}
+            {!session ? (
+              <button
+                className="ml-5 hidden md:block"
+                onClick={() => setIsSignInModalOpen(true)}
+              >
+                <FiUser
+                  className="text-neutral-700 transition-colors hover:text-violet-700"
+                  size="20px"
+                />
+              </button>
+            ) : (
+              <button
+                className="ml-5 hidden rounded-full border border-solid border-violet-700 p-[2px] md:block"
+                onClick={() => signOut()}
+              >
+                {session.user?.image && (
+                  <Image
+                    src={session.user.image}
+                    alt="user profile image"
+                    width={30}
+                    height={30}
+                    className="overflow-hidden rounded-full"
+                    quality={100}
+                  />
+                )}
+              </button>
+            )}
           </ul>
         </div>
         <Transition show={Boolean(hoveredNavLink?.collapsible)}>
@@ -111,6 +137,10 @@ export const Header = ({ collections }: Props) => {
         </Transition>
       </div>
       <BottomNavigation navLinks={navLinks} collections={collections} />
+      <Signin
+        isOpen={isSignInModalOpen}
+        onClose={() => setIsSignInModalOpen(false)}
+      />
     </header>
   );
 };
