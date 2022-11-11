@@ -51,9 +51,9 @@ export const Hero = () => {
                 key={index}
                 src={`/assets/${brand}.svg`}
                 alt={`${brand} brand`}
-                width={0}
-                height={0}
-                className={'mx-4 my-1 h-auto w-auto'}
+                width={100}
+                height={50}
+                className={'mx-4 my-1'}
               />
             ))}
           </div>
