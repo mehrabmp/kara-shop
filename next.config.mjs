@@ -13,6 +13,18 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.googleusercontent.com',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
