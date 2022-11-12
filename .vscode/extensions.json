@@ -3,9 +3,10 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "editorconfig.editorconfig",
-    "mikestead.dotenv",
     "prisma.prisma",
     "bradlc.vscode-tailwindcss",
-    "ms-playwright.playwright"
+    "ms-playwright.playwright",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag"
   ]
 }
