@@ -7,6 +7,10 @@
     "download": "Mobile APP herunterladen",
     "phone": "+0125 258 192 502"
   },
+  "auth": {
+    "google": "Weiter mit Google",
+    "github": "Weiter mit Github"
+  },
   "men": "Männer",
   "women": "Frauen",
   "kids": "Kinder",
