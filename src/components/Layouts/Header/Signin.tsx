@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { BsGithub } from 'react-icons/bs';
 import { signIn } from 'next-auth/react';
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 
 interface Props {
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export const Signin = ({ isOpen, onClose }: Props) => {
+  const { t } = useTranslation('header');
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -55,7 +58,7 @@ export const Signin = ({ isOpen, onClose }: Props) => {
                       width="20"
                       height="20"
                     />
-                    Continue with Google
+                    {t('auth.google')}
                   </button>
                   <button
                     type="button"
@@ -63,7 +66,7 @@ export const Signin = ({ isOpen, onClose }: Props) => {
                     onClick={() => signIn('github')}
                   >
                     <BsGithub size="1.2rem" />
-                    Continue with Github
+                    {t('auth.github')}
                   </button>
                 </div>
               </Dialog.Panel>
