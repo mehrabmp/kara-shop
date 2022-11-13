@@ -50,7 +50,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="mb-16 md:mb-0">
+    <footer className="mb-16 bg-white md:mb-0">
       <div className="mx-auto max-w-7xl px-4 py-10">
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col md:flex-1">

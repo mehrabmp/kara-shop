@@ -18,7 +18,7 @@ const BOTTOM_NAVIGATION = [
   // ['Collections', '/#collections'],
   ['Cart', '/cart'],
   ['Wishlist', '/wishlist'],
-  ['Profile', '/login'],
+  ['Profile', '/signin'],
 ];
 
 test.describe('Header', () => {

@@ -54,8 +54,10 @@ model Account {
   providerAccountId        String
   refresh_token            String? @db.Text
   access_token             String? @db.Text
+  oauth_token              String? @db.Text // Twitter
+  oauth_token_secret       String? @db.Text // Twitter
   expires_at               Int?
-  refresh_token_expires_in Int?
+  refresh_token_expires_in Int? // Github
   token_type               String?
   scope                    String?
   id_token                 String? @db.Text
