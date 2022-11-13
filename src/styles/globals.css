@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 body {
-  background-color: #fff;
+  @apply bg-zinc-100;
 }
 
 #nprogress .bar {
-  @apply bg-violet-500 h-[3px];
+  @apply h-[3px] bg-violet-500;
 }
 
 /* Width */
