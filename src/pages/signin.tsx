@@ -22,13 +22,13 @@ const Signin: NextPageWithLayout = () => {
 
   return (
     <div className="mt-20 flex justify-center px-4">
-      <div className="w-full max-w-sm rounded-xl bg-white p-6 text-center">
+      <div className="w-full max-w-sm rounded-xl bg-white p-6 text-center text-base">
         <h3 className="mb-10 text-xl font-semibold leading-6 text-gray-900">
           Sign in
         </h3>
         <button
           type="button"
-          className="my-1.5 flex w-full items-center justify-center gap-3 rounded-md border border-solid border-zinc-400 bg-white px-4 py-2 text-lg font-medium transition hover:bg-zinc-100"
+          className="my-1.5 flex w-full items-center justify-center gap-3 rounded-md border border-solid border-zinc-400 bg-white px-4 py-2 font-medium transition hover:bg-zinc-100"
           onClick={() => signIn('google')}
         >
           <Image
@@ -41,7 +41,7 @@ const Signin: NextPageWithLayout = () => {
         </button>
         <button
           type="button"
-          className="my-1.5 flex w-full items-center justify-center gap-3 rounded-md bg-zinc-900 px-4 py-2 text-lg font-medium text-white transition hover:bg-black"
+          className="my-1.5 flex w-full items-center justify-center gap-3 rounded-md bg-zinc-900 px-4 py-2 font-medium text-white transition hover:bg-black"
           onClick={() => signIn('github')}
         >
           <BsGithub size="1.2rem" />
@@ -49,13 +49,13 @@ const Signin: NextPageWithLayout = () => {
         </button>
         <button
           type="button"
-          className="my-1.5 flex w-full items-center justify-center gap-3 rounded-md bg-[#1DA1F2] px-4 py-2 text-lg font-medium text-white transition hover:bg-[#0977ba]"
+          className="my-1.5 flex w-full items-center justify-center gap-3 rounded-md bg-[#1DA1F2] px-4 py-2 font-medium text-white transition hover:bg-[#0977ba]"
           onClick={() => signIn('twitter')}
         >
           <BsTwitter size="1.2rem" />
           {t('auth.twitter')}
         </button>
-        <p className="mt-10 text-sm font-normal">
+        <p className="mt-10 text-xs font-normal">
           By signing in, you agree to our{' '}
           <Link href="terms-service" className="text-blue-600 hover:underline">
             Terms of Service
