@@ -11,7 +11,6 @@ import { TopBar } from './TopBar';
 import { MegaMenu } from './MegaMenu';
 import { Collections } from 'types';
 import { BottomNavigation } from 'components/Layouts/BottomNavigation/BottomNavigation';
-import { Signin } from './Signin';
 import { useSession, signOut } from 'next-auth/react';
 const AnnouncementBar = dynamic(() => import('./AnnouncementBar'), {
   ssr: false,
@@ -34,6 +33,7 @@ const navLinks: NavLink[] = [
 const sideNavLinks: [string, IconType][] = [
   ['wishlist', FiHeart],
   ['cart', FiShoppingBag],
+  ['signin', FiUser],
 ];
 
 export const Header = ({ collections }: { collections: Collections }) => {
@@ -41,10 +41,7 @@ export const Header = ({ collections }: { collections: Collections }) => {
 
   const { data: session } = useSession();
 
-  console.log(session);
-
   const [hoveredNavLink, setHoveredNavLink] = useState<NavLink | null>();
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
   const handleShowMenu = (navLink: NavLink) => setHoveredNavLink(navLink);
   const handleCloseMenu = () => setHoveredNavLink(null);
@@ -96,17 +93,7 @@ export const Header = ({ collections }: { collections: Collections }) => {
                 />
               </Link>
             ))}
-            {!session ? (
-              <button
-                className="ml-5 hidden md:block"
-                onClick={() => setIsSignInModalOpen(true)}
-              >
-                <FiUser
-                  className="text-neutral-700 transition-colors hover:text-violet-700"
-                  size="20px"
-                />
-              </button>
-            ) : (
+            {session && (
               <button
                 className="ml-5 hidden rounded-full border border-solid border-violet-700 p-[2px] md:block"
                 onClick={() => signOut()}
@@ -137,10 +124,6 @@ export const Header = ({ collections }: { collections: Collections }) => {
         </Transition>
       </div>
       <BottomNavigation navLinks={navLinks} collections={collections} />
-      <Signin
-        isOpen={isSignInModalOpen}
-        onClose={() => setIsSignInModalOpen(false)}
-      />
     </header>
   );
 };

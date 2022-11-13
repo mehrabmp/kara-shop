@@ -30,7 +30,7 @@ export const BottomNavigation = ({ navLinks, collections }: Props) => {
     { title: t('common:collections'), url: '/#collections', Icon: FiGrid },
     { title: t('common:cart'), url: '/cart', Icon: FiShoppingBag },
     { title: t('common:wishlist'), url: '/wishlist', Icon: FiHeart },
-    { title: t('common:profile'), url: '/login', Icon: FiUser },
+    { title: t('common:profile'), url: '/signin', Icon: FiUser },
   ];
 
   return (

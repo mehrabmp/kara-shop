@@ -9,7 +9,8 @@
   },
   "auth": {
     "google": "Weiter mit Google",
-    "github": "Weiter mit Github"
+    "github": "Weiter mit Github",
+    "twitter": "Weiter mit Twitter"
   },
   "men": "Männer",
   "women": "Frauen",
