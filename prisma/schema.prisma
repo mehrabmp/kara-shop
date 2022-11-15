@@ -13,6 +13,9 @@ model Product {
   updatedAt       DateTime         @updatedAt
   title           String           @db.VarChar(255)
   description     String
+  price           Int
+  images          String[]
+  rate            Float
   published       Boolean          @default(false)
   type            CollectionType[]
   collection      Collection       @relation(fields: [collectionId], references: [id])
