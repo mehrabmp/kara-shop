@@ -4,3 +4,6 @@ export * from './Layouts/Footer/Footer';
 export * from './Home/Hero/Hero';
 export * from './Home/Promotions/Promotions';
 export * from './Ui/Accordion/Accordion';
+export * from './Products/Navigation/Navigation';
+export * from './Products/ProductsList/ProductsList';
+export * from './Ui/Rating/Rating';
