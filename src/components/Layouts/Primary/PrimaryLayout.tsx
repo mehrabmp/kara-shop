@@ -49,7 +49,7 @@ export const PrimaryLayout = ({
       </Head>
       <div className="min-h-screen">
         <Header collections={data} />
-        <main>{children}</main>
+        {children}
       </div>
       <Footer />
     </>

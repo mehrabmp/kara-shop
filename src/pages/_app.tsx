@@ -13,7 +13,7 @@ import 'nprogress/nprogress.css';
 import 'styles/globals.css';
 import 'aos/dist/aos.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export type NextPageWithLayout<P = unknown> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -52,16 +52,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   }, []);
 
   return (
-    <>
-      <style jsx global>{`
-        html {
-          font-family: ${inter.style.fontFamily};
-        }
-      `}</style>
-      <SessionProvider session={pageProps.session}>
+    <SessionProvider session={pageProps.session}>
+      <main className={`${inter.variable} font-sans`}>
         {getLayout(<Component {...pageProps} />)}
-      </SessionProvider>
-    </>
+      </main>
+    </SessionProvider>
   );
 }
 
