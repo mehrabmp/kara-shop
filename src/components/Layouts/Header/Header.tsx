@@ -22,7 +22,7 @@ export interface NavLink {
   collapsible?: boolean;
 }
 
-const navLinks: NavLink[] = [
+export const navLinks: NavLink[] = [
   { name: 'men', href: '/products/men', collapsible: true },
   { name: 'women', href: '/products/women', collapsible: true },
   { name: 'kids', href: '/products/kids' },
@@ -31,7 +31,7 @@ const navLinks: NavLink[] = [
   { name: 'contacts', href: '/contacts' },
 ];
 
-const sideNavLinks: [string, IconType][] = [
+export const sideNavLinks: [string, IconType][] = [
   ['/wishlist', FiHeart],
   ['/cart', FiShoppingBag],
   ['/signin', FiUser],
