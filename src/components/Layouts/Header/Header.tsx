@@ -18,22 +18,23 @@ const AnnouncementBar = dynamic(() => import('./AnnouncementBar'), {
 
 export interface NavLink {
   name: 'men' | 'women' | 'kids' | 'sale' | 'blog' | 'contacts';
+  href: string;
   collapsible?: boolean;
 }
 
-const navLinks: NavLink[] = [
-  { name: 'men', collapsible: true },
-  { name: 'women', collapsible: true },
-  { name: 'kids' },
-  { name: 'sale' },
-  { name: 'blog' },
-  { name: 'contacts' },
+export const navLinks: NavLink[] = [
+  { name: 'men', href: '/products/men', collapsible: true },
+  { name: 'women', href: '/products/women', collapsible: true },
+  { name: 'kids', href: '/products/kids' },
+  { name: 'sale', href: '/sale' },
+  { name: 'blog', href: '/blog' },
+  { name: 'contacts', href: '/contacts' },
 ];
 
-const sideNavLinks: [string, IconType][] = [
-  ['wishlist', FiHeart],
-  ['cart', FiShoppingBag],
-  ['signin', FiUser],
+export const sideNavLinks: [string, IconType][] = [
+  ['/wishlist', FiHeart],
+  ['/cart', FiShoppingBag],
+  ['/signin', FiUser],
 ];
 
 export const Header = ({ collections }: { collections: Collections }) => {
@@ -75,7 +76,7 @@ export const Header = ({ collections }: { collections: Collections }) => {
                 onMouseLeave={handleCloseMenu}
               >
                 <Link
-                  href={item.name}
+                  href={item.href}
                   className="flex h-full items-center px-5"
                 >
                   {t(item.name)}

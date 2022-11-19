@@ -1,4 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
+import { navLinks } from '../src/components/Layouts/Header/Header';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -10,8 +11,6 @@ const TOPBAR_LINKS = [
   ['Buyer Protection', '/buyer'],
   ['Download Mobile App', 'https://play.google.com/store/apps'],
 ];
-
-const MENU_ITEMS = ['Men', 'Women', 'Kids', 'Sale', 'Blog', 'Contacts'];
 
 const BOTTOM_NAVIGATION = [
   ['Home', '/'],
@@ -77,8 +76,8 @@ test.describe('Header', () => {
     });
 
     test('Menu items should redirect to the correct page', async ({ page }) => {
-      for (const item of MENU_ITEMS) {
-        await testLink(page, item, item.toLowerCase());
+      for (const item of navLinks) {
+        await testLink(page, item.name, item.href);
         await page.goBack();
       }
     });
@@ -87,12 +86,14 @@ test.describe('Header', () => {
   test.describe('Mega Menu', () => {
     // Hover on menu item to show mega menu before each test
     test.beforeEach(async ({ page }) => {
-      await page.getByRole('link', { name: 'Men' }).hover();
+      await page.getByRole('link', { name: /^Men$/i }).hover();
     });
 
     test('Mega menu should popup on menu item hover', async ({ page }) => {
-      await expect(page.getByRole('link', { name: 'Shoes' })).toBeVisible();
-      await expect(page.getByRole('link', { name: "All Men's" })).toBeVisible();
+      await expect(page.getByRole('link', { name: /^Shoes$/i })).toBeVisible();
+      await expect(
+        page.getByRole('link', { name: /^All Men's$/i })
+      ).toBeVisible();
     });
 
     test('Collections should redirect to the correct page', async ({
@@ -143,15 +144,17 @@ test.describe('Bottom Navigation', () => {
   }) => {
     await page.getByRole('link', { name: 'Collections' }).click();
 
-    await page.getByRole('button', { name: 'Men' }).click();
-    await page.getByRole('button', { name: 'Shoes' }).click();
+    await page.getByRole('button', { name: /^Men$/i }).click();
+    await page.getByRole('button', { name: /^Shoes$/i }).click();
 
-    await page.getByRole('link', { name: 'Sneakers' }).click();
+    await page.getByRole('link', { name: /^Sneakers$/i }).click();
     await expect(page).toHaveURL('/men/shoes/sneakers');
   });
 });
 
 const testLink = async (page: Page, name: string, URL: string) => {
-  await page.getByRole('link', { name }).click();
+  await page
+    .getByRole('link', { name: new RegExp('^' + name + '$', 'i') })
+    .click();
   await expect(page).toHaveURL(URL);
 };
