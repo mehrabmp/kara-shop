@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { collections, subCollections } from '../src/data';
+import { collections, products, subCollections } from '../src/data';
 
 const prisma = new PrismaClient();
 
@@ -12,7 +12,15 @@ async function main() {
     data: subCollections,
   });
 
-  await prisma.$transaction([createCollections, createSubCollections]);
+  const createProducts = prisma.product.createMany({
+    data: products,
+  });
+
+  await prisma.$transaction([
+    createCollections,
+    createSubCollections,
+    createProducts,
+  ]);
 }
 
 main()
