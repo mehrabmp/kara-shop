@@ -5,12 +5,12 @@ import { FiChevronDown } from 'react-icons/fi';
 import { AccordionContext, useAccordionContext } from './AccordionContext';
 
 interface Props {
-  isOpen?: boolean;
+  open?: boolean;
   children: React.ReactNode;
 }
 
-export const Accordion = ({ isOpen = false, children }: Props) => {
-  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(isOpen);
+export const Accordion = ({ open = false, children }: Props) => {
+  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(open);
 
   return (
     <AccordionContext.Provider value={{ isAccordionOpen, setIsAccordionOpen }}>
@@ -27,14 +27,14 @@ const Header = ({
 
   return (
     <button
-      className={`flex w-full items-center justify-between py-4 text-left`}
+      className={`flex w-full items-center justify-between py-4`}
       onClick={() => setIsAccordionOpen(prev => !prev)}
       {...props}
     >
       <span>{children}</span>
       <FiChevronDown
         size="1rem"
-        className={clsx('mr-1 transition duration-200', {
+        className={clsx('transition duration-200', {
           'rotate-180 transform': isAccordionOpen,
         })}
       />
