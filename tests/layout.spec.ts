@@ -148,7 +148,7 @@ test.describe('Bottom Navigation', () => {
     await page.getByRole('button', { name: /^Shoes$/i }).click();
 
     await page.getByRole('link', { name: /^Sneakers$/i }).click();
-    await expect(page).toHaveURL('/men/shoes/sneakers');
+    await expect(page).toHaveURL('/products/men/shoes/sneakers');
   });
 });
 
