@@ -1,34 +1,64 @@
 import clsx from 'clsx';
 import AnimateHeight from 'react-animate-height';
-import { useState } from 'react';
-import { FiChevronUp } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
+import { AccordionContext, useAccordionContext } from './AccordionContext';
 
 interface Props {
-  name: string;
   open?: boolean;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export const Accordion = ({ name, open, children }: Props) => {
-  const [isOpen, setIsOpen] = useState(open);
+export const Accordion = ({ open = false, children }: Props) => {
+  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(open);
 
   return (
-    <>
-      <button
-        className={`flex w-full justify-between rounded-lg px-4 py-2.5 text-left text-sm font-semibold text-neutral-600 outline-none transition focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-700 focus-visible:ring-opacity-75`}
-        onClick={() => setIsOpen(prev => !prev)}
-      >
-        <span>{name}</span>
-        <FiChevronUp
-          size="1rem"
-          className={clsx('transition duration-200', {
-            'rotate-180 transform': isOpen,
-          })}
-        />
-      </button>
-      <AnimateHeight duration={200} height={isOpen ? 'auto' : 0} animateOpacity>
-        <div className="px-4 pb-3">{children}</div>
-      </AnimateHeight>
-    </>
+    <AccordionContext.Provider value={{ isAccordionOpen, setIsAccordionOpen }}>
+      {children}
+    </AccordionContext.Provider>
   );
 };
+
+const Header = ({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'button'>) => {
+  const { isAccordionOpen, setIsAccordionOpen } = useAccordionContext();
+
+  return (
+    <button
+      className={`flex w-full items-center justify-between py-4`}
+      onClick={() => setIsAccordionOpen(prev => !prev)}
+      {...props}
+    >
+      <span>{children}</span>
+      <FiChevronDown
+        size="1rem"
+        className={clsx('transition duration-200', {
+          'rotate-180 transform': isAccordionOpen,
+        })}
+      />
+    </button>
+  );
+};
+
+const Body = ({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) => {
+  const { isAccordionOpen } = useAccordionContext();
+
+  return (
+    <AnimateHeight
+      duration={200}
+      height={isAccordionOpen ? 'auto' : 0}
+      animateOpacity
+      {...props}
+    >
+      {children}
+    </AnimateHeight>
+  );
+};
+
+Accordion.Header = Header;
+Accordion.Body = Body;
