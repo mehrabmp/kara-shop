@@ -30,27 +30,32 @@ export const Navigation = () => {
   return (
     <div className="flex h-[500px] flex-col gap-2 rounded-lg bg-white p-2">
       <div className="rounded-lg bg-neutral-100">
-        <Accordion name="PRODUCT RATE" open>
-          <ul className="flex flex-col gap-3">
-            {rateOptions.map(rate => (
-              <li key={rate} className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  name="high-rate"
-                  id="high-rate"
-                  className="h-4 w-4 rounded border-gray-300 text-violet-700 focus:ring-violet-700"
-                />
-                <label htmlFor="high-rate" className="flex items-center gap-3">
-                  <Rating defaultValue={rate} size="small" />
-                  <span className="text-sm font-medium">{rate}+</span>
-                </label>
-              </li>
-            ))}
-          </ul>
+        <Accordion open>
+          <Accordion.Header className="flex w-full items-center justify-between px-4 py-2.5 text-sm font-semibold text-neutral-600">
+            PRODUCT RATE
+          </Accordion.Header>
+          <Accordion.Body>
+            <ul className="flex flex-col gap-3 px-4 pb-2.5">
+              {rateOptions.map(rate => (
+                <li key={rate} className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    name="high-rate"
+                    id="high-rate"
+                    className="h-4 w-4 rounded border-gray-300 text-violet-700 focus:ring-violet-700"
+                  />
+                  <label
+                    htmlFor="high-rate"
+                    className="flex items-center gap-3"
+                  >
+                    <Rating defaultValue={rate} size="small" />
+                    <span className="text-sm font-medium">{rate}+</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </Accordion.Body>
         </Accordion>
-      </div>
-      <div className="rounded-lg bg-neutral-100">
-        <Accordion name="PRODUCT PRICE" open></Accordion>
       </div>
     </div>
   );
