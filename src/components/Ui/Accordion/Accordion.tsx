@@ -22,7 +22,7 @@ export const Accordion = ({ open = false, children }: Props) => {
 const Header = ({
   children,
   ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+}: React.ComponentPropsWithoutRef<'button'>) => {
   const { isAccordionOpen, setIsAccordionOpen } = useAccordionContext();
 
   return (
@@ -42,7 +42,10 @@ const Header = ({
   );
 };
 
-const Body = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+const Body = ({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) => {
   const { isAccordionOpen } = useAccordionContext();
 
   return (
