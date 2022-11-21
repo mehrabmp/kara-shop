@@ -40,7 +40,7 @@ export const MegaMenu = ({
               ].map((item, index) => (
                 <li key={index}>
                   <Link
-                    href={convertToSlug(item)}
+                    href={`/${convertToSlug(item)}`}
                     className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
                     onClick={onCloseMenu}
                   >
@@ -59,7 +59,7 @@ export const MegaMenu = ({
               ].map((item, index) => (
                 <li key={index}>
                   <Link
-                    href={convertToSlug(item)}
+                    href={`/${convertToSlug(item)}`}
                     className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
                     onClick={onCloseMenu}
                   >
@@ -68,7 +68,7 @@ export const MegaMenu = ({
                 </li>
               ))}
             </ul>
-            <Link href="offer" onClick={onCloseMenu}>
+            <Link href="/offer" onClick={onCloseMenu}>
               <Image
                 priority
                 src="/assets/offer.webp"
@@ -89,7 +89,7 @@ export const MegaMenu = ({
                 className="ml-4 w-full max-w-[150px] py-8"
               >
                 <Link
-                  href={`${type}/${convertToSlug(collection.title)}`}
+                  href={`/products/${type}/${convertToSlug(collection.title)}`}
                   onClick={onCloseMenu}
                 >
                   <p className="text-sm font-bold uppercase leading-4 tracking-widest text-neutral-800 hover:underline">
@@ -100,7 +100,7 @@ export const MegaMenu = ({
                   {collection.subCollections.map(subCollection => (
                     <li key={subCollection.id}>
                       <Link
-                        href={`${type}/${convertToSlug(
+                        href={`/products/${type}/${convertToSlug(
                           collection.title
                         )}/${convertToSlug(subCollection.title)}`}
                         className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
@@ -119,7 +119,7 @@ export const MegaMenu = ({
         <div className="mx-auto flex max-w-7xl">
           <div className="flex flex-1 items-center">
             <Link
-              href="sale"
+              href="/sale"
               className="ml-4 w-full max-w-[150px] py-3 text-xs font-bold text-neutral-800 hover:underline"
               onClick={onCloseMenu}
             >
@@ -131,7 +131,7 @@ export const MegaMenu = ({
               (item, index) => (
                 <Link
                   key={index}
-                  href={`${type}/${item}`}
+                  href={`/products/${type}/${item}`}
                   className="ml-4 w-full max-w-[150px] py-3 text-xs font-bold text-neutral-800 hover:underline"
                   onClick={onCloseMenu}
                 >
