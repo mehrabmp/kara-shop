@@ -25,7 +25,7 @@ export const MegaMenu = ({
       <div className="mx-auto flex max-w-7xl">
         <div className="flex flex-1">
           <div className="ml-4 py-8">
-            <Link href={type}>
+            <Link href={type} onClick={onCloseMenu}>
               <p className="text-sm font-bold uppercase leading-4 tracking-widest text-neutral-800 hover:underline">
                 New & Trending
               </p>
@@ -42,6 +42,7 @@ export const MegaMenu = ({
                   <Link
                     href={convertToSlug(item)}
                     className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
+                    onClick={onCloseMenu}
                   >
                     {item}
                   </Link>
@@ -60,13 +61,14 @@ export const MegaMenu = ({
                   <Link
                     href={convertToSlug(item)}
                     className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
+                    onClick={onCloseMenu}
                   >
                     {item}
                   </Link>
                 </li>
               ))}
             </ul>
-            <Link href="offer">
+            <Link href="offer" onClick={onCloseMenu}>
               <Image
                 priority
                 src="/assets/offer.webp"
@@ -86,7 +88,10 @@ export const MegaMenu = ({
                 key={collection.id}
                 className="ml-4 w-full max-w-[150px] py-8"
               >
-                <Link href={`${type}/${convertToSlug(collection.title)}`}>
+                <Link
+                  href={`${type}/${convertToSlug(collection.title)}`}
+                  onClick={onCloseMenu}
+                >
                   <p className="text-sm font-bold uppercase leading-4 tracking-widest text-neutral-800 hover:underline">
                     {collection.title}
                   </p>
@@ -99,6 +104,7 @@ export const MegaMenu = ({
                           collection.title
                         )}/${convertToSlug(subCollection.title)}`}
                         className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
+                        onClick={onCloseMenu}
                       >
                         {subCollection.title}
                       </Link>
@@ -115,6 +121,7 @@ export const MegaMenu = ({
             <Link
               href="sale"
               className="ml-4 w-full max-w-[150px] py-3 text-xs font-bold text-neutral-800 hover:underline"
+              onClick={onCloseMenu}
             >
               Sale
             </Link>
@@ -126,6 +133,7 @@ export const MegaMenu = ({
                   key={index}
                   href={`${type}/${item}`}
                   className="ml-4 w-full max-w-[150px] py-3 text-xs font-bold text-neutral-800 hover:underline"
+                  onClick={onCloseMenu}
                 >
                   {`All ${capitalizeFirstLetter(
                     type
