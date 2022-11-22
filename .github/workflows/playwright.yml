@@ -11,15 +11,20 @@ jobs:
       - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
+
       - uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '16.x'
+          cache: 'pnpm'
+
       - name: Install dependencies
         run: pnpm install
+
       - name: Install Playwright
-        run: npx playwright install --with-deps
+        run: pnpm playwright install chromium
+
       - name: Run Playwright tests
-        run: npx playwright test
+        run: pnpm playwright test
         env:
           # This might depend on your test-runner/language binding
           PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
