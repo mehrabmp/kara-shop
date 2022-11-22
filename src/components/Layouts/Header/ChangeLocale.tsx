@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { Transition } from '@headlessui/react';
 
 interface Props {
@@ -7,6 +8,9 @@ interface Props {
 }
 
 export const ChangeLocale = ({ isOpen }: Props) => {
+  const router = useRouter();
+  const { pathname, asPath, query } = router;
+
   const locales = [
     ['en', 'English', '/assets/en-flag.svg'],
     ['de', 'German', '/assets/de-flag.svg'],
@@ -25,10 +29,11 @@ export const ChangeLocale = ({ isOpen }: Props) => {
       <ul className="absolute right-0 flex w-[90px] flex-col overflow-hidden rounded-lg bg-black text-xs shadow-md shadow-neutral-400">
         {locales.map(([locale, label, flagURL]) => (
           <li key={locale} className="transition-colors hover:bg-neutral-600">
-            <Link
-              href="/"
-              locale={locale}
+            <button
               className="flex items-center py-1 px-2 text-white"
+              onClick={() =>
+                router.push({ pathname, query }, asPath, { locale })
+              }
             >
               <Image
                 priority
@@ -38,7 +43,7 @@ export const ChangeLocale = ({ isOpen }: Props) => {
                 height={17}
               />
               <span className="ml-2">{label}</span>
-            </Link>
+            </button>
           </li>
         ))}
       </ul>
