@@ -34,7 +34,7 @@ test.describe('Header', () => {
     test('Change website language to de', async ({ page }) => {
       await page.getByRole('img', { name: 'en locale' }).click();
 
-      await page.getByRole('link', { name: 'de locale German' }).click();
+      await page.getByRole('button', { name: 'de locale German' }).click();
       await expect(page).toHaveURL('/de');
 
       await expect(page.getByRole('link', { name: 'Hilfe' })).toBeVisible();
@@ -47,7 +47,7 @@ test.describe('Header', () => {
 
       await page.getByRole('img', { name: 'de locale' }).click();
 
-      await page.getByRole('link', { name: 'en locale English' }).click();
+      await page.getByRole('button', { name: 'en locale English' }).click();
       await expect(page).toHaveURL('/');
 
       await expect(page.getByRole('link', { name: 'Help' })).toBeVisible();
