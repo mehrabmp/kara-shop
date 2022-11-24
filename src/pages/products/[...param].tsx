@@ -21,7 +21,7 @@ const Products: NextPageWithLayout = () => {
         <div className="hidden flex-1 md:block">
           <Navigation />
         </div>
-        <div className="flex-[4]">
+        <div className="flex-[5]">
           <ProductsList />
         </div>
       </div>
