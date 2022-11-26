@@ -13,10 +13,10 @@ specifiers:
   '@tailwindcss/line-clamp': ^0.4.2
   '@tailwindcss/typography': ^0.5.8
   '@tanstack/react-query': ^4.14.5
-  '@trpc/client': 10.0.0
-  '@trpc/next': 10.0.0
-  '@trpc/react-query': 10.0.0
-  '@trpc/server': 10.0.0
+  '@trpc/client': 10.2.0
+  '@trpc/next': 10.2.0
+  '@trpc/react-query': 10.2.0
+  '@trpc/server': 10.2.0
   '@types/aos': ^3.0.4
   '@types/jest': ^29.2.2
   '@types/node': 18.11.9
@@ -43,8 +43,8 @@ specifiers:
   npm-run-all: ^4.1.5
   nprogress: ^0.2.0
   postcss: ^8.4.18
-  prettier: 2.7.1
-  prettier-plugin-tailwindcss: ^0.1.13
+  prettier: 2.8.0
+  prettier-plugin-tailwindcss: ^0.2.0
   prisma: ^4.6.0
   react: ^18.2.0
   react-animate-height: ^3.0.5
@@ -67,10 +67,10 @@ dependencies:
   '@next/font': 13.0.4
   '@prisma/client': 4.6.1_prisma@4.6.1
   '@tanstack/react-query': 4.16.1_biqbaboplfbrettd7655fr4n2y
-  '@trpc/client': 10.0.0_@trpc+server@10.0.0
-  '@trpc/next': 10.0.0_lvt3mlb7e4c6xftcrglyiibuci
-  '@trpc/react-query': 10.0.0_4552jruvein5zm6wk4q22v5i4u
-  '@trpc/server': 10.0.0
+  '@trpc/client': 10.2.0_@trpc+server@10.2.0
+  '@trpc/next': 10.2.0_uplp2oz2mpmps4f5fxbfqadsdu
+  '@trpc/react-query': 10.2.0_oykib3pmqnjei6ziezmfl6kl6a
+  '@trpc/server': 10.2.0
   aos: 2.3.4
   clsx: 1.2.1
   i18next: 22.0.6
@@ -116,8 +116,8 @@ devDependencies:
   lint-staged: 13.0.3
   npm-run-all: 4.1.5
   postcss: 8.4.19
-  prettier: 2.7.1
-  prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
+  prettier: 2.8.0
+  prettier-plugin-tailwindcss: 0.2.0_prettier@2.8.0
   prisma: 4.6.1
   start-server-and-test: 1.14.0
   tailwindcss: 3.2.4_postcss@8.4.19
@@ -1734,65 +1734,53 @@ packages:
     engines: { node: '>= 10' }
     dev: true
 
-  /@trpc/client/10.0.0_@trpc+server@10.0.0:
-    resolution:
-      {
-        integrity: sha512-qxYbpFvokyL0SHSck/roBvG5/tORm+jTqzr+hnwyCghE4MQ0EGoyBImgdgUDAkTEjdarYTy1I3YplUw48QF4gQ==,
-      }
+  /@trpc/client/10.2.0_@trpc+server@10.2.0:
+    resolution: {integrity: sha512-Mehf6euqMzAak+Umay1LKol9nC716yBjHNqrF6blWY/n2hwSICrLXQwveNaHK7qjKXJ86b4aDW39KR02WCQP4A==}
     peerDependencies:
-      '@trpc/server': 10.0.0
+      '@trpc/server': 10.2.0
     dependencies:
-      '@trpc/server': 10.0.0
+      '@trpc/server': 10.2.0
     dev: false
 
-  /@trpc/next/10.0.0_lvt3mlb7e4c6xftcrglyiibuci:
-    resolution:
-      {
-        integrity: sha512-ka7N2fFTGDsfX5wctyJzTV6Ci6godGA0s75gWoeTU1gAsXzE9Hkt/ozarzlrcpiFSjLBeGhIyuB4RbFN29VGTw==,
-      }
+  /@trpc/next/10.2.0_uplp2oz2mpmps4f5fxbfqadsdu:
+    resolution: {integrity: sha512-1zbZb9Xd6nYVZfgb6zNA6fLzZ5CWZjd7KYSUIWY0Bh7cVjDAmAtIj2wC3wcXWI7UsKntLIpvUB4XMEsFK/RxiQ==}
     peerDependencies:
       '@tanstack/react-query': ^4.3.8
-      '@trpc/client': 10.0.0
+      '@trpc/client': 10.2.0
       '@trpc/react-query': ^10.0.0-proxy-beta.21
-      '@trpc/server': 10.0.0
+      '@trpc/server': 10.2.0
       next: '*'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.16.1_biqbaboplfbrettd7655fr4n2y
-      '@trpc/client': 10.0.0_@trpc+server@10.0.0
-      '@trpc/react-query': 10.0.0_4552jruvein5zm6wk4q22v5i4u
-      '@trpc/server': 10.0.0
+      '@trpc/client': 10.2.0_@trpc+server@10.2.0
+      '@trpc/react-query': 10.2.0_oykib3pmqnjei6ziezmfl6kl6a
+      '@trpc/server': 10.2.0
       next: 13.0.4_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-ssr-prepass: 1.5.0_react@18.2.0
     dev: false
 
-  /@trpc/react-query/10.0.0_4552jruvein5zm6wk4q22v5i4u:
-    resolution:
-      {
-        integrity: sha512-5+Lux1kT0HGmoo606Xq9cPssYZBZeeBwLTmmKwLagGYTbgxaWF+T0LMbqmkL3E8U8KBj9BPUm1PgFGWsJMdf+A==,
-      }
+  /@trpc/react-query/10.2.0_oykib3pmqnjei6ziezmfl6kl6a:
+    resolution: {integrity: sha512-OH1T1VztPp9qG66cvxPd/Sr9pPsDn+nFmgWtpJmoiTgZJ2DnUPsdi9DVkXdaE9M2OwdoXhFqwboclPzaUAD22g==}
     peerDependencies:
       '@tanstack/react-query': ^4.3.8
-      '@trpc/client': 10.0.0
-      '@trpc/server': 10.0.0
+      '@trpc/client': 10.2.0
+      '@trpc/server': 10.2.0
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.16.1_biqbaboplfbrettd7655fr4n2y
-      '@trpc/client': 10.0.0_@trpc+server@10.0.0
-      '@trpc/server': 10.0.0
+      '@trpc/client': 10.2.0_@trpc+server@10.2.0
+      '@trpc/server': 10.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@trpc/server/10.0.0:
-    resolution:
-      {
-        integrity: sha512-PnSlKM3WtguEb1hryekuVlR00QOR8nbFKuZbuLbzfkLju+xOB+F3NplWW5YMVBywWdJKasX/inQDKur2SHyPfg==,
-      }
+  /@trpc/server/10.2.0:
+    resolution: {integrity: sha512-WGOA2bk6JOnOywUu1gkAgwqnxZ5g+vNkL9EpCGLgKYwwMcjAwgNRgYzLPsDsR1XL48wmdYOzfWzJ0G575+g/jA==}
     dev: false
 
   /@tsconfig/node10/1.0.9:
@@ -7722,24 +7710,18 @@ packages:
     engines: { node: '>= 0.8.0' }
     dev: true
 
-  /prettier-plugin-tailwindcss/0.1.13_prettier@2.7.1:
-    resolution:
-      {
-        integrity: sha512-/EKQURUrxLu66CMUg4+1LwGdxnz8of7IDvrSLqEtDqhLH61SAlNNUSr90UTvZaemujgl3OH/VHg+fyGltrNixw==,
-      }
-    engines: { node: '>=12.17.0' }
+  /prettier-plugin-tailwindcss/0.2.0_prettier@2.8.0:
+    resolution: {integrity: sha512-Ruqig/mdWCSpqdq9WK44nrmqM4BFWTzBPhPGwC5NK3coV9eZntEQPB84MGZbjAg0XQU02jVRHXNRPREBzxvM+A==}
+    engines: {node: '>=12.17.0'}
     peerDependencies:
       prettier: '>=2.2.0'
     dependencies:
-      prettier: 2.7.1
+      prettier: 2.8.0
     dev: true
 
-  /prettier/2.7.1:
-    resolution:
-      {
-        integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==,
-      }
-    engines: { node: '>=10.13.0' }
+  /prettier/2.8.0:
+    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
+    engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
 

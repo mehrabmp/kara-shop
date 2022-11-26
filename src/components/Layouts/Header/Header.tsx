@@ -78,6 +78,7 @@ export const Header = ({ collections }: { collections: Collections }) => {
                 <Link
                   href={item.href}
                   className="flex h-full items-center px-5"
+                  onClick={handleCloseMenu}
                 >
                   {t(item.name)}
                 </Link>

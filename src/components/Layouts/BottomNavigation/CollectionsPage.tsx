@@ -67,6 +67,7 @@ export const CollectionsPage = ({
                                         )}/${convertToSlug(
                                           subCollection.title
                                         )}`}
+                                        onClick={onPageClose}
                                       >
                                         <h3>{subCollection.title}</h3>
                                       </Link>
@@ -83,7 +84,11 @@ export const CollectionsPage = ({
                 </Accordion.Body>
               </Accordion>
             ) : (
-              <Link href={item.name} className="block py-4">
+              <Link
+                href={item.name}
+                className="block py-4"
+                onClick={onPageClose}
+              >
                 <h3>{t(`header:${item.name}`)}</h3>
               </Link>
             )}
