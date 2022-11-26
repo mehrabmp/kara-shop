@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 
 interface ContextInterface {
-  addQueryParam: (key: string, value: string) => void;
+  addQueryParam: (key: string, value: string | string[]) => void;
   removeQueryParam: (key: string) => void;
 }
 
