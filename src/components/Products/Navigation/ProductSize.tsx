@@ -1,25 +1,23 @@
-import { Accordion } from 'components';
 import { useRouter } from 'next/router';
-import { useNavigationContext } from './NavigationContext';
+import { Accordion } from 'components';
 
 const sizeOptions = ['S', 'M', 'L', 'XL', '2XL', '3XL'];
 
 export const ProductSize = () => {
-  const { addQueryParam, removeQueryParam } = useNavigationContext();
-
   const router = useRouter();
 
-  const { size = [''] } = router.query;
+  const { size = '', ...rest } = router.query;
 
   const handleChange = (option: string) => {
-    if (!Array.isArray(size)) return;
+    // conver size param to array
+    const sizes = [size].flat(1).filter(Boolean);
 
-    if (size.includes(option))
-      addQueryParam(
-        'size',
-        size.filter(str => str !== option)
-      );
-    else addQueryParam('size', [...new Set([...size, option])]);
+    if (!sizes.includes(option)) sizes.push(option);
+    else sizes.splice(sizes.indexOf(option), 1);
+
+    // remove size param if it's empty
+    if (sizes.length === 0) router.push({ query: { ...rest } });
+    else router.push({ query: { ...rest, size: sizes } });
   };
 
   return (
@@ -36,7 +34,7 @@ export const ProductSize = () => {
                   type="checkbox"
                   id={option}
                   className="h-4 w-4 rounded border-gray-300 text-violet-700 focus:ring-violet-700"
-                  checked={Array.isArray(size) && size.includes(option)}
+                  checked={[size].flat(1).includes(option)}
                   onChange={() => handleChange(option)}
                 />
                 <label htmlFor={option} className="flex items-center gap-1">
