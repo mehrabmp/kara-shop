@@ -1,15 +1,12 @@
-import { Accordion, Rating } from 'components';
 import { useRouter } from 'next/router';
-import { useNavigationContext } from './NavigationContext';
+import { Accordion, Rating } from 'components';
 
 const rateOptions = ['4.5', '4', '3'];
 
 export const ProductRate = () => {
-  const { addQueryParam, removeQueryParam } = useNavigationContext();
-
   const router = useRouter();
 
-  const { rate = 0 } = router.query;
+  const { rate = 0, ...rest } = router.query;
 
   return (
     <div className="rounded-lg bg-neutral-100">
@@ -28,8 +25,8 @@ export const ProductRate = () => {
                   checked={option === rate}
                   onChange={() =>
                     option === rate
-                      ? removeQueryParam('rate')
-                      : addQueryParam('rate', option)
+                      ? router.push({ query: { ...rest } })
+                      : router.push({ query: { ...rest, rate: option } })
                   }
                 />
                 <label
