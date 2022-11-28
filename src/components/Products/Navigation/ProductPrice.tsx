@@ -1,16 +1,13 @@
 import clsx from 'clsx';
-import { Accordion } from 'components';
 import { useRouter } from 'next/router';
-import { useNavigationContext } from './NavigationContext';
+import { Accordion } from 'components';
 
 const priceOptions = ['$', '$$', '$$$'];
 
 export const ProductPrice = () => {
-  const { addQueryParam, removeQueryParam } = useNavigationContext();
-
   const router = useRouter();
 
-  const { price = '' } = router.query;
+  const { price = '', ...rest } = router.query;
 
   return (
     <div className="rounded-lg bg-neutral-100">
@@ -36,8 +33,8 @@ export const ProductPrice = () => {
                   )}
                   onClick={() =>
                     option === price
-                      ? removeQueryParam('price')
-                      : addQueryParam('price', option)
+                      ? router.push({ query: { ...rest } })
+                      : router.push({ query: { ...rest, price: option } })
                   }
                 >
                   {option}
