@@ -2,7 +2,6 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
 const baseURL = process.env.PLAYWRIGHT_TEST_BASE_URL || 'http://localhost:3000';
-console.log(`ℹ️ Using base URL "${baseURL}"`);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -27,6 +26,7 @@ const config: PlaywrightTestConfig = {
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    video: 'on',
   },
   /* Configure projects for major browsers */
   // projects: [
