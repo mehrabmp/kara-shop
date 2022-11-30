@@ -6,6 +6,18 @@ on:
     branches: ['main']
 jobs:
   e2e:
+    env:
+      NODE_ENV: test
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: supersecret
+      GITHUB_ID: ${{ secrets.NEXT_AUTH_GITHUB_ID }}
+      GITHUB_SECRET: ${{ secrets.NEXT_AUTH_GITHUB_SECRET }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      TWITTER_CLIENT_ID: ${{ secrets.TWITTER_CLIENT_ID }}
+      TWITTER_CLIENT_SECRET: ${{ secrets.TWITTER_CLIENT_SECRET }}
+
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
