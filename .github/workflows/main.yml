@@ -1,29 +1,38 @@
-name: Node.js CI
+name: E2E-testing
 on:
   push:
     branches: ['main']
   pull_request:
     branches: ['main']
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  e2e:
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
+        os: [ubuntu-latest]
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node }}
           cache: 'pnpm'
 
-      - name: Install dependencies (with cache)
+      - name: Install deps (with cache)
         run: pnpm install
+
+      - name: Install playwright
+        run: pnpm playwright install chromium
 
       - name: Next.js cache
         uses: actions/cache@v3
@@ -31,8 +40,5 @@ jobs:
           path: ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}-nextjs
 
-      - name: Build project (with cache)
-        run: SKIP_ENV_VALIDATION=1 pnpm next build
-
-      - name: Run unit tests
-        run: SKIP_ENV_VALIDATION=1 pnpm test:unit
+      - name: Build and test
+        run: pnpm build-postgres && pnpm test-prod
