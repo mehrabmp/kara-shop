@@ -25,6 +25,7 @@
     "db-seed": "prisma db seed",
     "db-reset": "prisma migrate reset",
     "build": "run-s migrate && next build",
+    "build-postgres": "run-s prisma-generate migrate && next build",
     "migrate-dev": "prisma migrate dev",
     "migrate": "prisma migrate deploy",
     "test": "run-s test:*",

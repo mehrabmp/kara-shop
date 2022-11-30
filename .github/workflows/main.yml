@@ -1,0 +1,59 @@
+name: E2E-testing
+on: [push]
+jobs:
+  e2e:
+    env:
+      NODE_ENV: test
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: supersecret
+      GITHUB_ID: ${{ secrets.NEXT_AUTH_GITHUB_ID }}
+      GITHUB_SECRET: ${{ secrets.NEXT_AUTH_GITHUB_SECRET }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      TWITTER_CLIENT_ID: ${{ secrets.TWITTER_CLIENT_ID }}
+      TWITTER_CLIENT_SECRET: ${{ secrets.TWITTER_CLIENT_SECRET }}
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node-version: [18.x]
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'pnpm'
+
+      - name: Install deps (with cache)
+        run: pnpm install
+
+      - name: Install playwright
+        run: pnpm playwright install chromium
+
+      - name: Next.js cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}-nextjs
+
+      - name: Build and test
+        run: pnpm build-postgres && pnpm test-prod
+
+      - name: Upload test results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: test results
+          path: test-results/
