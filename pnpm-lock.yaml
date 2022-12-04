@@ -21,7 +21,7 @@ specifiers:
   '@types/jest': ^29.2.2
   '@types/node': 18.11.10
   '@types/nprogress': ^0.2.0
-  '@types/react': 18.0.25
+  '@types/react': 18.0.26
   '@typescript-eslint/eslint-plugin': ^5.42.1
   '@typescript-eslint/parser': ^5.42.1
   aos: ^2.3.4
@@ -101,7 +101,7 @@ devDependencies:
   '@types/jest': 29.2.3
   '@types/node': 18.11.10
   '@types/nprogress': 0.2.0
-  '@types/react': 18.0.25
+  '@types/react': 18.0.26
   '@typescript-eslint/eslint-plugin': 5.43.0_qnvzsjaco3xap4q7irnv6bz4n4
   '@typescript-eslint/parser': 5.43.0_s5ps7njkmjlaqajutnox5ntcla
   autoprefixer: 10.4.13_postcss@8.4.19
@@ -1440,7 +1440,7 @@ packages:
   /@types/hoist-non-react-statics/3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
-      '@types/react': 18.0.25
+      '@types/react': 18.0.26
       hoist-non-react-statics: 3.3.2
     dev: false
 
@@ -1518,8 +1518,8 @@ packages:
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  /@types/react/18.0.25:
-    resolution: {integrity: sha512-xD6c0KDT4m7n9uD4ZHi02lzskaiqcBxf4zi+tXZY98a04wvc0hi/TcCPC2FOESZi51Nd7tlUeOJY8RofL799/g==}
+  /@types/react/18.0.26:
+    resolution: {integrity: sha512-hCR3PJQsAIXyxhTNSiDFY//LhnMZWpNNr5etoCqx/iUfGc5gXWtQR2Phl908jVR6uPXacojQWTg4qRpkxTuGug==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
