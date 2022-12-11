@@ -6,3 +6,5 @@ npm-debug.log
 README.md
 .next
 .git
+.github
+.husky

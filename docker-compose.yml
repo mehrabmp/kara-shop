@@ -1,18 +1,10 @@
 version: '3.9'
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        NEXT_PUBLIC_CLIENTVAR: 'clientvar'
+    build: .
     restart: always
-    working_dir: /app
     ports:
       - '3000:3000'
-    image: t3-app
-    environment:
-      - DATABASE_URL=database_url_goes_here
   db:
     image: postgres:15.1
     restart: always
