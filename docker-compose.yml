@@ -11,7 +11,6 @@ services:
       - postgres:/var/lib/postgresql/data
     ports:
       - '5432:5432'
-
   web:
     build:
       context: .
@@ -23,4 +22,4 @@ services:
       - '3000:3000'
 
 volumes:
-  db-data:
+  postgres:
