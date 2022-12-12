@@ -20,11 +20,11 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "build": "next build",
     "prisma-studio": "prisma studio",
     "prisma-generate": "prisma generate",
     "db-seed": "prisma db seed",
     "db-reset": "prisma migrate reset",
+    "build": "pnpm build-postgres",
     "build-postgres": "run-s prisma-generate migrate && next build",
     "migrate-dev": "prisma migrate dev",
     "migrate": "prisma migrate deploy",
@@ -34,8 +34,7 @@
     "test-dev": "start-server-and-test dev 3000 test",
     "test-prod": "start-server-and-test start 3000 test",
     "prepare": "husky install",
-    "postinstall": "prisma generate",
-    "vercel-build": "pnpm build-postgres"
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
