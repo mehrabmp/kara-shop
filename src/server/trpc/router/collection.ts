@@ -1,6 +1,6 @@
-import { t } from '../trpc';
+import { router, publicProcedure } from '../trpc';
 import { CollectionType, Prisma } from '@prisma/client';
-import { prisma } from 'server/prisma';
+import { prisma } from 'server/db/prisma';
 
 /**
  * Default selector for Collection.
@@ -29,8 +29,8 @@ export interface Collection {
   }[];
 }
 
-export const collectionRouter = t.router({
-  all: t.procedure.query(async () => {
+export const collectionRouter = router({
+  all: publicProcedure.query(async () => {
     const collections: Collection[] = await prisma.collection.findMany({
       select: defaultCollectionSelect,
       orderBy: {
