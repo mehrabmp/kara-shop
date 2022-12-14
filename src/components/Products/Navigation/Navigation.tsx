@@ -1,3 +1,4 @@
+import { ProductColor } from './ProductColor';
 import { ProductPrice } from './ProductPrice';
 import { ProductRate } from './ProductRate';
 import { ProductSize } from './ProductSize';
@@ -9,21 +10,14 @@ import { ProductSize } from './ProductSize';
 //   { name: 'Price: Low to High', href: '#' },
 //   { name: 'Price: High to Low', href: '#' },
 // ];
-// const colorOptions = [
-//   { value: 'white', label: 'White' },
-//   { value: 'beige', label: 'Beige' },
-//   { value: 'blue', label: 'Blue' },
-//   { value: 'brown', label: 'Brown' },
-//   { value: 'green', label: 'Green' },
-//   { value: 'purple', label: 'Purple' },
-// ];
 
 export const Navigation = () => {
   return (
-    <div className="flex h-[500px] flex-col gap-2 rounded-lg bg-white p-2">
+    <div className="flex flex-col gap-2 rounded-lg bg-white p-2">
       <ProductSize />
       <ProductRate />
       <ProductPrice />
+      <ProductColor />
     </div>
   );
 };
