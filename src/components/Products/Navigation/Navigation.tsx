@@ -14,10 +14,10 @@ import { ProductSize } from './ProductSize';
 export const Navigation = () => {
   return (
     <div className="flex flex-col gap-2 rounded-lg bg-white p-2">
-      <ProductColor />
       <ProductSize />
       <ProductRate />
       <ProductPrice />
+      <ProductColor />
     </div>
   );
 };
