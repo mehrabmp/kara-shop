@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router';
-import { Accordion } from 'components';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import { Accordion } from 'components';
 
 const colorOptions = [
   { label: 'black', value: 'bg-black' },
@@ -64,15 +64,20 @@ export const ProductColor = () => {
                 <label htmlFor={label} className="flex items-center gap-1">
                   <span
                     className={clsx(
-                      `h-7 w-7 cursor-pointer overflow-hidden rounded-full border-2 border-solid `,
+                      `h-6 w-6 cursor-pointer overflow-hidden rounded-full p-[2px]`,
                       {
-                        'border-violet-700 p-[2px]': colors.includes(label),
+                        'bg-violet-700': colors.includes(label),
+                        [value]: !colors.includes(label),
                       }
                     )}
                   >
-                    <div
-                      className={`${value} h-full w-full rounded-full`}
-                    ></div>
+                    {colors.includes(label) && (
+                      <div className="h-full w-full rounded-full bg-white p-[2px]">
+                        <div
+                          className={`${value} h-full w-full rounded-full`}
+                        />
+                      </div>
+                    )}
                   </span>
                 </label>
               </li>
