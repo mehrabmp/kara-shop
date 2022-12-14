@@ -1,10 +1,10 @@
 /**
  * This file contains the root router of your tRPC-backend
  */
-import { t } from '../trpc';
+import { router } from '../trpc';
 import { collectionRouter } from './collection';
 
-export const appRouter = t.router({
+export const appRouter = router({
   collection: collectionRouter,
 });
 
