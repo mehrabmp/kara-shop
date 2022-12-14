@@ -1,6 +1,6 @@
 import { t } from '../trpc';
 import { CollectionType, Prisma } from '@prisma/client';
-import { prisma } from 'server/prisma';
+import { prisma } from 'server/db/prisma';
 
 /**
  * Default selector for Collection.
