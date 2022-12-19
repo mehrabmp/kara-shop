@@ -13,7 +13,7 @@ model Product {
   updatedAt       DateTime         @updatedAt
   title           String           @db.VarChar(255)
   description     String
-  price           Int
+  price           Float
   images          String[]
   color           ProductColor[]
   size            ProductSize[]
