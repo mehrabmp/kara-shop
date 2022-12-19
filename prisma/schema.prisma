@@ -15,6 +15,8 @@ model Product {
   description     String
   price           Int
   images          String[]
+  color           ProductColor[]
+  size            ProductSize[]
   rate            Float
   published       Boolean          @default(false)
   type            CollectionType[]
@@ -22,6 +24,28 @@ model Product {
   collectionId    Int
   subCollection   SubCollection    @relation(fields: [subCollectionId], references: [id])
   subCollectionId Int
+}
+
+enum ProductSize {
+  S
+  M
+  L
+  XL
+  XXL
+  XXXL
+}
+
+enum ProductColor {
+  BLACK
+  WHITE
+  GRAY
+  RED
+  ORANGE
+  YELLOW
+  GREEN
+  PINK
+  BLUE
+  PURPLE
 }
 
 model Collection {
