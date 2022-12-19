@@ -3,6 +3,7 @@ import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from '../_app';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Navigation, PrimaryLayout, ProductsList } from 'components';
+import { trpc } from 'utils/trpc';
 
 export const getServerSideProps: GetServerSideProps = async ({
   locale = 'en',
@@ -15,6 +16,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 
 const Products: NextPageWithLayout = () => {
+  const productsQuery = trpc.product.all.useQuery({});
+
   return (
     <div className="mx-auto items-center p-4 xl:container">
       <div className="flex gap-5">
@@ -22,7 +25,11 @@ const Products: NextPageWithLayout = () => {
           <Navigation />
         </div>
         <div className="flex-[5]">
-          <ProductsList />
+          {productsQuery.isLoading && <p>Loading...</p>}
+          {productsQuery.isError && <p>Error: {productsQuery.error.message}</p>}
+          {productsQuery.isSuccess && (
+            <ProductsList products={productsQuery.data} />
+          )}
         </div>
       </div>
     </div>
