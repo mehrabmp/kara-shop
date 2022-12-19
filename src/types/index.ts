@@ -1,6 +1,5 @@
-import { inferProcedureOutput } from '@trpc/server';
-import { AppRouter } from 'server/trpc/router/_app';
+import { RouterOutputs } from 'utils/trpc';
 
-export type Collections =
-  | inferProcedureOutput<AppRouter['collection']['all']>
-  | undefined;
+export type Collections = RouterOutputs['collection']['all'] | undefined;
+
+export type Product = RouterOutputs['product']['all'][0];
