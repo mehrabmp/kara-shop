@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Product } from 'types';
 import { ProductItem } from '../ProductItem/ProductItem';
 
@@ -9,9 +8,11 @@ interface Props {
 export const ProductsList = ({ products }: Props) => {
   return (
     <div className="rounded-lg bg-white">
-      <div className="grid grid-cols-4 gap-5 p-4">
-        {products.map(product => (
-          <ProductItem key={product.id} {...product} />
+      <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        {products.map((product, index) => (
+          <div key={product.id} data-aos="fade-up" data-aos-delay={index * 200}>
+            <ProductItem {...product} />
+          </div>
         ))}
       </div>
     </div>
