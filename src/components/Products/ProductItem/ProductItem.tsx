@@ -28,6 +28,7 @@ export const ProductItem = ({
             src={currentImage}
             alt={`${title} image`}
             className="duration-[2s] group-hover:scale-110"
+            priority
             fill
           />
           <div className="h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div>
@@ -60,6 +61,7 @@ export const ProductItem = ({
               className="object-cover"
               width={35}
               height={35}
+              priority
             />
           </button>
         ))}
