@@ -22,16 +22,17 @@ export const ProductItem = ({
 
   return (
     <div className="group overflow-hidden">
-      <div className="relative h-[350px] w-full overflow-hidden rounded-lg transition">
+      <div className="relative overflow-hidden rounded-lg transition">
         <Link href={productLink}>
           <Image
             src={currentImage}
             alt={`${title} image`}
-            className="duration-[2s] group-hover:scale-110"
+            className="h-auto w-full duration-[2s] group-hover:scale-110 sm:h-[350px]"
+            width={350}
+            height={350}
             priority
-            fill
           />
-          <div className="h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div>
+          {/* <div className="absolute left-0 top-0 h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div> */}
         </Link>
         <button
           className="absolute top-3 right-3 z-10 hidden rounded-xl bg-white p-2.5 text-lg group-hover:block"
@@ -50,17 +51,15 @@ export const ProductItem = ({
         {images.map((img, index) => (
           <button
             key={index}
-            className={clsx('h-[35px] w-[35px] overflow-hidden rounded-full', {
-              'border-2 border-solid border-violet-700': currentImage === img,
-            })}
+            className="h-[40px] w-[40px] overflow-hidden rounded-full"
             onClick={() => setCurrentImage(img)}
           >
             <Image
               src={img}
               alt={`${title} image ${index + 1}`}
               className="object-cover"
-              width={35}
-              height={35}
+              width={40}
+              height={40}
               priority
             />
           </button>
