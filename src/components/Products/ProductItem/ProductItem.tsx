@@ -30,9 +30,10 @@ export const ProductItem = ({
               src={img}
               alt={`${title} image`}
               className={clsx(
-                'absolute h-full w-full duration-[2s] group-hover:scale-110',
+                'absolute h-full w-full duration-700 group-hover:scale-110',
                 {
-                  hidden: currentImage !== img,
+                  'opacity-100': currentImage === img,
+                  'opacity-0': currentImage !== img,
                 }
               )}
               width={350}
@@ -40,7 +41,7 @@ export const ProductItem = ({
               priority
             />
           ))}
-          {/* <div className="absolute h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div> */}
+          <div className="absolute h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div>
         </Link>
         <button
           className="absolute top-3 right-3 z-10 hidden rounded-xl bg-white p-2.5 text-lg group-hover:block"
