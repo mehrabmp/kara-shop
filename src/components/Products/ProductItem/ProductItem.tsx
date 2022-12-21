@@ -21,18 +21,26 @@ export const ProductItem = ({
   const productLink = `/product/${id}/slug`;
 
   return (
-    <div className="group overflow-hidden">
-      <div className="relative overflow-hidden rounded-lg transition">
-        <Link href={productLink}>
-          <Image
-            src={currentImage}
-            alt={`${title} image`}
-            className="h-auto w-full duration-[2s] group-hover:scale-110 sm:h-[350px]"
-            width={350}
-            height={350}
-            priority
-          />
-          {/* <div className="absolute left-0 top-0 h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div> */}
+    <div className="group">
+      <div className="relative h-[400px] overflow-hidden rounded-lg transition sm:h-[350px]">
+        <Link href={productLink} className="relative block h-full w-full">
+          {images.map(img => (
+            <Image
+              key={img}
+              src={img}
+              alt={`${title} image`}
+              className={clsx(
+                'absolute h-full w-full duration-[2s] group-hover:scale-110',
+                {
+                  hidden: currentImage !== img,
+                }
+              )}
+              width={350}
+              height={350}
+              priority
+            />
+          ))}
+          {/* <div className="absolute h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div> */}
         </Link>
         <button
           className="absolute top-3 right-3 z-10 hidden rounded-xl bg-white p-2.5 text-lg group-hover:block"
