@@ -1,14 +1,31 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { capitalizeFirstLetter, convertToSlug } from 'utils';
+import { capitalizeFirstLetter } from 'utils';
 import { Collections } from 'types';
+import { CollectionType } from '@prisma/client';
 
 interface Props {
-  type: 'men' | 'women';
+  type: CollectionType;
   collections: Collections;
   onShowMenu: () => void;
   onCloseMenu: () => void;
 }
+
+const newItems = [
+  { label: 'New Arrivals', href: '/' },
+  { label: 'Best Sellers', href: '/' },
+  { label: 'Only at Kara', href: '/' },
+  { label: 'Members Exclusives', href: '/' },
+  { label: 'Release Dates', href: '/' },
+];
+
+const trendingItems = [
+  { label: 'Fall Collection', href: '/' },
+  { label: 'Vintage 70s Collection', href: '/' },
+  { label: 'Pharrell Premium Basics', href: '/' },
+  { label: 'Tee Bundle:2 for $39 or 3 for $49', href: '/' },
+  { label: 'Breast Cancer Awareness Collection', href: '/' },
+];
 
 export const MegaMenu = ({
   type,
@@ -16,6 +33,8 @@ export const MegaMenu = ({
   onShowMenu,
   onCloseMenu,
 }: Props) => {
+  const typeInLowerCase = type.toString().toLowerCase();
+
   return (
     <div
       onMouseEnter={onShowMenu}
@@ -25,91 +44,79 @@ export const MegaMenu = ({
       <div className="mx-auto flex max-w-7xl">
         <div className="flex flex-1">
           <div className="ml-4 py-8">
-            <Link href={type} onClick={onCloseMenu}>
-              <p className="text-sm font-bold uppercase leading-4 tracking-widest text-neutral-800 hover:underline">
-                New & Trending
-              </p>
+            <Link
+              href="/"
+              onClick={onCloseMenu}
+              className="text-sm font-bold uppercase leading-4 tracking-widest text-neutral-800 hover:underline"
+            >
+              New & Trending
             </Link>
             <ul className="pt-2">
-              {[
-                'New Arrivals',
-                'Best Sellers',
-                'Only at Kara',
-                'Members Exclusives',
-                'Release Dates',
-              ].map((item, index) => (
+              {newItems.map(({ label, href }, index) => (
                 <li key={index}>
                   <Link
-                    href={`/${convertToSlug(item)}`}
+                    href={href}
                     className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
                     onClick={onCloseMenu}
                   >
-                    {item}
+                    {label}
                   </Link>
                 </li>
               ))}
             </ul>
             <ul className="mb-2 pt-3">
-              {[
-                'Fall Collection',
-                'Vintage 70s Collection',
-                'Pharrell Premium Basics',
-                'Tee Bundle:2 for $39 or 3 for $49',
-                'Breast Cancer Awareness Collection',
-              ].map((item, index) => (
+              {trendingItems.map(({ label, href }, index) => (
                 <li key={index}>
                   <Link
-                    href={`/${convertToSlug(item)}`}
+                    href={href}
                     className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
                     onClick={onCloseMenu}
                   >
-                    {item}
+                    {label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <Link href="/offer" onClick={onCloseMenu}>
+            <Link href="/" onClick={onCloseMenu}>
               <Image
                 priority
                 src="/assets/offer.webp"
                 alt="offer"
-                width={130}
+                width={150}
                 height={100}
                 quality={100}
-                style={{ width: 'auto', height: 'auto' }}
               />
             </Link>
           </div>
         </div>
         <div className="flex flex-[3] border-l border-solid shadow-neutral-300">
           {collections &&
-            collections[type].map(collection => (
+            collections.map(collection => (
               <div
                 key={collection.id}
                 className="ml-4 w-full max-w-[150px] py-8"
               >
                 <Link
-                  href={`/products/${type}/${convertToSlug(collection.title)}`}
+                  href={`/products/${typeInLowerCase}/${collection.slug}`}
                   onClick={onCloseMenu}
+                  className="text-sm font-bold uppercase leading-4 tracking-widest text-neutral-800 hover:underline"
                 >
-                  <p className="text-sm font-bold uppercase leading-4 tracking-widest text-neutral-800 hover:underline">
-                    {collection.title}
-                  </p>
+                  {collection.title}
                 </Link>
                 <ul className="pt-2">
-                  {collection.subCollections.map(subCollection => (
-                    <li key={subCollection.id}>
-                      <Link
-                        href={`/products/${type}/${convertToSlug(
-                          collection.title
-                        )}/${convertToSlug(subCollection.title)}`}
-                        className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
-                        onClick={onCloseMenu}
-                      >
-                        {subCollection.title}
-                      </Link>
-                    </li>
-                  ))}
+                  {collection.subCollections
+                    .filter(subCollection => subCollection.type.includes(type))
+                    .map(subCollection => (
+                      <li key={subCollection.id}>
+                        <Link
+                          href={`/products/${typeInLowerCase}/${subCollection.slug}`}
+                          className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
+                          onClick={onCloseMenu}
+                        >
+                          {subCollection.title}
+                        </Link>
+                      </li>
+                    ))}
                 </ul>
               </div>
             ))}
@@ -119,7 +126,7 @@ export const MegaMenu = ({
         <div className="mx-auto flex max-w-7xl">
           <div className="flex flex-1 items-center">
             <Link
-              href="/sale"
+              href="/"
               className="ml-4 w-full max-w-[150px] py-3 text-xs font-bold text-neutral-800 hover:underline"
               onClick={onCloseMenu}
             >
@@ -131,12 +138,12 @@ export const MegaMenu = ({
               (item, index) => (
                 <Link
                   key={index}
-                  href={`/products/${type}/${item}`}
+                  href={`/products/${typeInLowerCase}/${item}`}
                   className="ml-4 w-full max-w-[150px] py-3 text-xs font-bold text-neutral-800 hover:underline"
                   onClick={onCloseMenu}
                 >
                   {`All ${capitalizeFirstLetter(
-                    type
+                    typeInLowerCase
                   )}'s ${capitalizeFirstLetter(item)}`}
                 </Link>
               )

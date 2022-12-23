@@ -105,7 +105,7 @@ test.describe('Header', () => {
     test('SubCollections should redirect to the correct page', async ({
       page,
     }) => {
-      await testLink(page, 'Sneakers', '/products/men/shoes/sneakers');
+      await testLink(page, 'Sneakers', '/products/men/sneakers');
     });
   });
 
@@ -148,7 +148,7 @@ test.describe('Bottom Navigation', () => {
     await page.getByRole('button', { name: /^Shoes$/i }).click();
 
     await page.getByRole('link', { name: /^Sneakers$/i }).click();
-    await expect(page).toHaveURL('/products/men/shoes/sneakers');
+    await expect(page).toHaveURL('/products/men/sneakers');
   });
 });
 
