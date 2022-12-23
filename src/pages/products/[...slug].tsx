@@ -1,18 +1,50 @@
-import type { GetServerSideProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from '../_app';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Navigation, PrimaryLayout, ProductsList } from 'components';
 import { trpc } from 'utils/trpc';
+import { prisma } from 'server/db/prisma';
 
-export const getServerSideProps: GetServerSideProps = async ({
-  locale = 'en',
-}) => {
+export const getStaticProps: GetStaticProps = async context => {
   return {
     props: {
-      ...(await serverSideTranslations(locale)),
+      ...(await serverSideTranslations(context.locale as string)),
     },
   };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const collections = await prisma.collection.findMany({
+    select: {
+      slug: true,
+      subCollections: {
+        select: {
+          slug: true,
+          type: true,
+        },
+      },
+    },
+  });
+
+  const paths = [
+    { params: { slug: ['men'] } },
+    { params: { slug: ['women'] } },
+  ];
+
+  collections.map(col => {
+    paths.push({ params: { slug: ['men', col.slug] } });
+    paths.push({ params: { slug: ['women', col.slug] } });
+    col.subCollections.map(subCol =>
+      subCol.type.map(t =>
+        paths.push({
+          params: { slug: [t.toString().toLowerCase(), subCol.slug] },
+        })
+      )
+    );
+  });
+
+  return { paths, fallback: false };
 };
 
 const Products: NextPageWithLayout = () => {
@@ -40,7 +72,7 @@ Products.getLayout = function getLayout(page: ReactElement) {
   return (
     <PrimaryLayout
       title="Products | Kara Shop"
-      description="Home page of Kara Shop"
+      description="Products page of Kara Shop"
     >
       {page}
     </PrimaryLayout>

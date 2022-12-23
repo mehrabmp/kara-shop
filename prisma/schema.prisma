@@ -26,33 +26,12 @@ model Product {
   subCollectionId Int
 }
 
-enum ProductSize {
-  S
-  M
-  L
-  XL
-  XXL
-  XXXL
-}
-
-enum ProductColor {
-  BLACK
-  WHITE
-  GRAY
-  RED
-  ORANGE
-  YELLOW
-  GREEN
-  PINK
-  BLUE
-  PURPLE
-}
-
 model Collection {
   id             Int             @id @default(autoincrement())
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
   title          String          @db.VarChar(255)
+  slug           String
   subCollections SubCollection[]
   products       Product[]
 }
@@ -62,15 +41,11 @@ model SubCollection {
   createdAt    DateTime         @default(now())
   updatedAt    DateTime         @updatedAt
   title        String           @db.VarChar(255)
+  slug         String
   type         CollectionType[]
   collection   Collection       @relation(fields: [collectionId], references: [id])
   collectionId Int
   products     Product[]
-}
-
-enum CollectionType {
-  MEN
-  WOMEN
 }
 
 model Account {
@@ -118,4 +93,31 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum CollectionType {
+  MEN
+  WOMEN
+}
+
+enum ProductSize {
+  S
+  M
+  L
+  XL
+  XXL
+  XXXL
+}
+
+enum ProductColor {
+  BLACK
+  WHITE
+  GRAY
+  RED
+  ORANGE
+  YELLOW
+  GREEN
+  PINK
+  BLUE
+  PURPLE
 }

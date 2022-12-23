@@ -117,7 +117,7 @@ export const Header = ({ collections }: { collections: Collections }) => {
         <Transition show={Boolean(hoveredNavLink?.collapsible)}>
           {hoveredNavLink && (
             <MegaMenu
-              type={hoveredNavLink.name === 'men' ? 'men' : 'women'}
+              type={hoveredNavLink.name === 'men' ? 'MEN' : 'WOMEN'}
               collections={collections}
               onShowMenu={() => handleShowMenu(hoveredNavLink)}
               onCloseMenu={handleCloseMenu}
