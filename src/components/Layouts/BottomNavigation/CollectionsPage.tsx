@@ -3,7 +3,6 @@ import { useTranslation } from 'next-i18next';
 import { FiX } from 'react-icons/fi';
 import { Collections } from 'types';
 import { NavLink } from 'components/Layouts/Header/Header';
-import { convertToSlug } from 'utils';
 import { Accordion } from 'components';
 
 interface Props {
@@ -41,8 +40,8 @@ export const CollectionsPage = ({
                 <Accordion.Header>{t(`header:${item.name}`)}</Accordion.Header>
                 <Accordion.Body className="px-2 text-sm">
                   <ul>
-                    {collections?.[item.name === 'men' ? 'men' : 'women'].map(
-                      collection => (
+                    {collections &&
+                      collections.map(collection => (
                         <li
                           key={collection.id}
                           className="block border-b border-solid border-neutral-100"
@@ -53,33 +52,30 @@ export const CollectionsPage = ({
                             </Accordion.Header>
                             <Accordion.Body className="px-2 text-xs">
                               <ul>
-                                {collection.subCollections.map(
-                                  subCollection => (
+                                {collection.subCollections
+                                  .filter(subCollection =>
+                                    subCollection.type.includes(
+                                      item.name === 'men' ? 'MEN' : 'WOMEN'
+                                    )
+                                  )
+                                  .map(subCollection => (
                                     <li
                                       key={subCollection.id}
                                       className="block border-b border-solid border-neutral-100 py-2"
                                     >
                                       <Link
-                                        href={`/products/${
-                                          item.name
-                                        }/${convertToSlug(
-                                          collection.title
-                                        )}/${convertToSlug(
-                                          subCollection.title
-                                        )}`}
+                                        href={`/products/${item.name}/${subCollection.slug}`}
                                         onClick={onPageClose}
                                       >
                                         <h3>{subCollection.title}</h3>
                                       </Link>
                                     </li>
-                                  )
-                                )}
+                                  ))}
                               </ul>
                             </Accordion.Body>
                           </Accordion>
                         </li>
-                      )
-                    )}
+                      ))}
                   </ul>
                 </Accordion.Body>
               </Accordion>
