@@ -12,15 +12,13 @@ async function main() {
     data: subCollections,
   });
 
-  const createProducts = prisma.product.createMany({
-    data: products,
-  });
+  await prisma.$transaction([createCollections, createSubCollections]);
 
-  await prisma.$transaction([
-    createCollections,
-    createSubCollections,
-    createProducts,
-  ]);
+  for (const p of products) {
+    await prisma.product.create({
+      data: p,
+    });
+  }
 }
 
 main()
