@@ -16,7 +16,7 @@ export const ProductItem = ({
   type,
   subCollection,
 }: Product) => {
-  const [currentImage, setCurrentImage] = useState(images[0]);
+  const [currentImage, setCurrentImage] = useState(images[0].imageURL);
 
   const productLink = `/product/${id}/slug`;
 
@@ -24,21 +24,22 @@ export const ProductItem = ({
     <div className="group">
       <div className="relative h-[400px] overflow-hidden rounded-lg transition sm:h-[350px]">
         <Link href={productLink} className="relative block h-full w-full">
-          {images.map(img => (
+          {images.map(({ imageURL, imageBlur }) => (
             <Image
-              key={img}
-              src={img}
+              key={imageURL}
+              src={imageURL}
               alt={`${title} image`}
               className={clsx(
                 'absolute h-full w-full duration-700 group-hover:scale-110',
                 {
-                  'opacity-100': currentImage === img,
-                  'opacity-0': currentImage !== img,
+                  'opacity-100': currentImage === imageURL,
+                  'opacity-0': currentImage !== imageURL,
                 }
               )}
               width={350}
               height={350}
-              priority
+              placeholder="blur"
+              blurDataURL={imageBlur}
             />
           ))}
           <div className="absolute h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div>
@@ -57,19 +58,20 @@ export const ProductItem = ({
         </button>
       </div>
       <div className="my-3 flex gap-2">
-        {images.map((img, index) => (
+        {images.map(({ imageURL, imageBlur }, index) => (
           <button
             key={index}
             className="h-[40px] w-[40px] overflow-hidden rounded-full"
-            onClick={() => setCurrentImage(img)}
+            onClick={() => setCurrentImage(imageURL)}
           >
             <Image
-              src={img}
+              src={imageURL}
               alt={`${title} image ${index + 1}`}
               className="object-cover"
               width={40}
               height={40}
-              priority
+              placeholder="blur"
+              blurDataURL={imageBlur}
             />
           </button>
         ))}

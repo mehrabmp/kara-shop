@@ -14,7 +14,7 @@ model Product {
   title           String           @db.VarChar(255)
   description     String
   price           Float
-  images          String[]
+  images          ProductImage[]
   color           ProductColor[]
   size            ProductSize[]
   rate            Float
@@ -24,6 +24,14 @@ model Product {
   collectionId    Int
   subCollection   SubCollection    @relation(fields: [subCollectionId], references: [id])
   subCollectionId Int
+}
+
+model ProductImage {
+  id        Int      @id @default(autoincrement())
+  imageURL  String
+  imageBlur String
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId Int?
 }
 
 model Collection {
