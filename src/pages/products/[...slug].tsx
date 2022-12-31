@@ -27,21 +27,31 @@ export const getStaticPaths: GetStaticPaths = async () => {
     },
   });
 
-  const paths = [
-    { params: { slug: ['men'] } },
-    { params: { slug: ['women'] } },
-  ];
+  const locales = ['en', 'de'];
 
-  collections.map(col => {
-    paths.push({ params: { slug: ['men', col.slug] } });
-    paths.push({ params: { slug: ['women', col.slug] } });
-    col.subCollections.map(subCol =>
-      subCol.type.map(t =>
-        paths.push({
-          params: { slug: [t.toString().toLowerCase(), subCol.slug] },
-        })
-      )
-    );
+  const paths: {
+    locale: string;
+    params: {
+      slug: string[];
+    };
+  }[] = [];
+
+  locales.map(locale => {
+    paths.push({ params: { slug: ['men'] }, locale });
+    paths.push({ params: { slug: ['women'] }, locale });
+
+    collections.map(col => {
+      paths.push({ params: { slug: ['men', col.slug] }, locale });
+      paths.push({ params: { slug: ['women', col.slug] }, locale });
+      col.subCollections.map(subCol =>
+        subCol.type.map(t =>
+          paths.push({
+            params: { slug: [t.toString().toLowerCase(), subCol.slug] },
+            locale,
+          })
+        )
+      );
+    });
   });
 
   return { paths, fallback: false };
