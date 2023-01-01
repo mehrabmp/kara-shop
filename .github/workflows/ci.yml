@@ -1,7 +1,9 @@
-name: E2E-testing
+name: CI
 on: [push]
+
 jobs:
-  e2e:
+  build:
+    name: Build and Test
     env:
       NODE_ENV: test
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
