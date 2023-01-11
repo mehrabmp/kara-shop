@@ -6,6 +6,7 @@ import { appWithTranslation } from 'next-i18next';
 import { trpc } from 'utils/trpc';
 import { Inter } from '@next/font/google';
 import { SessionProvider } from 'next-auth/react';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import AOS from 'aos';
@@ -56,6 +57,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <main className={`${inter.variable} font-sans`}>
         {getLayout(<Component {...pageProps} />)}
       </main>
+      <ReactQueryDevtools />
     </SessionProvider>
   );
 }
