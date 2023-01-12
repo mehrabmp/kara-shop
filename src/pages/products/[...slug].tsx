@@ -1,10 +1,9 @@
-import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticPathsResult, GetStaticProps } from 'next';
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from '../_app';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Navigation, PrimaryLayout, ProductsList } from 'components';
 import { trpc } from 'utils/trpc';
-import { prisma } from 'server/db/prisma';
 import { useRouter } from 'next/router';
 import { ProductColor, ProductSize } from '@prisma/client';
 
@@ -16,48 +15,12 @@ export const getStaticProps: GetStaticProps = async context => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const collections = await prisma.collection.findMany({
-    select: {
-      slug: true,
-      subCollections: {
-        select: {
-          slug: true,
-          type: true,
-        },
-      },
-    },
-  });
-
-  const locales = ['en', 'de'];
-
-  const paths: {
-    locale: string;
-    params: {
-      slug: string[];
-    };
-  }[] = [];
-
-  locales.map(locale => {
-    paths.push({ params: { slug: ['men'] }, locale });
-    paths.push({ params: { slug: ['women'] }, locale });
-
-    collections.map(col => {
-      paths.push({ params: { slug: ['men', col.slug] }, locale });
-      paths.push({ params: { slug: ['women', col.slug] }, locale });
-      col.subCollections.map(subCol =>
-        subCol.type.map(t =>
-          paths.push({
-            params: { slug: [t.toString().toLowerCase(), subCol.slug] },
-            locale,
-          })
-        )
-      );
-    });
-  });
-
-  return { paths, fallback: false };
-};
+export function getStaticPaths(): GetStaticPathsResult {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+}
 
 const Products: NextPageWithLayout = () => {
   const router = useRouter();
