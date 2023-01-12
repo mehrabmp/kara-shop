@@ -1,48 +1,35 @@
 import clsx from 'clsx';
-import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Accordion } from 'components';
 
 const colorOptions = [
-  { label: 'black', value: 'bg-black' },
-  { label: 'white', value: 'bg-white' },
-  { label: 'gray', value: 'bg-neutral-600' },
-  { label: 'red', value: 'bg-red-700' },
-  { label: 'orange', value: 'bg-orange-600' },
-  { label: 'yellow', value: 'bg-yellow-500' },
-  { label: 'green', value: 'bg-green-700' },
-  { label: 'pink', value: 'bg-pink-700' },
-  { label: 'blue', value: 'bg-blue-600' },
-  { label: 'purple', value: 'bg-purple-700' },
+  { label: 'BLACK', value: 'bg-black' },
+  { label: 'WHITE', value: 'bg-white' },
+  { label: 'GRAY', value: 'bg-neutral-600' },
+  { label: 'RED', value: 'bg-red-700' },
+  { label: 'ORANGE', value: 'bg-orange-600' },
+  { label: 'YELLOW', value: 'bg-yellow-500' },
+  { label: 'GREEN', value: 'bg-green-700' },
+  { label: 'PINK', value: 'bg-pink-700' },
+  { label: 'BLUE', value: 'bg-blue-600' },
+  { label: 'PURPLE', value: 'bg-purple-700' },
 ];
 
 export const ProductColor = () => {
   const router = useRouter();
-
   const { color = '', ...rest } = router.query;
 
   // convert color param to array
-  const [colors, setColors] = useState([color].flat(1).filter(Boolean));
-
-  const firstUpdate = useRef(true);
+  const colors = [color].flat(1).filter(Boolean);
 
   const handleChange = (option: string) => {
-    if (!colors.includes(option)) setColors([...colors, option]);
-    else setColors(colors.filter(col => col !== option));
-  };
-
-  useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      return;
-    }
+    if (!colors.includes(option)) colors.push(option);
+    else colors.splice(colors.indexOf(option), 1);
 
     // remove color param if it's empty
     if (colors.length === 0) router.push({ query: { ...rest } });
     else router.push({ query: { ...rest, color: colors } });
-
-    // eslint-disable-next-line
-  }, [colors]);
+  };
 
   return (
     <div className="rounded-lg bg-neutral-100">

@@ -5,6 +5,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Navigation, PrimaryLayout, ProductsList } from 'components';
 import { trpc } from 'utils/trpc';
 import { prisma } from 'server/db/prisma';
+import { useRouter } from 'next/router';
+import { ProductColor, ProductSize } from '@prisma/client';
 
 export const getStaticProps: GetStaticProps = async context => {
   return {
@@ -58,7 +60,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const Products: NextPageWithLayout = () => {
-  const productsQuery = trpc.product.all.useQuery({});
+  const router = useRouter();
+
+  const { rate, page, gte, lte, size, color } = router.query;
+
+  const sizes = size
+    ? ([size].flat(1).filter(Boolean) as ProductSize[])
+    : undefined;
+  const colors = color
+    ? ([color].flat(1).filter(Boolean) as ProductColor[])
+    : undefined;
+
+  const productsQuery = trpc.product.all.useQuery({
+    page: Number(page) || undefined,
+    rate: Number(rate) || undefined,
+    gte: Number(gte) || undefined,
+    lte: Number(lte) || undefined,
+    size: sizes,
+    color: colors,
+  });
 
   return (
     <div className="mx-auto items-center p-4 xl:container">

@@ -1,17 +1,16 @@
 import { useRouter } from 'next/router';
 import { Accordion } from 'components';
 
-const sizeOptions = ['S', 'M', 'L', 'XL', '2XL', '3XL'];
+const sizeOptions = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
 export const ProductSize = () => {
   const router = useRouter();
-
   const { size = '', ...rest } = router.query;
 
-  const handleChange = (option: string) => {
-    // conver size param to array
-    const sizes = [size].flat(1).filter(Boolean);
+  // convert size param to array
+  const sizes = [size].flat(1).filter(Boolean);
 
+  const handleChange = (option: string) => {
     if (!sizes.includes(option)) sizes.push(option);
     else sizes.splice(sizes.indexOf(option), 1);
 
@@ -34,7 +33,7 @@ export const ProductSize = () => {
                   type="checkbox"
                   id={option}
                   className="h-4 w-4 rounded border-gray-300 text-violet-700 focus:ring-violet-700"
-                  checked={[size].flat(1).includes(option)}
+                  checked={sizes.includes(option)}
                   onChange={() => handleChange(option)}
                 />
                 <label htmlFor={option} className="flex items-center gap-1">
