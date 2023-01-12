@@ -1,5 +1,5 @@
-import { Prisma } from '@prisma/client';
 import { z } from 'zod';
+import { Prisma, ProductColor, ProductSize } from '@prisma/client';
 import { publicProcedure, router } from '../trpc';
 
 const defaultProductSelect = Prisma.validator<Prisma.ProductSelect>()({
@@ -20,12 +20,14 @@ const defaultProductSelect = Prisma.validator<Prisma.ProductSelect>()({
     select: {
       id: true,
       title: true,
+      slug: true,
     },
   },
   subCollection: {
     select: {
       id: true,
       title: true,
+      slug: true,
       type: true,
     },
   },
@@ -37,35 +39,31 @@ export const productRouter = router({
       z.object({
         page: z.number().optional(),
         rate: z.number().optional(),
-        price: z.string().optional(),
-        size: z.array(z.string()).optional(),
-        color: z.array(z.string()).optional(),
+        gte: z.number().optional(),
+        lte: z.number().optional(),
+        size: z.nativeEnum(ProductSize).array().optional(),
+        color: z.nativeEnum(ProductColor).array().optional(),
       })
     )
     .query(async ({ input, ctx }) => {
-      const { page = 0, rate, price = '', size, color } = input;
+      const { page = 1, rate, gte = 0, lte = 1000000, size, color } = input;
 
       const take = 10;
-      const skip = page * take;
+      const skip = take * (page - 1);
 
-      const priceFilter = price
-        ? {
-            gte: price === '$' ? 1 : price === '$$' ? 10 : 100,
-            lte: price === '$' ? 9 : price === '$$' ? 99 : undefined,
-          }
-        : {};
-
-      return ctx.prisma.product.findMany({
+      const products = await ctx.prisma.product.findMany({
         select: defaultProductSelect,
         where: {
           published: true,
-          rate: {
-            gte: rate,
-          },
-          price: priceFilter,
+          rate: rate ? { gte: rate } : undefined,
+          price: { gte, lte },
+          size: size ? { hasSome: size } : undefined,
+          color: color ? { hasSome: color } : undefined,
         },
+        orderBy: { id: 'asc' },
         take,
         skip,
       });
+      return products;
     }),
 });
