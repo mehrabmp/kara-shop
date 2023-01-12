@@ -1,6 +1,10 @@
 import { z } from 'zod';
 import { Prisma, ProductColor, ProductSize } from '@prisma/client';
 import { publicProcedure, router } from '../trpc';
+import {
+  defaultCollectionSelect,
+  defaultSubCollectionSelect,
+} from './collection';
 
 const defaultProductSelect = Prisma.validator<Prisma.ProductSelect>()({
   id: true,
@@ -17,19 +21,10 @@ const defaultProductSelect = Prisma.validator<Prisma.ProductSelect>()({
   },
   type: true,
   collection: {
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-    },
+    select: defaultCollectionSelect,
   },
   subCollection: {
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-      type: true,
-    },
+    select: defaultSubCollectionSelect,
   },
 });
 
