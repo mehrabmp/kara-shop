@@ -5,7 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Navigation, PrimaryLayout, ProductsList } from 'components';
 import { trpc } from 'utils/trpc';
 import { useRouter } from 'next/router';
-import { ProductColor, ProductSize } from '@prisma/client';
+import { CollectionType, ProductColor, ProductSize } from '@prisma/client';
 
 export const getStaticProps: GetStaticProps = async context => {
   return {
@@ -25,22 +25,30 @@ export function getStaticPaths(): GetStaticPathsResult {
 const Products: NextPageWithLayout = () => {
   const router = useRouter();
 
-  const { rate, page, gte, lte, size, color } = router.query;
-
-  const sizes = size
-    ? ([size].flat(1).filter(Boolean) as ProductSize[])
-    : undefined;
-  const colors = color
-    ? ([color].flat(1).filter(Boolean) as ProductColor[])
-    : undefined;
+  const { slug, rate, page, price, size, color } = router.query as {
+    slug: string[] | undefined;
+    rate: number | undefined;
+    page: number | undefined;
+    price: string | undefined;
+    size: string | string[] | undefined;
+    color: string | string[] | undefined;
+  };
 
   const productsQuery = trpc.product.all.useQuery({
-    page: Number(page) || undefined,
-    rate: Number(rate) || undefined,
-    gte: Number(gte) || undefined,
-    lte: Number(lte) || undefined,
-    size: sizes,
-    color: colors,
+    type: slug && (slug[0].toUpperCase() as CollectionType),
+    slug: slug && slug[1],
+    size: [size].flat(1).filter(Boolean) as ProductSize[],
+    color: [color].flat(1).filter(Boolean) as ProductColor[],
+    page: page && Number(page),
+    rate: rate && Number(rate),
+    gte: price ? (price === '$' ? 0 : price === '$$' ? 10 : 100) : undefined,
+    lte: price
+      ? price === '$'
+        ? 10
+        : price === '$$'
+        ? 100
+        : 1000000
+      : undefined,
   });
 
   return (

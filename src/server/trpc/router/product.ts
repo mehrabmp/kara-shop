@@ -1,5 +1,10 @@
 import { z } from 'zod';
-import { Prisma, ProductColor, ProductSize } from '@prisma/client';
+import {
+  CollectionType,
+  Prisma,
+  ProductColor,
+  ProductSize,
+} from '@prisma/client';
 import { publicProcedure, router } from '../trpc';
 import {
   defaultCollectionSelect,
@@ -32,6 +37,8 @@ export const productRouter = router({
   all: publicProcedure
     .input(
       z.object({
+        type: z.nativeEnum(CollectionType).optional(),
+        slug: z.string().optional(),
         page: z.number().optional(),
         rate: z.number().optional(),
         gte: z.number().optional(),
@@ -41,24 +48,45 @@ export const productRouter = router({
       })
     )
     .query(async ({ input, ctx }) => {
-      const { page = 1, rate, gte = 0, lte = 1000000, size, color } = input;
+      const {
+        type = 'MEN',
+        slug,
+        page = 1,
+        rate = 0,
+        gte = 0,
+        lte = 1000000,
+        size = [],
+        color = [],
+      } = input;
 
       const take = 10;
       const skip = take * (page - 1);
 
-      const products = await ctx.prisma.product.findMany({
+      return await ctx.prisma.product.findMany({
         select: defaultProductSelect,
         where: {
+          type: { hasSome: type },
+          OR: [
+            {
+              collection: {
+                slug: { equals: slug },
+              },
+            },
+            {
+              subCollection: {
+                slug: { equals: slug },
+              },
+            },
+          ],
           published: true,
           rate: rate ? { gte: rate } : undefined,
           price: { gte, lte },
-          size: size ? { hasSome: size } : undefined,
-          color: color ? { hasSome: color } : undefined,
+          size: size.length > 0 ? { hasSome: size } : undefined,
+          color: color.length > 0 ? { hasSome: color } : undefined,
         },
         orderBy: { id: 'asc' },
         take,
         skip,
       });
-      return products;
     }),
 });
