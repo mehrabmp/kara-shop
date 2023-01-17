@@ -7,6 +7,32 @@ import { FiShoppingBag } from 'react-icons/fi';
 import { Product } from 'types';
 import { numberWithCommas } from 'utils';
 
+const shimmer = `relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/70 before:to-transparent`;
+
+export const Skeleton = () => {
+  return (
+    <div className="space-y-3">
+      <div className={`h-[350px] rounded-xl bg-neutral-200 ${shimmer}`} />
+      <div className="flex gap-2">
+        {Array(4)
+          .fill(0)
+          .map((_, index) => (
+            <div
+              key={index}
+              className={`h-[40px] w-[40px] rounded-full bg-neutral-200 ${shimmer}`}
+            ></div>
+          ))}
+      </div>
+      <div className={`h-4 w-full rounded-lg bg-neutral-200 ${shimmer}`} />
+      <div className={`h-4 w-1/2 rounded-lg bg-neutral-200 ${shimmer}`} />
+      <div className="flex justify-between">
+        <div className={`h-4 w-1/3 rounded-lg bg-neutral-200 ${shimmer}`} />
+        <div className={`h-4 w-1/3 rounded-lg bg-neutral-200 ${shimmer}`} />
+      </div>
+    </div>
+  );
+};
+
 export const ProductItem = ({
   id,
   title,
