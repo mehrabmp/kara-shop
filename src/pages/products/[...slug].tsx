@@ -58,11 +58,10 @@ const Products: NextPageWithLayout = () => {
           <Navigation />
         </div>
         <div className="flex-[5]">
-          {productsQuery.isLoading && <p>Loading...</p>}
-          {productsQuery.isError && <p>Error: {productsQuery.error.message}</p>}
-          {productsQuery.isSuccess && (
-            <ProductsList products={productsQuery.data} />
-          )}
+          <ProductsList
+            products={productsQuery.data}
+            isLoading={productsQuery.isLoading}
+          />
         </div>
       </div>
     </div>

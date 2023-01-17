@@ -1,19 +1,25 @@
 import { Product } from 'types';
-import { ProductItem } from '../ProductItem/ProductItem';
+import { ProductItem, Skeleton } from '../ProductItem/ProductItem';
 
 interface Props {
-  products: Product[];
+  products: Product[] | undefined;
+  isLoading: boolean;
 }
 
-export const ProductsList = ({ products }: Props) => {
+export const ProductsList = ({ products, isLoading }: Props) => {
   return (
     <div className="rounded-lg bg-white">
-      <div className="grid grid-cols-1 gap-2 p-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-        {products.map((product, index) => (
-          <div key={product.id} data-aos="fade-up" data-aos-delay={index * 100}>
-            <ProductItem {...product} />
-          </div>
-        ))}
+      <div className="grid grid-cols-1 gap-x-4 gap-y-6 p-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        {isLoading &&
+          Array(12)
+            .fill('')
+            .map((_, index) => <Skeleton key={index} />)}
+        {products &&
+          products.map(product => (
+            <div key={product.id}>
+              <ProductItem {...product} />
+            </div>
+          ))}
       </div>
     </div>
   );
