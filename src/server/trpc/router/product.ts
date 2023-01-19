@@ -59,34 +59,38 @@ export const productRouter = router({
         color = [],
       } = input;
 
-      const take = 10;
+      const take = 1;
       const skip = take * (page - 1);
 
-      return await ctx.prisma.product.findMany({
-        select: defaultProductSelect,
-        where: {
-          type: { hasSome: type },
-          OR: [
-            {
-              collection: {
-                slug: { equals: slug },
-              },
-            },
-            {
-              subCollection: {
-                slug: { equals: slug },
-              },
-            },
-          ],
-          published: true,
-          rate: rate ? { gte: rate } : undefined,
-          price: { gte, lte },
-          size: size.length > 0 ? { hasSome: size } : undefined,
-          color: color.length > 0 ? { hasSome: color } : undefined,
-        },
-        orderBy: { id: 'asc' },
-        take,
-        skip,
-      });
+      const where: Prisma.ProductWhereInput = {
+        type: { hasSome: type },
+        OR: [
+          { collection: { slug: { equals: slug } } },
+          { subCollection: { slug: { equals: slug } } },
+        ],
+        published: true,
+        rate: rate ? { gte: rate } : undefined,
+        price: { gte, lte },
+        size: size.length > 0 ? { hasSome: size } : undefined,
+        color: color.length > 0 ? { hasSome: color } : undefined,
+      };
+      const orderBy: Prisma.Enumerable<Prisma.ProductOrderByWithRelationInput> =
+        { id: 'asc' };
+
+      const [products, totalCount] = await ctx.prisma.$transaction([
+        ctx.prisma.product.findMany({
+          select: defaultProductSelect,
+          where,
+          orderBy,
+          take,
+          skip,
+        }),
+        ctx.prisma.product.count({ where }),
+      ]);
+
+      return {
+        products,
+        totalCount,
+      };
     }),
 });
