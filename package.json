@@ -66,6 +66,7 @@
     "react-use": "^17.4.0",
     "sharp": "^0.31.3",
     "superjson": "^1.12.1",
+    "tailwind-merge": "^1.8.1",
     "zod": "^3.20.2"
   },
   "devDependencies": {
