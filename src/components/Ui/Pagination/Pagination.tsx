@@ -12,7 +12,7 @@ interface Props {
 export const Pagination = ({
   totalCount = 1,
   currentPage,
-  pageSize = 1,
+  pageSize = 12,
   onPageChange,
 }: Props) => {
   const paginationRange = usePagination({

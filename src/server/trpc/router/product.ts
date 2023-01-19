@@ -59,7 +59,7 @@ export const productRouter = router({
         color = [],
       } = input;
 
-      const take = 1;
+      const take = 12;
       const skip = take * (page - 1);
 
       const where: Prisma.ProductWhereInput = {
