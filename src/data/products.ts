@@ -218,4 +218,314 @@ export const products: Prisma.ProductCreateInput[] = [
       },
     },
   },
+  {
+    title: 'Brown Cowboy Boots',
+    description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
+    price: 95.5,
+    rate: 4.7,
+    published: true,
+    type: 'MEN',
+    size: ['L', 'XL', 'XXL'],
+    collection: {
+      connect: {
+        id: 1,
+      },
+    },
+    subCollection: {
+      connect: {
+        id: 5,
+      },
+    },
+    images: {
+      createMany: {
+        data: [
+          {
+            imageURL: '/assets/products/product-19.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAwICQoJBwwKCgoNDQwOEh4TEhAQEiQaGxUeKyYtLComKSkvNUQ6LzJAMykpO1E8QEZJTE1MLjlUWlNKWURLTEn/2wBDAQ0NDRIQEiMTEyNJMSkxSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUn/wAARCAANAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQIH/8QAIxAAAgIBAwMFAAAAAAAAAAAAAQIDEQQAEkEFBjETFDJRcf/EABQBAQAAAAAAAAAAAAAAAAAAAAH/xAAVEQEBAAAAAAAAAAAAAAAAAAAAIf/aAAwDAQACEQMRAD8A0abJx4K9aeKK/G9wt8c6tJEdFdHVlYWGBsEaH6h2xhdSyPcTSz7xe633WDwL+I/NKRYsEMSRRxKqIoVR9AeNFMf/2Q==',
+          },
+          {
+            imageURL: '/assets/products/product-20.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHCAkIBgoJCAkMCwoMDxoRDw4ODx8WGBMaJSEnJiQhJCMpLjsyKSw4LCMkM0Y0OD0/QkNCKDFITUhATTtBQj//2wBDAQsMDA8NDx4RER4/KiQqPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz//wAARCAANAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQH/8QAIRAAAgIBBAIDAAAAAAAAAAAAAQMCBAAFERIhBjETI2H/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAFBERL/2gAMAwEAAhEDEQA/ANAd5JQhKz8XN8apIfJe317e9we+sTTaW9C3LDDBkRKJ4H0exkDvH6zdUjqNZjalodzkkgcx+jbFsK2ifMP/2Q==',
+          },
+          {
+            imageURL: '/assets/products/product-21.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBggGBQkIBwgKCQkKDRYODQwMDRoTFBAWHxwhIB8cHh4jJzIqIyUvJR4eKzssLzM1ODg4ISo9QTw2QTI3ODX/2wBDAQkKCg0LDRkODhk1JB4kNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTX/wAARCAANAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgME/8QAIxAAAgEEAQMFAAAAAAAAAAAAAQIDAAQFEQYSMUEHFCEigf/EABQBAQAAAAAAAAAAAAAAAAAAAAH/xAAXEQEBAQEAAAAAAAAAAAAAAAABADER/9oADAMBAAIRAxEAPwB7ms/JbTRXnuJEw8MihpLKI3Elw+t9Gl30qPO6gPU3DkbFpmSD2Ix0lYeUSypzfGcfxcr4xcypku7q2JEhVCfqvhSdfLd6eh2CgBj+ndAc2VHL/9k=',
+          },
+          {
+            imageURL: '/assets/products/product-22.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAANAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAb/xAAfEAACAgICAwEAAAAAAAAAAAABAwIEACERMQUiQWH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AtX2Eq8hWVOYDnAhceT7DuX58GLwliuGW67jLaTrXfJxW8D//2Q==',
+          },
+        ],
+      },
+    },
+  },
+  {
+    title: 'Cotton T-shirt',
+    description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
+    price: 9.9,
+    rate: 2.9,
+    published: true,
+    type: 'WOMEN',
+    size: ['S', 'M', 'L'],
+    collection: {
+      connect: {
+        id: 2,
+      },
+    },
+    subCollection: {
+      connect: {
+        id: 17,
+      },
+    },
+    images: {
+      createMany: {
+        data: [
+          {
+            imageURL: '/assets/products/product-23.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgFBgcGBQgHBgcJCAgJDBMMDAsLDBgREg4THBgdHRsYGxofIywlHyEqIRobJjQnKi4vMTIxHiU2OjYwOiwwMTD/2wBDAQgJCQwKDBcMDBcwIBsgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDD/wAARCAALAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwYH/8QAIBAAAQMEAwEBAAAAAAAAAAAAAwECEQAEBTESIkETUf/EABUBAQEAAAAAAAAAAAAAAAAAAAID/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQIAMf/aAAwDAQACEQMRAD8A03M5DJ22bbbguBtGTh828JSFWO3u/wAqlTXbfsaoiWVqYqGKAbytiHq2VSNUtGZRVdS7mgA5v//Z',
+          },
+          {
+            imageURL: '/assets/products/product-24.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgFBgcGBQgHBgcJCAgJDBMMDAsLDBgREg4THBgdHRsYGxofIywlHyEqIRobJjQnKi4vMTIxHiU2OjYwOiwwMTD/2wBDAQgJCQwKDBcMDBcwIBsgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDD/wAARCAAKAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgYH/8QAHxAAAgEEAwEBAAAAAAAAAAAAAQIDAAQRIQUSQROB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAZEQACAwEAAAAAAAAAAAAAAAABAgADESH/2gAMAwEAAhEDEQA/ANK5u75GHnkt4b4okvTooGlBONj3dVA0AG2fSNZoG3hd/o8MbOMYYqCR+06CDCey1jAqoyf/2Q==',
+          },
+        ],
+      },
+    },
+  },
+  {
+    title: 'Denim shirt',
+    description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
+    price: 15,
+    rate: 3.5,
+    published: true,
+    type: 'MEN',
+    size: ['L', 'XL', 'XXL', 'XXXL'],
+    collection: {
+      connect: {
+        id: 2,
+      },
+    },
+    subCollection: {
+      connect: {
+        id: 17,
+      },
+    },
+    images: {
+      createMany: {
+        data: [
+          {
+            imageURL: '/assets/products/product-25.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAANAAoDASEAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQG/8QAGhAAAwEBAQEAAAAAAAAAAAAAAQIRAwAxUf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDY7bNnoVAWCe9RBwE+KaOHa0Tw/DeS8H//2Q==',
+          },
+          {
+            imageURL: '/assets/products/product-26.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHCAkIBgoJCAkMCwoMDxoRDw4ODx8WGBMaJSEnJiQhJCMpLjsyKSw4LCMkM0Y0OD0/QkNCKDFITUhATTtBQj//2wBDAQsMDA8NDx4RER4/KiQqPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz//wAARCAANAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQYH/8QAIhAAAQQBAwUBAAAAAAAAAAAAAQIDBBEABRMhBhIVMlGB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAf/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ANGnTI8TWoSX5DDK5ILTSV+zvNlI/axTjJ/qDa8poJcYbcUqbthSxZQO0qsfDaE47ZwL/9k=',
+          },
+          {
+            imageURL: '/assets/products/product-27.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAANAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAACAf/xAAjEAACAQMDBQEBAAAAAAAAAAABAwIEBREGByEAEhMiMQhx/8QAFAEBAAAAAAAAAAAAAAAAAAAAA//EABsRAAIBBQAAAAAAAAAAAAAAAAECAAMhQZHw/9oADAMBAAIRAxEAPwBeU+p3WbcSsuqZQZO5INRUrp1kMqp0rfEyHAxPtWxYiPuY8fc9XEcgEYIPI56HX6U3X1btrvrozb7SsbYqF9hbrq24OpPJUKW6/JpG08PYRAktuO/Hd6/whhsJiyUYnABIA6OmpUX453FqsGNuGNT/2Q==',
+          },
+          {
+            imageURL: '/assets/products/product-28.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA8KCw0LCQ8NDA0REA8SFyYYFxUVFy4hIxsmNzA5ODYwNTQ8RFZJPEBSQTQ1S2ZMUllcYWJhOkhqcmlecVZfYV3/2wBDARARERcUFywYGCxdPjU+XV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV3/wAARCAANAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgQG/8QAIRAAAQQCAAcAAAAAAAAAAAAAAQACAxEEEgUhMVFhcbH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A1+RMY+JYkJjcWyh9SN6MIF0fY+K2kSzZzHbEa2a78qTryg//2Q==',
+          },
+        ],
+      },
+    },
+  },
+  {
+    title: 'Girl’s Plaid shirt',
+    description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
+    price: 25,
+    rate: 3.8,
+    published: true,
+    type: 'WOMEN',
+    size: ['S', 'M', 'L', 'XL'],
+    collection: {
+      connect: {
+        id: 2,
+      },
+    },
+    subCollection: {
+      connect: {
+        id: 17,
+      },
+    },
+    images: {
+      createMany: {
+        data: [
+          {
+            imageURL: '/assets/products/product-29.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAANAAoDASEAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgQG/8QAHRAAAgMAAgMAAAAAAAAAAAAAAQIAAxEEEiFBYf/EABQBAQAAAAAAAAAAAAAAAAAAAAH/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/ANjfyWr5CoAOvjd+ynI2YAaqtySyAk+4tgX/2Q==',
+          },
+          {
+            imageURL: '/assets/products/product-30.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAANAAoDASEAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgT/xAAiEAABAgUEAwAAAAAAAAAAAAABAAIDBBESIQUGEzEjYdH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAYEQEBAQEBAAAAAAAAAAAAAAARAAECA//aAAwDAQACEQMRAD8AXFzDNiLnAs79qpAixWBqUzE3U6UL/BzubZQdAH5VKqrT0wKONW//2Q==',
+          },
+          {
+            imageURL: '/assets/products/product-31.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAANAAoDASEAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAb/xAAgEAACAgIBBQEAAAAAAAAAAAABAgMRAAQSISIxMkFR/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8ArNncTWmDzzrDrr2tyHsT46/MbjLDYLPowyyq7hm4kHixtSbu6/cVVY0f/9k=',
+          },
+        ],
+      },
+    },
+  },
+  {
+    title: 'Girls’ gathered-sleeve top',
+    description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
+    price: 18,
+    rate: 4.1,
+    published: true,
+    type: 'WOMEN',
+    size: ['S', 'M', 'L', 'XL'],
+    collection: {
+      connect: {
+        id: 2,
+      },
+    },
+    subCollection: {
+      connect: {
+        id: 17,
+      },
+    },
+    images: {
+      createMany: {
+        data: [
+          {
+            imageURL: '/assets/products/product-32.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAANAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAQAG/8QAGBABAQEBAQAAAAAAAAAAAAAAAQACEVH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A2+lNAHSeS+1B/9k=',
+          },
+          {
+            imageURL: '/assets/products/product-33.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAANAAoDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAABAYHCP/EACIQAAICAQMEAwAAAAAAAAAAAAECAwUEABEhBgcTMjFBYf/EABQBAQAAAAAAAAAAAAAAAAAAAAT/xAAaEQADAAMBAAAAAAAAAAAAAAABAgMAEXHR/9oADAMBAAIRAxEAPwDUPd+67idC9x6HqygxMu0r7C/qqqXBxs2QrFHK+UMiSWABtldfAoIHJUE+g1c4Mq9eGN5qBYpGUFo2ylJQ7cg8fWhjiV1mcZrDAjnIzl8bN7RyIxZXB+eGTfb90xaLKLKWIY6PPMXaysqgqNgZ/9k=',
+          },
+          {
+            imageURL: '/assets/products/product-34.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAANAAoDASEAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAhEAACAQMEAwEAAAAAAAAAAAABAwIABAUREiFhIjEycf/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/EABgRAQEBAQEAAAAAAAAAAAAAAAEAMQIR/9oADAMBAAIRAxEAPwCnyi7xjLc2tyUKgwFm36lz6/Ou6RJ5oNlynMvmXWmet8fBS5KYVyMjru8pEHSn9ai10eBf/9k=',
+          },
+        ],
+      },
+    },
+  },
+  {
+    title: 'Girls’ mixed-stripe shirt',
+    description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
+    price: 35,
+    rate: 3.9,
+    published: true,
+    type: 'WOMEN',
+    size: ['S', 'M', 'L', 'XL'],
+    collection: {
+      connect: {
+        id: 2,
+      },
+    },
+    subCollection: {
+      connect: {
+        id: 17,
+      },
+    },
+    images: {
+      createMany: {
+        data: [
+          {
+            imageURL: '/assets/products/product-35.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAAKAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAQj/xAAjEAABAwMEAgMAAAAAAAAAAAABAgMEBREhAAYHEggTMTOB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAXEQEAAwAAAAAAAAAAAAAAAAABAAIR/9oADAMBAAIRAxEAPwCl+avIHmDZnNjewtsxqezGkKhIpsOS0ytVR9hsVdyboDi+zYyLdQcXvqqWbONIcdJYWpIUppQuWyRlJIwSPjGg0mlSyJ0qmRHpLP1vOMpUtFsiyiLj806pewgBkIYs/9k=',
+          },
+          {
+            imageURL: '/assets/products/product-36.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAAKAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAj/xAAjEAACAQIGAgMAAAAAAAAAAAABAgMEEQAFBgcSIQgxExUy/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAXEQEBAQEAAAAAAAAAAAAAAAABAgAR/9oADAMBAAIRAxEAPwCld7PIbdvQ+9KaF05SUKUs0lDHl9DNDC8mYCRgGfmTdA7ckFyLcQer3xVcVpIkkkb4HZQWicXaMkdqSOiR66w+oymqYV1VllJNUx/iaSFWdberMRcYYpdFABzEOLv/2Q==',
+          },
+        ],
+      },
+    },
+  },
+  {
+    title: 'Girls’ slide sneakers',
+    description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
+    price: 22,
+    rate: 4.2,
+    published: true,
+    type: 'WOMEN',
+    size: ['S', 'M', 'L', 'XL'],
+    collection: {
+      connect: {
+        id: 1,
+      },
+    },
+    subCollection: {
+      connect: {
+        id: 2,
+      },
+    },
+    images: {
+      createMany: {
+        data: [
+          {
+            imageURL: '/assets/products/product-37.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgFBgcGBQgHBgcJCAgJDBMMDAsLDBgREg4THBgdHRsYGxofIywlHyEqIRobJjQnKi4vMTIxHiU2OjYwOiwwMTD/2wBDAQgJCQwKDBcMDBcwIBsgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDD/wAARCAALAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAHBAAAgIDAQEAAAAAAAAAAAAAAQMAAgQFEUGR/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ANoydmxGwXi11me+tyAXrXUrp30k278EoRED/9k=',
+          },
+          {
+            imageURL: '/assets/products/product-38.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgFBgcGBQgHBgcJCAgJDBMMDAsLDBgREg4THBgdHRsYGxofIywlHyEqIRobJjQnKi4vMTIxHiU2OjYwOiwwMTD/2wBDAQgJCQwKDBcMDBcwIBsgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDD/wAARCAAKAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAHRAAAQQDAQEAAAAAAAAAAAAAAQACAwQRIUEFUf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDZrluzF7dCtEwmvMHmVwAwMDWe8592qSIg/9k=',
+          },
+        ],
+      },
+    },
+  },
+  {
+    title: 'Girls’ slide sneakers in emojis',
+    description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
+    price: 27,
+    rate: 4.1,
+    published: true,
+    type: 'WOMEN',
+    size: ['S', 'M', 'L', 'XL'],
+    collection: {
+      connect: {
+        id: 1,
+      },
+    },
+    subCollection: {
+      connect: {
+        id: 2,
+      },
+    },
+    images: {
+      createMany: {
+        data: [
+          {
+            imageURL: '/assets/products/product-39.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgFBgcGBQgHBgcJCAgJDBMMDAsLDBgREg4THBgdHRsYGxofIywlHyEqIRobJjQnKi4vMTIxHiU2OjYwOiwwMTD/2wBDAQgJCQwKDBcMDBcwIBsgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDD/wAARCAAMAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgQH/8QAIBAAAgICAAcAAAAAAAAAAAAAAhEAAQQSAwUhIzFBUf/EABQBAQAAAAAAAAAAAAAAAAAAAAH/xAAXEQEAAwAAAAAAAAAAAAAAAAAAARFB/9oADAMBAAIRAxEAPwDai5tijmni9yz4YbkVBdjXVJ/X6l0OgN6i/LUUIvS//9k=',
+          },
+          {
+            imageURL: '/assets/products/product-40.jpg',
+            imageBlur:
+              'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgFBgcGBQgHBgcJCAgJDBMMDAsLDBgREg4THBgdHRsYGxofIywlHyEqIRobJjQnKi4vMTIxHiU2OjYwOiwwMTD/2wBDAQgJCQwKDBcMDBcwIBsgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDD/wAARCAAMAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwUH/8QAIBAAAgEEAgMBAAAAAAAAAAAAAQIDAAQREgUxISJhof/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQARQf/aAAwDAQACEQMRAD8A2G85g23Jm1ZoVXZB7bbYPf7gD7Vehe0tpJhK8EbSDBDFcnx1TVIPZcv/2Q==',
+          },
+        ],
+      },
+    },
+  },
 ];
