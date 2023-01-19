@@ -2,7 +2,12 @@ import type { GetStaticPathsResult, GetStaticProps } from 'next';
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from '../_app';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Navigation, PrimaryLayout, ProductsList } from 'components';
+import {
+  Navigation,
+  Pagination,
+  PrimaryLayout,
+  ProductsList,
+} from 'components';
 import { trpc } from 'utils/trpc';
 import { useRouter } from 'next/router';
 import { CollectionType, ProductColor, ProductSize } from '@prisma/client';
@@ -25,7 +30,14 @@ export function getStaticPaths(): GetStaticPathsResult {
 const Products: NextPageWithLayout = () => {
   const router = useRouter();
 
-  const { slug, rate, page, price, size, color } = router.query as {
+  const {
+    slug,
+    rate,
+    page = 1,
+    price,
+    size,
+    color,
+  } = router.query as {
     slug: string[] | undefined;
     rate: number | undefined;
     page: number | undefined;
@@ -57,11 +69,20 @@ const Products: NextPageWithLayout = () => {
         <div className="hidden flex-1 md:block">
           <Navigation />
         </div>
-        <div className="flex-[5]">
+        <div className="flex-[5] rounded-lg bg-white">
           <ProductsList
-            products={productsQuery.data}
+            products={productsQuery.data?.products}
             isLoading={productsQuery.isLoading}
           />
+          <div className="flex justify-center py-5">
+            <Pagination
+              totalCount={productsQuery.data?.totalCount}
+              currentPage={Number(page)}
+              onPageChange={page =>
+                router.push({ query: { ...router.query, page } })
+              }
+            />
+          </div>
         </div>
       </div>
     </div>
