@@ -15,7 +15,7 @@ export const ProductSize = () => {
     else sizes.splice(sizes.indexOf(option), 1);
 
     const query = sizes.length === 0 ? { ...rest } : { ...rest, size: sizes };
-    router.push({ query }, undefined, { shallow: true });
+    router.push({ query }, undefined, { shallow: true, scroll: true });
   };
 
   return (

@@ -11,7 +11,7 @@ export const ProductPrice = () => {
 
   const handleChange = (option: string) => {
     const query = option === price ? { ...rest } : { ...rest, price: option };
-    router.push({ query }, undefined, { shallow: true });
+    router.push({ query }, undefined, { shallow: true, scroll: true });
   };
 
   return (
