@@ -28,7 +28,7 @@ export const ProductColor = () => {
 
     const query =
       colors.length === 0 ? { ...rest } : { ...rest, color: colors };
-    router.push({ query }, undefined, { shallow: true });
+    router.push({ query }, undefined, { shallow: true, scroll: true });
   };
 
   return (

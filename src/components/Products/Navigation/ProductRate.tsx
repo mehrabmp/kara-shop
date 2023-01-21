@@ -10,7 +10,7 @@ export const ProductRate = () => {
 
   const handleChange = (option: string) => {
     const query = option === rate ? { ...rest } : { ...rest, rate: option };
-    router.push({ query }, undefined, { shallow: true });
+    router.push({ query }, undefined, { shallow: true, scroll: true });
   };
 
   return (
