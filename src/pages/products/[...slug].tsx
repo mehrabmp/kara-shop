@@ -95,7 +95,9 @@ const Products: NextPageWithLayout = () => {
               currentPage={Number(page)}
               pageSize={pageSize}
               onPageChange={page =>
-                router.push({ query: { ...router.query, page } })
+                router.push({ query: { ...router.query, page } }, undefined, {
+                  shallow: true,
+                })
               }
             />
           </div>

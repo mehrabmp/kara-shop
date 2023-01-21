@@ -8,6 +8,11 @@ export const ProductRate = () => {
 
   const { rate = 0, ...rest } = router.query;
 
+  const handleChange = (option: string) => {
+    const query = option === rate ? { ...rest } : { ...rest, rate: option };
+    router.push({ query }, undefined, { shallow: true });
+  };
+
   return (
     <div className="rounded-lg bg-neutral-100">
       <Accordion open>
@@ -23,11 +28,7 @@ export const ProductRate = () => {
                   id={String(option)}
                   className="h-4 w-4 rounded border-gray-300 text-violet-700 focus:ring-violet-700"
                   checked={option === rate}
-                  onChange={() =>
-                    option === rate
-                      ? router.push({ query: { ...rest } })
-                      : router.push({ query: { ...rest, rate: option } })
-                  }
+                  onChange={() => handleChange(option)}
                 />
                 <label
                   htmlFor={String(option)}
