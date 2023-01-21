@@ -14,9 +14,8 @@ export const ProductSize = () => {
     if (!sizes.includes(option)) sizes.push(option);
     else sizes.splice(sizes.indexOf(option), 1);
 
-    // remove size param if it's empty
-    if (sizes.length === 0) router.push({ query: { ...rest } });
-    else router.push({ query: { ...rest, size: sizes } });
+    const query = sizes.length === 0 ? { ...rest } : { ...rest, size: sizes };
+    router.push({ query }, undefined, { shallow: true });
   };
 
   return (

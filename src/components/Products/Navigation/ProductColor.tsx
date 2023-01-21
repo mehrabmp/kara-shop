@@ -26,9 +26,9 @@ export const ProductColor = () => {
     if (!colors.includes(option)) colors.push(option);
     else colors.splice(colors.indexOf(option), 1);
 
-    // remove color param if it's empty
-    if (colors.length === 0) router.push({ query: { ...rest } });
-    else router.push({ query: { ...rest, color: colors } });
+    const query =
+      colors.length === 0 ? { ...rest } : { ...rest, color: colors };
+    router.push({ query }, undefined, { shallow: true });
   };
 
   return (

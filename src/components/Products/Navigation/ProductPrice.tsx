@@ -9,6 +9,11 @@ export const ProductPrice = () => {
 
   const { price = '', ...rest } = router.query;
 
+  const handleChange = (option: string) => {
+    const query = option === price ? { ...rest } : { ...rest, price: option };
+    router.push({ query }, undefined, { shallow: true });
+  };
+
   return (
     <div className="rounded-lg bg-neutral-100">
       <Accordion open>
@@ -31,11 +36,7 @@ export const ProductPrice = () => {
                         price === option,
                     }
                   )}
-                  onClick={() =>
-                    option === price
-                      ? router.push({ query: { ...rest } })
-                      : router.push({ query: { ...rest, price: option } })
-                  }
+                  onClick={() => handleChange(option)}
                 >
                   {option}
                 </button>
