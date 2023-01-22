@@ -1,18 +1,17 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { Accordion } from 'components';
+import { useQuery } from 'hooks/useQuery';
 
 const priceOptions = ['$', '$$', '$$$'];
 
 export const ProductPrice = () => {
   const router = useRouter();
+  const { price = '' } = router.query;
+  const { addQuery, removeQuery } = useQuery({ shallow: true, scroll: true });
 
-  const { price = '', ...rest } = router.query;
-
-  const handleChange = (option: string) => {
-    const query = option === price ? { ...rest } : { ...rest, price: option };
-    router.push({ query }, undefined, { shallow: true, scroll: true });
-  };
+  const handleChange = (option: string) =>
+    option === price ? removeQuery('price') : addQuery('price', option);
 
   return (
     <div className="rounded-lg bg-neutral-100">

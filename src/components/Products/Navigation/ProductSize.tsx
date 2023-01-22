@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
 import { Accordion } from 'components';
+import { useQuery } from 'hooks/useQuery';
 
 const sizeOptions = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
 export const ProductSize = () => {
   const router = useRouter();
-  const { size = '', ...rest } = router.query;
+  const { size = '' } = router.query;
+  const { addQuery, removeQuery } = useQuery({ shallow: true, scroll: true });
 
   // convert size param to array
   const sizes = [size].flat(1).filter(Boolean);
@@ -14,8 +16,8 @@ export const ProductSize = () => {
     if (!sizes.includes(option)) sizes.push(option);
     else sizes.splice(sizes.indexOf(option), 1);
 
-    const query = sizes.length === 0 ? { ...rest } : { ...rest, size: sizes };
-    router.push({ query }, undefined, { shallow: true, scroll: true });
+    if (sizes.length === 0) removeQuery('size');
+    else addQuery('size', sizes);
   };
 
   return (

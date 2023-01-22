@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { Accordion } from 'components';
+import { useQuery } from 'hooks/useQuery';
 
 const colorOptions = [
   { label: 'BLACK', value: 'bg-black' },
@@ -17,7 +18,8 @@ const colorOptions = [
 
 export const ProductColor = () => {
   const router = useRouter();
-  const { color = '', ...rest } = router.query;
+  const { color = '' } = router.query;
+  const { addQuery, removeQuery } = useQuery({ shallow: true, scroll: true });
 
   // convert color param to array
   const colors = [color].flat(1).filter(Boolean);
@@ -26,9 +28,8 @@ export const ProductColor = () => {
     if (!colors.includes(option)) colors.push(option);
     else colors.splice(colors.indexOf(option), 1);
 
-    const query =
-      colors.length === 0 ? { ...rest } : { ...rest, color: colors };
-    router.push({ query }, undefined, { shallow: true, scroll: true });
+    if (colors.length === 0) removeQuery('color');
+    else addQuery('color', colors);
   };
 
   return (

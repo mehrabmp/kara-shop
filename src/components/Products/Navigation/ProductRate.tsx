@@ -1,17 +1,16 @@
 import { useRouter } from 'next/router';
 import { Accordion, Rating } from 'components';
+import { useQuery } from 'hooks/useQuery';
 
 const rateOptions = ['4.5', '4', '3'];
 
 export const ProductRate = () => {
   const router = useRouter();
+  const { rate = 0 } = router.query;
+  const { addQuery, removeQuery } = useQuery({ shallow: true, scroll: true });
 
-  const { rate = 0, ...rest } = router.query;
-
-  const handleChange = (option: string) => {
-    const query = option === rate ? { ...rest } : { ...rest, rate: option };
-    router.push({ query }, undefined, { shallow: true, scroll: true });
-  };
+  const handleChange = (option: string) =>
+    option === rate ? removeQuery('rate') : addQuery('rate', option);
 
   return (
     <div className="rounded-lg bg-neutral-100">
