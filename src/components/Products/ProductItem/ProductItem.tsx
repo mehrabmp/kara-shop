@@ -1,11 +1,10 @@
-import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { BsHeart, BsStarFill } from 'react-icons/bs';
 import { FiShoppingBag } from 'react-icons/fi';
 import { Product } from 'types';
-import { numberWithCommas } from 'utils';
+import { cn, numberWithCommas } from 'utils';
 
 const shimmer = `relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/70 before:to-transparent`;
 
@@ -43,8 +42,11 @@ export const ProductItem = ({
   subCollection,
 }: Product) => {
   const [currentImage, setCurrentImage] = useState(images[0].imageURL);
+  const [loaded, setLoaded] = useState(false);
 
   const productLink = `/product/${id}/slug`;
+
+  const handleLoad = () => setLoaded(true);
 
   return (
     <div className="group">
@@ -55,17 +57,17 @@ export const ProductItem = ({
               key={imageURL}
               src={imageURL}
               alt={`${title} image`}
-              className={clsx(
-                'absolute h-full w-full duration-700 group-hover:scale-110',
+              className={cn(
+                'absolute h-full w-full opacity-0 duration-500 group-hover:scale-110',
                 {
-                  'opacity-100': currentImage === imageURL,
-                  'opacity-0': currentImage !== imageURL,
+                  'opacity-100': currentImage === imageURL && loaded,
                 }
               )}
               width={350}
               height={350}
               placeholder="blur"
               blurDataURL={imageBlur}
+              onLoad={handleLoad}
             />
           ))}
           <div className="absolute h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div>
