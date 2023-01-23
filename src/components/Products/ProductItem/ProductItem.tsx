@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsHeart, BsStarFill } from 'react-icons/bs';
 import { FiShoppingBag } from 'react-icons/fi';
 import { Product } from 'types';
@@ -46,7 +46,7 @@ export const ProductItem = ({
 
   const productLink = `/product/${id}/slug`;
 
-  const handleLoad = () => setLoaded(true);
+  const handleLoad = () => setTimeout(() => setLoaded(true), 100);
 
   return (
     <div className="group">
