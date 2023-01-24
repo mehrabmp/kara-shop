@@ -1,11 +1,10 @@
-import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsHeart, BsStarFill } from 'react-icons/bs';
 import { FiShoppingBag } from 'react-icons/fi';
 import { Product } from 'types';
-import { numberWithCommas } from 'utils';
+import { cn, numberWithCommas } from 'utils';
 
 const shimmer = `relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/70 before:to-transparent`;
 
@@ -42,32 +41,40 @@ export const ProductItem = ({
   type,
   subCollection,
 }: Product) => {
-  const [currentImage, setCurrentImage] = useState(images[0].imageURL);
+  const [currentImage, setCurrentImage] = useState(images[0]);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const productLink = `/product/${id}/slug`;
+
+  useEffect(() => {
+    (async () => {
+      for (const { imageURL } of images) {
+        const response = await fetch(imageURL);
+        if (response.ok) {
+          setImageLoaded(true);
+        }
+      }
+    })();
+  }, [images]);
 
   return (
     <div className="group">
       <div className="relative h-[400px] overflow-hidden rounded-lg transition sm:h-[350px]">
         <Link href={productLink} className="relative block h-full w-full">
-          {images.map(({ imageURL, imageBlur }) => (
-            <Image
-              key={imageURL}
-              src={imageURL}
-              alt={`${title} image`}
-              className={clsx(
-                'absolute h-full w-full duration-700 group-hover:scale-110',
-                {
-                  'opacity-100': currentImage === imageURL,
-                  'opacity-0': currentImage !== imageURL,
-                }
-              )}
-              width={350}
-              height={350}
-              placeholder="blur"
-              blurDataURL={imageBlur}
-            />
-          ))}
+          <Image
+            src={currentImage.imageURL}
+            alt={`${title} image`}
+            className={cn(
+              'absolute h-full w-full opacity-0 duration-500 group-hover:scale-110',
+              {
+                'opacity-100': imageLoaded,
+              }
+            )}
+            width={350}
+            height={350}
+            placeholder="blur"
+            blurDataURL={currentImage.imageBlur}
+          />
           <div className="absolute h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div>
         </Link>
         <button
@@ -84,20 +91,20 @@ export const ProductItem = ({
         </button>
       </div>
       <div className="my-3 flex gap-2">
-        {images.map(({ imageURL, imageBlur }, index) => (
+        {images.map((image, index) => (
           <button
             key={index}
             className="h-[40px] w-[40px] overflow-hidden rounded-full"
-            onClick={() => setCurrentImage(imageURL)}
+            onClick={() => setCurrentImage(image)}
           >
             <Image
-              src={imageURL}
+              src={image.imageURL}
               alt={`${title} image ${index + 1}`}
               className="object-cover"
               width={40}
               height={40}
               placeholder="blur"
-              blurDataURL={imageBlur}
+              blurDataURL={image.imageBlur}
             />
           </button>
         ))}
