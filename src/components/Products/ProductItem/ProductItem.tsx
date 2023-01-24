@@ -42,20 +42,20 @@ export const ProductItem = ({
   subCollection,
 }: Product) => {
   const [currentImage, setCurrentImage] = useState(images[0]);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  // const [imageLoaded, setImageLoaded] = useState(false);
 
   const productLink = `/product/${id}/slug`;
 
-  useEffect(() => {
-    (async () => {
-      for (const { imageURL } of images) {
-        const response = await fetch(imageURL);
-        if (response.ok) {
-          setImageLoaded(true);
-        }
-      }
-    })();
-  }, [images]);
+  // useEffect(() => {
+  //   (async () => {
+  //     for (const { imageURL } of images) {
+  //       const response = await fetch(imageURL);
+  //       if (response.ok) {
+  //         setImageLoaded(true);
+  //       }
+  //     }
+  //   })();
+  // }, [images]);
 
   return (
     <div className="group">
@@ -65,15 +65,13 @@ export const ProductItem = ({
             src={currentImage.imageURL}
             alt={`${title} image`}
             className={cn(
-              'absolute h-full w-full opacity-0 duration-500 group-hover:scale-110',
-              {
-                'opacity-100': imageLoaded,
-              }
+              'absolute h-full w-full duration-500 group-hover:scale-110'
             )}
             width={350}
             height={350}
             placeholder="blur"
             blurDataURL={currentImage.imageBlur}
+            priority
           />
           <div className="absolute h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div>
         </Link>
