@@ -1,34 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# KARA Shop
 
-First, run the development server:
+Full-stack e-commerce built with [T3 Stack](https://create.t3.gg/)
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/)
+- **ORM**: [Prisma](https://prisma.io/)
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+- **Deployment**: [Vercel](https://vercel.com)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your `.env` file
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Database URL for prisma
+DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
+
+# URL of the website
+NEXTAUTH_URL='http://localhost:3000'
+
+# Used to hash tokens, sign/encrypt cookies and ...
+# You can quickly create a good value with this command
+# openssl rand -base64 32
+NEXTAUTH_SECRET=VJmi1XgBd48qWC2xn/kNRc15OIY+P4a1uXgV42uaHuw=
+
+# GitHub oAuth
+GITHUB_ID=YOUR_GITHUB_CLIENT_ID
+GITHUB_SECRET=YOUR_GITHUB_CLIENT_SECRET
+
+# Google oAuth
+GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
+
+# Twitter oAuth
+TWITTER_CLIENT_ID=YOUR_TWITTER_CLIENT_ID
+TWITTER_CLIENT_SECRET=YOUR_TWITTER_CLIENT_SECRET
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Run Locally
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Clone the project
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  git clone https://github.com/mehrabmp/kara-shop.git
+```
 
-## Learn More
+Go to the project directory
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+  cd kara-shop
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Install dependencies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+  pnpm install
+```
 
-## Deploy on Vercel
+Start the server
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+  pnpm dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
