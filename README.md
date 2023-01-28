@@ -59,6 +59,18 @@ Install dependencies
   pnpm install
 ```
 
+Apply migrations to database
+
+```bash
+  pnpm migrate-dev
+```
+
+Seed the database
+
+```bash
+  pnpm db-seed
+```
+
 Start the server
 
 ```bash
