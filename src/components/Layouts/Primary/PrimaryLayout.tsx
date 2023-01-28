@@ -1,8 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { Header, Footer } from 'components';
-import { trpc } from 'utils/trpc';
-import { BottomNavigation } from 'components/Layouts/BottomNavigation/BottomNavigation';
+import { api } from 'utils/api';
 
 interface PrimaryLayoutProps extends React.PropsWithChildren {
   title?: string;
@@ -22,7 +21,7 @@ export const PrimaryLayout = ({
   url = 'https://karashop.vercel.app',
   image,
 }: PrimaryLayoutProps) => {
-  const { data } = trpc.collection.all.useQuery();
+  const { data } = api.collection.all.useQuery();
 
   return (
     <>

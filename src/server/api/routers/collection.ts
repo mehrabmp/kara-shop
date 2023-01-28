@@ -1,4 +1,4 @@
-import { router, publicProcedure } from '../trpc';
+import { createTRPCRouter, publicProcedure } from '../trpc';
 import { Prisma } from '@prisma/client';
 
 export const defaultSubCollectionSelect =
@@ -19,12 +19,12 @@ export const defaultCollectionSelect =
     },
   });
 
-export const collectionRouter = router({
-  all: publicProcedure.query(async ({ ctx }) => {
-    const collections = await ctx.prisma.collection.findMany({
-      select: defaultCollectionSelect,
-      orderBy: { id: 'asc' },
-    });
-    return collections;
-  }),
+export const collectionRouter = createTRPCRouter({
+  all: publicProcedure.query(
+    async ({ ctx }) =>
+      await ctx.prisma.collection.findMany({
+        select: defaultCollectionSelect,
+        orderBy: { id: 'asc' },
+      })
+  ),
 });

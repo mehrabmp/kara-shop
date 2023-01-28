@@ -5,7 +5,7 @@ import {
   ProductColor,
   ProductSize,
 } from '@prisma/client';
-import { publicProcedure, router } from '../trpc';
+import { publicProcedure, createTRPCRouter } from '../trpc';
 import {
   defaultCollectionSelect,
   defaultSubCollectionSelect,
@@ -33,7 +33,7 @@ const defaultProductSelect = Prisma.validator<Prisma.ProductSelect>()({
   },
 });
 
-export const productRouter = router({
+export const productRouter = createTRPCRouter({
   all: publicProcedure
     .input(
       z.object({
