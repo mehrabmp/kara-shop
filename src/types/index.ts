@@ -1,4 +1,4 @@
-import { RouterOutputs } from 'utils/trpc';
+import { RouterOutputs } from 'utils/api';
 
 export type Collections = RouterOutputs['collection']['all'] | undefined;
 

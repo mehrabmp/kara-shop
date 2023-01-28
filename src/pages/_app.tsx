@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { appWithTranslation } from 'next-i18next';
-import { trpc } from 'utils/trpc';
+import { api } from 'utils/api';
 import { Inter } from '@next/font/google';
 import { SessionProvider } from 'next-auth/react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -64,4 +64,4 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default trpc.withTRPC(appWithTranslation(MyApp));
+export default api.withTRPC(appWithTranslation(MyApp));

@@ -8,7 +8,7 @@ import {
   PrimaryLayout,
   ProductsList,
 } from 'components';
-import { trpc } from 'utils/trpc';
+import { api } from 'utils/api';
 import { useRouter } from 'next/router';
 import { CollectionType, ProductColor, ProductSize } from '@prisma/client';
 
@@ -29,7 +29,7 @@ export function getStaticPaths(): GetStaticPathsResult {
 
 const Products: NextPageWithLayout = () => {
   const router = useRouter();
-  const utils = trpc.useContext();
+  const utils = api.useContext();
 
   const {
     slug,
@@ -68,7 +68,7 @@ const Products: NextPageWithLayout = () => {
   );
 
   const { data, isLoading, isPreviousData } =
-    trpc.product.all.useQuery(queryInput);
+    api.product.all.useQuery(queryInput);
 
   const pageSize = 12;
 
