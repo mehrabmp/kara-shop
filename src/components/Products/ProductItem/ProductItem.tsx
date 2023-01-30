@@ -35,12 +35,12 @@ export const Skeleton = () => {
 
 export const ProductItem = ({
   id,
-  title,
+  name,
   price,
   rate,
   images,
-  type,
-  subCollection,
+  types,
+  collection,
 }: Product) => {
   const [currentImage, setCurrentImage] = useState(images[0].imageURL);
 
@@ -54,7 +54,7 @@ export const ProductItem = ({
             <Image
               key={imageURL}
               src={imageURL}
-              alt={`${title} image`}
+              alt={`${name} image`}
               className={clsx(
                 'absolute h-full w-full duration-700 group-hover:scale-110',
                 {
@@ -92,7 +92,7 @@ export const ProductItem = ({
           >
             <Image
               src={imageURL}
-              alt={`${title} image ${index + 1}`}
+              alt={`${name} image ${index + 1}`}
               className="object-cover"
               width={40}
               height={40}
@@ -103,9 +103,9 @@ export const ProductItem = ({
         ))}
       </div>
       <Link href={productLink}>
-        <h2 className="text-base font-medium">{title}</h2>
+        <h2 className="text-base font-medium">{name}</h2>
         <h3 className="py-1 text-xs font-normal capitalize text-neutral-500">
-          {type.toString().toLowerCase()} {subCollection.title}
+          {types.toString().toLowerCase()} {collection.name}
         </h3>
         <div className="flex items-center justify-between">
           <h3 className="my-3 text-xl font-medium text-black">

@@ -18,18 +18,18 @@ const colorOptions = [
 
 export const ProductColor = () => {
   const router = useRouter();
-  const { color = '' } = router.query;
+  const { colors: colorsParam = '' } = router.query;
   const { addQuery, removeQuery } = useQuery({ shallow: true, scroll: true });
 
-  // convert color param to array
-  const colors = [color].flat(1).filter(Boolean);
+  // convert colors param to array
+  const colors = [colorsParam].flat(1).filter(Boolean);
 
   const handleChange = (option: string) => {
     if (!colors.includes(option)) colors.push(option);
     else colors.splice(colors.indexOf(option), 1);
 
-    if (colors.length === 0) removeQuery('color');
-    else addQuery('color', colors);
+    if (colors.length === 0) removeQuery('colors');
+    else addQuery('colors', colors);
   };
 
   return (

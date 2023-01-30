@@ -101,11 +101,11 @@ export const MegaMenu = ({
                   onClick={onCloseMenu}
                   className="text-sm font-bold uppercase leading-4 tracking-widest text-neutral-800 hover:underline"
                 >
-                  {collection.title}
+                  {collection.name}
                 </Link>
                 <ul className="pt-2">
-                  {collection.subCollections
-                    .filter(subCollection => subCollection.type.includes(type))
+                  {collection.children
+                    .filter(subCollection => subCollection.types.includes(type))
                     .map(subCollection => (
                       <li key={subCollection.id}>
                         <Link
@@ -113,7 +113,7 @@ export const MegaMenu = ({
                           className="mb-1.5 text-xs font-normal text-neutral-700 hover:underline"
                           onClick={onCloseMenu}
                         >
-                          {subCollection.title}
+                          {subCollection.name}
                         </Link>
                       </li>
                     ))}

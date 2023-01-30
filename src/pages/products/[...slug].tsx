@@ -36,23 +36,23 @@ const Products: NextPageWithLayout = () => {
     rate,
     page = 1,
     price,
-    size,
-    color,
+    sizes,
+    colors,
   } = router.query as {
     slug: string[] | undefined;
     rate: number | undefined;
     page: number | undefined;
     price: string | undefined;
-    size: string | string[] | undefined;
-    color: string | string[] | undefined;
+    sizes: string | string[] | undefined;
+    colors: string | string[] | undefined;
   };
 
   const queryInput = useMemo(
     () => ({
-      type: slug && (slug[0].toUpperCase() as CollectionType),
+      types: slug && (slug[0].toUpperCase() as CollectionType),
       slug: slug && slug[1],
-      size: [size].flat(1).filter(Boolean) as ProductSize[],
-      color: [color].flat(1).filter(Boolean) as ProductColor[],
+      sizes: [sizes].flat(1).filter(Boolean) as ProductSize[],
+      colors: [colors].flat(1).filter(Boolean) as ProductColor[],
       page: page && Number(page),
       rate: rate && Number(rate),
       gte: price ? (price === '$' ? 0 : price === '$$' ? 10 : 100) : undefined,
@@ -64,7 +64,7 @@ const Products: NextPageWithLayout = () => {
           : 1000000
         : undefined,
     }),
-    [color, page, price, rate, size, slug]
+    [colors, page, price, rate, sizes, slug]
   );
 
   const { data, isLoading, isPreviousData } =

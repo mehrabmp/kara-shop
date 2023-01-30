@@ -6,15 +6,11 @@ import {
   ProductSize,
 } from '@prisma/client';
 import { publicProcedure, createTRPCRouter } from '../trpc';
-import {
-  defaultCollectionSelect,
-  defaultSubCollectionSelect,
-} from './collection';
+import { defaultCollectionSelect } from './collection';
 
 const defaultProductSelect = Prisma.validator<Prisma.ProductSelect>()({
   id: true,
-  createdAt: true,
-  title: true,
+  name: true,
   description: true,
   price: true,
   rate: true,
@@ -24,12 +20,9 @@ const defaultProductSelect = Prisma.validator<Prisma.ProductSelect>()({
       imageBlur: true,
     },
   },
-  type: true,
+  types: true,
   collection: {
     select: defaultCollectionSelect,
-  },
-  subCollection: {
-    select: defaultSubCollectionSelect,
   },
 });
 
@@ -37,51 +30,58 @@ export const productRouter = createTRPCRouter({
   all: publicProcedure
     .input(
       z.object({
-        type: z.nativeEnum(CollectionType).optional(),
+        types: z.nativeEnum(CollectionType).optional(),
         slug: z.string().optional(),
         page: z.number().optional(),
         rate: z.number().optional(),
         gte: z.number().optional(),
         lte: z.number().optional(),
-        size: z.nativeEnum(ProductSize).array().optional(),
-        color: z.nativeEnum(ProductColor).array().optional(),
+        sizes: z.nativeEnum(ProductSize).array().optional(),
+        colors: z.nativeEnum(ProductColor).array().optional(),
       })
     )
     .query(async ({ input, ctx }) => {
       const {
-        type = 'MEN',
+        types = 'MEN',
         slug,
         page = 1,
         rate = 0,
         gte = 0,
         lte = 1000000,
-        size = [],
-        color = [],
+        sizes = [],
+        colors = [],
       } = input;
 
       const take = 12;
       const skip = take * (page - 1);
 
       const where: Prisma.ProductWhereInput = {
-        type: { hasSome: type },
-        OR: [
-          { collection: { slug: { equals: slug } } },
-          { subCollection: { slug: { equals: slug } } },
-        ],
+        types: { hasSome: types },
         published: true,
         rate: rate ? { gte: rate } : undefined,
         price: { gte, lte },
-        size: size.length > 0 ? { hasSome: size } : undefined,
-        color: color.length > 0 ? { hasSome: color } : undefined,
+        sizes: sizes.length > 0 ? { hasSome: sizes } : undefined,
+        colors: colors.length > 0 ? { hasSome: colors } : undefined,
       };
-      const orderBy: Prisma.Enumerable<Prisma.ProductOrderByWithRelationInput> =
-        { id: 'asc' };
+
+      if (slug) {
+        const isParent = await ctx.prisma.collection.findFirst({
+          where: {
+            slug,
+            parent: {
+              is: null,
+            },
+          },
+        });
+
+        where.collection = isParent ? { parentId: isParent.id } : { slug };
+      }
 
       const [products, totalCount] = await ctx.prisma.$transaction([
         ctx.prisma.product.findMany({
           select: defaultProductSelect,
           where,
-          orderBy,
+          orderBy: { id: 'asc' },
           take,
           skip,
         }),

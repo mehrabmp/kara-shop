@@ -1,21 +1,19 @@
 import { createTRPCRouter, publicProcedure } from '../trpc';
 import { Prisma } from '@prisma/client';
 
-export const defaultSubCollectionSelect =
-  Prisma.validator<Prisma.SubCollectionSelect>()({
-    id: true,
-    title: true,
-    slug: true,
-    type: true,
-  });
-
 export const defaultCollectionSelect =
   Prisma.validator<Prisma.CollectionSelect>()({
     id: true,
-    title: true,
+    name: true,
     slug: true,
-    subCollections: {
-      select: defaultSubCollectionSelect,
+    types: true,
+    children: {
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        types: true,
+      },
     },
   });
 
@@ -24,6 +22,9 @@ export const collectionRouter = createTRPCRouter({
     async ({ ctx }) =>
       await ctx.prisma.collection.findMany({
         select: defaultCollectionSelect,
+        where: {
+          parent: null,
+        },
         orderBy: { id: 'asc' },
       })
   ),
