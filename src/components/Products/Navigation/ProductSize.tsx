@@ -6,18 +6,18 @@ const sizeOptions = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
 export const ProductSize = () => {
   const router = useRouter();
-  const { size = '' } = router.query;
+  const { sizes: sizesParam = '' } = router.query;
   const { addQuery, removeQuery } = useQuery({ shallow: true, scroll: true });
 
-  // convert size param to array
-  const sizes = [size].flat(1).filter(Boolean);
+  // convert sizes param to array
+  const sizes = [sizesParam].flat(1).filter(Boolean);
 
   const handleChange = (option: string) => {
     if (!sizes.includes(option)) sizes.push(option);
     else sizes.splice(sizes.indexOf(option), 1);
 
-    if (sizes.length === 0) removeQuery('size');
-    else addQuery('size', sizes);
+    if (sizes.length === 0) removeQuery('sizes');
+    else addQuery('sizes', sizes);
   };
 
   return (

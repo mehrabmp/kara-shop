@@ -7,23 +7,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Collection {
+  id        Int              @id @default(autoincrement())
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  name      String           @db.VarChar(255)
+  slug      String           @unique
+  types     CollectionType[]
+  parentId  Int?
+  parent    Collection?      @relation(name: "ParentChild", fields: [parentId], references: [id])
+  children  Collection[]     @relation(name: "ParentChild")
+  products  Product[]
+}
+
 model Product {
-  id              Int              @id @default(autoincrement())
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  title           String           @db.VarChar(255)
-  description     String
-  price           Float
-  images          ProductImage[]
-  color           ProductColor[]
-  size            ProductSize[]
-  rate            Float
-  published       Boolean          @default(false)
-  type            CollectionType[]
-  collection      Collection       @relation(fields: [collectionId], references: [id])
-  collectionId    Int
-  subCollection   SubCollection    @relation(fields: [subCollectionId], references: [id])
-  subCollectionId Int
+  id           Int              @id @default(autoincrement())
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  name         String           @db.VarChar(255)
+  description  String
+  price        Float
+  rate         Float
+  published    Boolean          @default(false)
+  images       ProductImage[]
+  colors       ProductColor[]
+  sizes        ProductSize[]
+  types        CollectionType[]
+  collection   Collection       @relation(fields: [collectionId], references: [id])
+  collectionId Int
 }
 
 model ProductImage {
@@ -32,28 +43,6 @@ model ProductImage {
   imageBlur String
   Product   Product? @relation(fields: [productId], references: [id])
   productId Int?
-}
-
-model Collection {
-  id             Int             @id @default(autoincrement())
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  title          String          @db.VarChar(255)
-  slug           String
-  subCollections SubCollection[]
-  products       Product[]
-}
-
-model SubCollection {
-  id           Int              @id @default(autoincrement())
-  createdAt    DateTime         @default(now())
-  updatedAt    DateTime         @updatedAt
-  title        String           @db.VarChar(255)
-  slug         String
-  type         CollectionType[]
-  collection   Collection       @relation(fields: [collectionId], references: [id])
-  collectionId Int
-  products     Product[]
 }
 
 model Account {

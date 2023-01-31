@@ -2,22 +2,17 @@ import { Prisma } from '@prisma/client';
 
 export const products: Prisma.ProductCreateInput[] = [
   {
-    title: 'Black shirt with white border',
+    name: 'Black shirt with white border',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 35.0,
     rate: 4.2,
     published: true,
-    type: 'MEN',
-    size: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
-    color: ['BLACK'],
+    types: 'MEN',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
+    colors: ['BLACK'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 24,
+        id: 29,
       },
     },
     images: {
@@ -48,22 +43,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Funnel collar puffer jacket',
+    name: 'Funnel collar puffer jacket',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 87.95,
     rate: 4.5,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['GREEN', 'PINK'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['GREEN', 'PINK'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 24,
+        id: 29,
       },
     },
     images: {
@@ -99,22 +89,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Boy’s Jeans Simple',
+    name: 'Boy’s Jeans Simple',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 42.5,
     rate: 3.9,
     published: true,
-    type: 'MEN',
-    size: ['S', 'M', 'L'],
-    color: ['BLUE'],
+    types: 'MEN',
+    sizes: ['S', 'M', 'L'],
+    colors: ['BLUE'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 19,
+        id: 24,
       },
     },
     images: {
@@ -135,22 +120,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Brown and White Striped T-shirt',
+    name: 'Brown and White Striped T-shirt',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 50.95,
     rate: 4.1,
     published: true,
-    type: 'MEN',
-    size: ['L', 'XL', 'XXL'],
-    color: ['RED'],
+    types: 'MEN',
+    sizes: ['L', 'XL', 'XXL'],
+    colors: ['RED'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 17,
+        id: 22,
       },
     },
     images: {
@@ -181,22 +161,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Black Shoes Fashionable',
+    name: 'Black Shoes Fashionable',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 74.3,
     rate: 3.8,
     published: true,
-    type: 'MEN',
-    size: ['L', 'XL', 'XXL'],
-    color: ['BLACK'],
+    types: 'MEN',
+    sizes: ['L', 'XL', 'XXL'],
+    colors: ['BLACK'],
     collection: {
       connect: {
-        id: 1,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 5,
+        id: 10,
       },
     },
     images: {
@@ -222,22 +197,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Brown Cowboy Boots',
+    name: 'Brown Cowboy Boots',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 95.5,
     rate: 4.7,
     published: true,
-    type: 'MEN',
-    size: ['L', 'XL', 'XXL'],
-    color: ['ORANGE'],
+    types: 'MEN',
+    sizes: ['L', 'XL', 'XXL'],
+    colors: ['ORANGE'],
     collection: {
       connect: {
-        id: 1,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 5,
+        id: 10,
       },
     },
     images: {
@@ -268,22 +238,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Cotton T-shirt',
+    name: 'Cotton T-shirt',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 9.9,
     rate: 2.9,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L'],
-    color: ['ORANGE'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L'],
+    colors: ['ORANGE'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 17,
+        id: 22,
       },
     },
     images: {
@@ -304,22 +269,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Denim shirt',
+    name: 'Denim shirt',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 15,
     rate: 3.5,
     published: true,
-    type: 'MEN',
-    size: ['L', 'XL', 'XXL', 'XXXL'],
-    color: ['GRAY'],
+    types: 'MEN',
+    sizes: ['L', 'XL', 'XXL', 'XXXL'],
+    colors: ['GRAY'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 17,
+        id: 22,
       },
     },
     images: {
@@ -350,22 +310,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Girl’s Plaid shirt',
+    name: 'Girl’s Plaid shirt',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 25,
     rate: 3.8,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['BLUE'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['BLUE'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 17,
+        id: 22,
       },
     },
     images: {
@@ -391,22 +346,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Girls’ gathered-sleeve top',
+    name: 'Girls’ gathered-sleeve top',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 18,
     rate: 4.1,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['PINK'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['PINK'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 17,
+        id: 22,
       },
     },
     images: {
@@ -432,22 +382,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Girls’ mixed-stripe shirt',
+    name: 'Girls’ mixed-stripe shirt',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 35,
     rate: 3.9,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['BLUE'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['BLUE'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 17,
+        id: 22,
       },
     },
     images: {
@@ -468,22 +413,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Girls’ slide sneakers',
+    name: 'Girls’ slide sneakers',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 22,
     rate: 4.2,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['BLUE'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['BLUE'],
     collection: {
       connect: {
-        id: 1,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 2,
+        id: 7,
       },
     },
     images: {
@@ -504,22 +444,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Girls’ slide sneakers in emojis',
+    name: 'Girls’ slide sneakers in emojis',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 27,
     rate: 4.1,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['YELLOW'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['YELLOW'],
     collection: {
       connect: {
-        id: 1,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 2,
+        id: 7,
       },
     },
     images: {
@@ -540,22 +475,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Girls’ star-print jeans',
+    name: 'Girls’ star-print jeans',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 34,
     rate: 4.6,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['BLUE'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['BLUE'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 19,
+        id: 24,
       },
     },
     images: {
@@ -576,22 +506,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Gray jacket',
+    name: 'Gray jacket',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 67,
     rate: 4.1,
     published: true,
-    type: 'MEN',
-    size: ['L', 'XL', 'XXL'],
-    color: ['GRAY'],
+    types: 'MEN',
+    sizes: ['L', 'XL', 'XXL'],
+    colors: ['GRAY'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 24,
+        id: 29,
       },
     },
     images: {
@@ -622,22 +547,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Green shirt',
+    name: 'Green shirt',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 22,
     rate: 4.4,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['GREEN'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['GREEN'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 17,
+        id: 22,
       },
     },
     images: {
@@ -668,22 +588,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Green striped jackets',
+    name: 'Green striped jackets',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 42,
     rate: 4.7,
     published: true,
-    type: 'MEN',
-    size: ['S', 'M', 'L'],
-    color: ['BLUE'],
+    types: 'MEN',
+    sizes: ['S', 'M', 'L'],
+    colors: ['BLUE'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 20,
+        id: 25,
       },
     },
     images: {
@@ -709,22 +624,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Gril’s Fashion coats',
+    name: 'Gril’s Fashion coats',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 65,
     rate: 4.1,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L'],
-    color: ['BLUE'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L'],
+    colors: ['BLUE'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 24,
+        id: 29,
       },
     },
     images: {
@@ -745,22 +655,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Gril’s Short T-shirt',
+    name: 'Gril’s Short T-shirt',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 39,
     rate: 4.0,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L'],
-    color: ['BLUE', 'PINK', 'YELLOW'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L'],
+    colors: ['BLUE', 'PINK', 'YELLOW'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 17,
+        id: 22,
       },
     },
     images: {
@@ -791,22 +696,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Guide Pack Cap',
+    name: 'Guide Pack Cap',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 20,
     rate: 3.9,
     published: true,
-    type: 'MEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['GRAY'],
+    types: 'MEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['GRAY'],
     collection: {
       connect: {
-        id: 3,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 37,
+        id: 42,
       },
     },
     images: {
@@ -827,22 +727,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'High sport shoes',
+    name: 'High sport shoes',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 135,
     rate: 4.3,
     published: true,
-    type: 'MEN',
-    size: ['S', 'M', 'L', 'XL', 'XXL'],
-    color: ['GRAY'],
+    types: 'MEN',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['GRAY'],
     collection: {
       connect: {
-        id: 1,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 2,
+        id: 7,
       },
     },
     images: {
@@ -868,22 +763,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Horizontal Striped T-shirt',
+    name: 'Horizontal Striped T-shirt',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 30,
     rate: 4.1,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L'],
-    color: ['GRAY'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L'],
+    colors: ['GRAY'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 17,
+        id: 22,
       },
     },
     images: {
@@ -909,22 +799,17 @@ export const products: Prisma.ProductCreateInput[] = [
     },
   },
   {
-    title: 'Jacket Collar',
+    name: 'Jacket Collar',
     description: `Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5.`,
     price: 45,
     rate: 4.2,
     published: true,
-    type: 'WOMEN',
-    size: ['S', 'M', 'L', 'XL'],
-    color: ['RED', 'PINK', 'GRAY'],
+    types: 'WOMEN',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['RED', 'PINK', 'GRAY'],
     collection: {
       connect: {
-        id: 2,
-      },
-    },
-    subCollection: {
-      connect: {
-        id: 24,
+        id: 29,
       },
     },
     images: {

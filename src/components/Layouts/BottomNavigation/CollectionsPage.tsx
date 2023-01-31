@@ -48,13 +48,13 @@ export const CollectionsPage = ({
                         >
                           <Accordion>
                             <Accordion.Header>
-                              {collection.title}
+                              {collection.name}
                             </Accordion.Header>
                             <Accordion.Body className="px-2 text-xs">
                               <ul>
-                                {collection.subCollections
+                                {collection.children
                                   .filter(subCollection =>
-                                    subCollection.type.includes(
+                                    subCollection.types.includes(
                                       item.name === 'men' ? 'MEN' : 'WOMEN'
                                     )
                                   )
@@ -67,7 +67,7 @@ export const CollectionsPage = ({
                                         href={`/products/${item.name}/${subCollection.slug}`}
                                         onClick={onPageClose}
                                       >
-                                        <h3>{subCollection.title}</h3>
+                                        <h3>{subCollection.name}</h3>
                                       </Link>
                                     </li>
                                   ))}
