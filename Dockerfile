@@ -1,6 +1,6 @@
 ##### DEPENDENCIES
 
-FROM node:18.13.0-alpine AS deps
+FROM node:18.14.0-alpine AS deps
 RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
@@ -21,7 +21,7 @@ RUN \
 
 ##### BUILDER
 
-FROM node:18.13.0-alpine AS builder
+FROM node:18.14.0-alpine AS builder
 ARG DATABASE_URL
 ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
@@ -39,7 +39,7 @@ RUN \
 
 ##### RUNNER
 
-FROM node:18.13.0-alpine AS runner
+FROM node:18.14.0-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
