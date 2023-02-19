@@ -30,7 +30,7 @@ jobs:
 
       - uses: pnpm/action-setup@v2.2.4
         with:
-          version: 7
+          version: 7.26.1
 
       - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v3
@@ -51,7 +51,7 @@ jobs:
           key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}-nextjs
 
       - name: Build and test
-        run: pnpm build-postgres && pnpm test-prod
+        run: pnpm build && pnpm test-prod
 
       - name: Upload test results
         if: ${{ always() }}
