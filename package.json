@@ -24,7 +24,7 @@
     "prisma-generate": "prisma generate",
     "db-seed": "prisma db seed",
     "db-reset": "prisma migrate reset",
-    "build": "pnpm build-postgres && pnpm test-prod",
+    "build": "pnpm build-postgres",
     "build-postgres": "run-s prisma-generate migrate && next build",
     "migrate-dev": "prisma migrate dev",
     "migrate": "prisma migrate deploy",
@@ -34,7 +34,7 @@
     "test-dev": "start-server-and-test dev http://127.0.0.1:3000 test",
     "test-prod": "start-server-and-test start http://127.0.0.1:3000 test",
     "prepare": "husky install",
-    "postinstall": "prisma generate && npx playwright install"
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

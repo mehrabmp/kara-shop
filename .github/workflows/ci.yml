@@ -42,7 +42,7 @@ jobs:
         run: pnpm install
 
       - name: Install playwright
-        run: pnpm playwright install chromium
+        run: pnpm playwright install
 
       - name: Next.js cache
         uses: actions/cache@v3
@@ -51,7 +51,7 @@ jobs:
           key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}-nextjs
 
       - name: Build and test
-        run: pnpm build
+        run: pnpm build && pnpm test-prod
 
       - name: Upload test results
         if: ${{ always() }}
