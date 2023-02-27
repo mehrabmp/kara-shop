@@ -56,7 +56,7 @@ specifiers:
   react-icons: ^4.7.1
   react-use: ^17.4.0
   sharp: ^0.31.3
-  start-server-and-test: ^1.15.3
+  start-server-and-test: ^2.0.0
   superjson: ^1.12.2
   tailwind-merge: ^1.9.0
   tailwindcss: ^3.2.4
@@ -125,7 +125,7 @@ devDependencies:
   prettier: 2.8.4
   prettier-plugin-tailwindcss: 0.2.2_prettier@2.8.4
   prisma: 4.9.0
-  start-server-and-test: 1.15.3
+  start-server-and-test: 2.0.0
   tailwindcss: 3.2.4_postcss@8.4.21
   tsx: 3.12.2
   typescript: 4.9.5
@@ -6556,8 +6556,8 @@ packages:
       stacktrace-gps: 3.1.2
     dev: false
 
-  /start-server-and-test/1.15.3:
-    resolution: {integrity: sha512-4GqkqghvUR9cJ8buvtgkyT0AHgVwCJ5EN8eDEhe9grTChGwWUxGm2nqfSeE9+0PZkLRdFqcwTwxVHe1y3ViutQ==}
+  /start-server-and-test/2.0.0:
+    resolution: {integrity: sha512-UqKLw0mJbfrsG1jcRLTUlvuRi9sjNuUiDOLI42r7R5fA9dsFoywAy9DoLXNYys9B886E4RCKb+qM1Gzu96h7DQ==}
     engines: {node: '>=6'}
     hasBin: true
     dependencies:
