@@ -1,27 +1,32 @@
-import React, { useRef, useState } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { FiPhone, FiGrid, FiChevronDown } from 'react-icons/fi';
-import { ChangeLocale } from './ChangeLocale';
 import { useClickAway } from 'react-use';
 import { IconType } from 'react-icons';
+import { ChangeLocale } from './ChangeLocale';
+
+interface TopBarItem {
+  label: string;
+  url: string;
+  Icon?: IconType;
+}
+
+const topbarItems: TopBarItem[] = [
+  { label: 'topbar.careers', url: '/careers' },
+  { label: 'topbar.help', url: '/help' },
+  { label: 'topbar.buyer', url: '/buyer' },
+  { label: 'topbar.download', url: 'https://play.google.com', Icon: FiGrid },
+  { label: 'topbar.phone', url: 'tel:+0125258192502', Icon: FiPhone },
+];
 
 export const TopBar = () => {
-  const [isChangeLocaleOpen, setIsChangeLocaleOpen] = useState(false);
-
   const router = useRouter();
-
   const { t } = useTranslation('header');
 
-  const topbarItems: [string, string, IconType?][] = [
-    [t('topbar.careers'), 'careers'],
-    [t('topbar.help'), 'help'],
-    [t('topbar.buyer'), 'buyer'],
-    [t('topbar.download'), 'https://play.google.com/store/apps', FiGrid],
-    [t('topbar.phone'), 'tel:+0125258192502', FiPhone],
-  ];
+  const [isChangeLocaleOpen, setIsChangeLocaleOpen] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -32,7 +37,7 @@ export const TopBar = () => {
       <div className="mx-auto flex flex-col items-center px-4 py-1 md:flex-row md:py-2.5 xl:container">
         <p className="pb-2 md:pb-0">{t('topbar.discount')}</p>
         <ul className="flex flex-wrap justify-center md:ml-auto">
-          {topbarItems.map(([label, url, Icon]) => (
+          {topbarItems.map(({ label, url, Icon }) => (
             <li
               key={label}
               className="mx-1 pb-px md:mr-2.5 lg:[&:nth-of-type(3)]:mr-10 lg:[&:nth-of-type(5)]:mr-10"
@@ -42,7 +47,7 @@ export const TopBar = () => {
                 className="flex items-center transition-colors hover:text-white"
               >
                 {Icon && <Icon className="mx-1 md:text-sm"></Icon>}
-                <span>{label}</span>
+                <span>{t(label)}</span>
               </Link>
             </li>
           ))}
