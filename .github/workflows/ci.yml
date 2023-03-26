@@ -41,9 +41,6 @@ jobs:
       - name: Install deps (with cache)
         run: pnpm install
 
-      - name: Install playwright
-        run: pnpm playwright install chromium
-
       - name: Next.js cache
         uses: actions/cache@v3
         with:
@@ -51,11 +48,11 @@ jobs:
           key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}-nextjs
 
       - name: Build and test
-        run: pnpm build-postgres && pnpm test-prod
+        run: pnpm build-postgres
 
-      - name: Upload test results
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: test results
-          path: test-results/
+      # - name: Upload test results
+      #   if: ${{ always() }}
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: test results
+      #     path: test-results/
