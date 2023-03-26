@@ -21,9 +21,9 @@ export const Pagination = ({
     pageSize,
   });
 
-  const lastPage = paginationRange
-    ? paginationRange[paginationRange?.length - 1]
-    : currentPage;
+  const lastPage = Number(
+    paginationRange ? paginationRange[paginationRange?.length - 1] : currentPage
+  );
 
   if (totalCount <= pageSize || currentPage > lastPage) return null;
 
