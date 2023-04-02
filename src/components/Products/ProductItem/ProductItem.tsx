@@ -47,8 +47,8 @@ export const ProductItem = ({
   const productLink = `/product/${id}/slug`;
 
   return (
-    <div className="group">
-      <div className="relative h-[400px] overflow-hidden rounded-lg transition sm:h-[350px]">
+    <div className="group rounded-lg bg-white p-3 sm:p-2">
+      <div className="relative h-[400px] overflow-hidden rounded-lg transition sm:h-[330px]">
         <Link href={productLink} className="relative block h-full w-full">
           {images.map(({ imageURL, imageBlur }) => (
             <Image
@@ -71,7 +71,7 @@ export const ProductItem = ({
           <div className="absolute h-full w-full bg-black opacity-0 duration-500 group-hover:opacity-10"></div>
         </Link>
         <button
-          className="absolute top-3 right-3 z-10 hidden rounded-xl bg-white p-2.5 text-lg group-hover:block"
+          className="absolute right-3 top-3 z-10 hidden rounded-xl bg-white p-2.5 text-lg group-hover:block"
           onClick={() => console.log('wishlist')}
         >
           <BsHeart className="text-red-600" />
@@ -83,40 +83,42 @@ export const ProductItem = ({
           <FiShoppingBag className="text-blue-500" />
         </button>
       </div>
-      <div className="my-3 flex gap-2">
-        {images.map(({ imageURL, imageBlur }, index) => (
-          <button
-            key={index}
-            className="h-[40px] w-[40px] overflow-hidden rounded-full"
-            onClick={() => setCurrentImage(imageURL)}
-          >
-            <Image
-              src={imageURL}
-              alt={`${name} image ${index + 1}`}
-              className="object-cover"
-              width={40}
-              height={40}
-              placeholder="blur"
-              blurDataURL={imageBlur}
-            />
-          </button>
-        ))}
-      </div>
-      <Link href={productLink}>
-        <h2 className="text-base font-medium">{name}</h2>
-        <h3 className="py-1 text-xs font-normal capitalize text-neutral-500">
-          {types.toString().toLowerCase()} {collection.name}
-        </h3>
-        <div className="flex items-center justify-between">
-          <h3 className="my-3 text-xl font-medium text-black">
-            ${numberWithCommas(price.toFixed(2))}
-          </h3>
-          <div className="flex items-center justify-center text-xs text-neutral-500">
-            <BsStarFill className="mr-1 text-yellow-400" />
-            <h4>{rate} (69 Reviews)</h4>
-          </div>
+      <div className="px-1">
+        <div className="my-3 flex gap-2">
+          {images.map(({ imageURL, imageBlur }, index) => (
+            <button
+              key={index}
+              className="h-[40px] w-[40px] overflow-hidden rounded-full"
+              onClick={() => setCurrentImage(imageURL)}
+            >
+              <Image
+                src={imageURL}
+                alt={`${name} image ${index + 1}`}
+                className="object-cover"
+                width={40}
+                height={40}
+                placeholder="blur"
+                blurDataURL={imageBlur}
+              />
+            </button>
+          ))}
         </div>
-      </Link>
+        <Link href={productLink}>
+          <h2 className="text-base font-medium">{name}</h2>
+          <h3 className="text-xs font-normal capitalize text-neutral-400">
+            {types.toString().toLowerCase()} {collection.name}
+          </h3>
+          <div className="flex items-center justify-between">
+            <h3 className="my-3 text-xl font-medium text-black">
+              ${numberWithCommas(price.toFixed(2))}
+            </h3>
+            <div className="flex items-center justify-center text-xs text-neutral-500">
+              <BsStarFill className="mr-1 text-yellow-400" />
+              <h4>{rate} (69 Reviews)</h4>
+            </div>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 };

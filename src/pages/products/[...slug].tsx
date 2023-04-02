@@ -87,7 +87,7 @@ const Products: NextPageWithLayout = () => {
         <div className="hidden flex-1 md:block">
           <Navigation />
         </div>
-        <div className="flex-[5] rounded-lg bg-white">
+        <div className="flex-[5]">
           <ProductsList products={data?.products} isLoading={isLoading} />
           <div className="flex justify-center py-5">
             <Pagination
