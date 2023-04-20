@@ -29,8 +29,8 @@ dependencies:
     specifier: 10.19.1
     version: 10.19.1
   '@vercel/analytics':
-    specifier: ^0.1.11
-    version: 0.1.11(react@18.2.0)
+    specifier: ^1.0.0
+    version: 1.0.0(react@18.2.0)
   aos:
     specifier: ^2.3.4
     version: 2.3.4
@@ -1965,8 +1965,8 @@ packages:
       eslint-visitor-keys: 3.4.0
     dev: true
 
-  /@vercel/analytics@0.1.11(react@18.2.0):
-    resolution: {integrity: sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==}
+  /@vercel/analytics@1.0.0(react@18.2.0):
+    resolution: {integrity: sha512-RQmj7pv82JwGDHrnKeRc6TtSw2U7rWNubc2IH0ernTzWTj02yr9zvIYiYJeztsBzrJtWv7m8Nz6vxxb+cdEtJw==}
     peerDependencies:
       react: ^16.8||^17||^18
     dependencies:
