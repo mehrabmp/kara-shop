@@ -49,7 +49,7 @@
     "@trpc/next": "10.19.1",
     "@trpc/react-query": "10.19.1",
     "@trpc/server": "10.19.1",
-    "@vercel/analytics": "^0.1.11",
+    "@vercel/analytics": "^1.0.0",
     "aos": "^2.3.4",
     "clsx": "^1.2.1",
     "i18next": "^22.4.13",
