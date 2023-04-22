@@ -67,7 +67,7 @@ export const ProductItem = ({
           ))}
         </Link>
       </div>
-      <div className="mb-1 mt-2 space-y-3 px-1">
+      <div className="mb-1 mt-2 space-y-4 px-1">
         <div className="flex gap-2">
           {images.map(({ imageURL, imageBlur }, index) => (
             <button
