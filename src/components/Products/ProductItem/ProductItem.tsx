@@ -88,8 +88,8 @@ export const ProductItem = ({
           ))}
         </div>
         <div>
-          <h2 className="text-lg font-medium">{name}</h2>
-          <h3 className="text-xs font-medium capitalize text-neutral-400">
+          <h2 className="text-base font-medium">{name}</h2>
+          <h3 className="text-xs font-normal capitalize text-neutral-400">
             {collection.name}
           </h3>
         </div>
