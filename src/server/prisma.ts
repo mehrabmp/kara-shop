@@ -3,7 +3,7 @@
  * @link https://www.prisma.io/docs/support/help-articles/nextjs-prisma-client-dev-practices
  */
 import { PrismaClient } from '@prisma/client';
-import { env } from 'env/server.mjs';
+import { env } from '@/env/server.mjs';
 
 declare global {
   // allow global `var` declarations

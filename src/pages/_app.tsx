@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { appWithTranslation } from 'next-i18next';
-import { api } from 'utils/api';
+import { api } from '@/utils/api';
 import { Inter } from 'next/font/google';
 import { SessionProvider } from 'next-auth/react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -12,8 +12,8 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import AOS from 'aos';
 import 'nprogress/nprogress.css';
-import 'styles/globals.css';
 import 'aos/dist/aos.css';
+import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 

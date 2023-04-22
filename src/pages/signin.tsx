@@ -2,7 +2,7 @@ import type { GetStaticProps } from 'next';
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { PrimaryLayout } from 'components';
+import { PrimaryLayout } from '@/layouts';
 import { signIn } from 'next-auth/react';
 import { BsGithub, BsTwitter } from 'react-icons/bs';
 import { useTranslation } from 'next-i18next';
