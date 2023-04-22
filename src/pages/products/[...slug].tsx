@@ -1,16 +1,13 @@
 import type { GetStaticPathsResult, GetStaticProps } from 'next';
-import { ReactElement, useEffect, useMemo } from 'react';
 import type { NextPageWithLayout } from '../_app';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import {
-  Navigation,
-  Pagination,
-  PrimaryLayout,
-  ProductsList,
-} from 'components';
-import { api } from 'utils/api';
+import { ReactElement, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { Navigation, ProductsList } from '@/components';
+import { Pagination } from '@/components/ui';
+import { PrimaryLayout } from '@/layouts';
 import { CollectionType, ProductColor, ProductSize } from '@prisma/client';
+import { api } from '@/utils/api';
 
 export const getStaticProps: GetStaticProps = async context => {
   return {
