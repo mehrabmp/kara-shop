@@ -13,7 +13,8 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import AOS from 'aos';
 import SEO from '../../next-seo.config';
-import 'nprogress/nprogress.css';
+import NextNProgress from 'nextjs-progressbar';
+import AOS from 'aos';
 import 'aos/dist/aos.css';
 import '@/styles/globals.css';
 
@@ -30,36 +31,27 @@ type AppPropsWithLayout = AppProps & {
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? (page => page);
 
-  NProgress.configure({
-    showSpinner: false,
-  });
-
   useEffect(() => {
     AOS.init({
       duration: 500,
       once: true,
     });
-
-    const handleRouteStart = () => NProgress.start();
-    const handleRouteDone = () => NProgress.done();
-
-    Router.events.on('routeChangeStart', handleRouteStart);
-    Router.events.on('routeChangeComplete', handleRouteDone);
-    Router.events.on('routeChangeError', handleRouteDone);
-
-    return () => {
-      // Make sure to remove the event handler on unmount!
-      Router.events.off('routeChangeStart', handleRouteStart);
-      Router.events.off('routeChangeComplete', handleRouteDone);
-      Router.events.off('routeChangeError', handleRouteDone);
-    };
   }, []);
 
   return (
     <SessionProvider session={pageProps.session}>
       <main className={`${inter.variable} font-sans`}>
         <DefaultSeo {...SEO} />
-        {getLayout(<Component {...pageProps} />)}
+        {getLayout(
+          <>
+            <NextNProgress
+              color="#8b5cf6"
+              height={3}
+              options={{ showSpinner: false }}
+            />
+            <Component {...pageProps} />;
+          </>
+        )}
         <Analytics />
       </main>
       <ReactQueryDevtools />
