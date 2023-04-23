@@ -8,9 +8,11 @@ import { Inter } from 'next/font/google';
 import { SessionProvider } from 'next-auth/react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Analytics } from '@vercel/analytics/react';
+import { DefaultSeo } from 'next-seo';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import AOS from 'aos';
+import SEO from '../../next-seo.config';
 import 'nprogress/nprogress.css';
 import 'aos/dist/aos.css';
 import '@/styles/globals.css';
@@ -56,6 +58,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <SessionProvider session={pageProps.session}>
       <main className={`${inter.variable} font-sans`}>
+        <DefaultSeo {...SEO} />
         {getLayout(<Component {...pageProps} />)}
         <Analytics />
       </main>

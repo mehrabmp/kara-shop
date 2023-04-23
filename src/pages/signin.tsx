@@ -74,8 +74,11 @@ const Signin: NextPageWithLayout = () => {
 Signin.getLayout = function getLayout(page: ReactElement) {
   return (
     <PrimaryLayout
-      title="Sign in | Kara Shop"
-      description="Sign in page of Kara Shop"
+      seo={{
+        title: 'Sign in',
+        description: 'Sign in',
+        canonical: 'https://karashop.vercel.app/signin',
+      }}
     >
       {page}
     </PrimaryLayout>
