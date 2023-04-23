@@ -108,8 +108,11 @@ const Products: NextPageWithLayout = () => {
 Products.getLayout = function getLayout(page: ReactElement) {
   return (
     <PrimaryLayout
-      title="Products | Kara Shop"
-      description="Products page of Kara Shop"
+      seo={{
+        title: 'Products',
+        description: 'Products',
+        canonical: 'https://karashop.vercel.app/products',
+      }}
     >
       {page}
     </PrimaryLayout>
