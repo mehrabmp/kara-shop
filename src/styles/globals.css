@@ -6,10 +6,6 @@ body {
   @apply bg-neutral-100;
 }
 
-#nprogress .bar {
-  @apply h-[3px] bg-violet-500;
-}
-
 /* Width */
 ::-webkit-scrollbar {
   width: 10px;
