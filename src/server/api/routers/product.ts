@@ -56,7 +56,7 @@ export const productRouter = createTRPCRouter({
       const skip = take * (page - 1);
 
       const where: Prisma.ProductWhereInput = {
-        types: { hasSome: types },
+        types: { hasSome: [types] },
         published: true,
         rate: rate ? { gte: rate } : undefined,
         price: { gte, lte },
