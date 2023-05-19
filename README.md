@@ -1,4 +1,3 @@
-
 # KARA Shop
 
 Full-stack e-commerce built with [T3 Stack](https://create.t3.gg/)
@@ -9,6 +8,13 @@ Full-stack e-commerce built with [T3 Stack](https://create.t3.gg/)
 - **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+
+Home page
+![homepage](public/screenshots/homepage.png)
+
+Products page
+![homepage](public/screenshots/products.png)
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your `.env` file
@@ -37,7 +43,6 @@ GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
 TWITTER_CLIENT_ID=YOUR_TWITTER_CLIENT_ID
 TWITTER_CLIENT_SECRET=YOUR_TWITTER_CLIENT_SECRET
 ```
-
 
 ## Run Locally
 
@@ -76,4 +81,3 @@ Start the server
 ```bash
   pnpm dev
 ```
-
