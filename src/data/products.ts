@@ -7,7 +7,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 35.0,
     rate: 4.2,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
     colors: ['BLACK'],
     collection: {
@@ -48,7 +48,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 87.95,
     rate: 4.5,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['GREEN', 'PINK'],
     collection: {
@@ -94,7 +94,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 42.5,
     rate: 3.9,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['S', 'M', 'L'],
     colors: ['BLUE'],
     collection: {
@@ -125,7 +125,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 50.95,
     rate: 4.1,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['L', 'XL', 'XXL'],
     colors: ['RED'],
     collection: {
@@ -166,7 +166,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 74.3,
     rate: 3.8,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['L', 'XL', 'XXL'],
     colors: ['BLACK'],
     collection: {
@@ -202,7 +202,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 95.5,
     rate: 4.7,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['L', 'XL', 'XXL'],
     colors: ['ORANGE'],
     collection: {
@@ -243,7 +243,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 9.9,
     rate: 2.9,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L'],
     colors: ['ORANGE'],
     collection: {
@@ -274,7 +274,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 15,
     rate: 3.5,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['L', 'XL', 'XXL', 'XXXL'],
     colors: ['GRAY'],
     collection: {
@@ -315,7 +315,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 25,
     rate: 3.8,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['BLUE'],
     collection: {
@@ -351,7 +351,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 18,
     rate: 4.1,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['PINK'],
     collection: {
@@ -387,7 +387,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 35,
     rate: 3.9,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['BLUE'],
     collection: {
@@ -418,7 +418,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 22,
     rate: 4.2,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['BLUE'],
     collection: {
@@ -449,7 +449,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 27,
     rate: 4.1,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['YELLOW'],
     collection: {
@@ -480,7 +480,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 34,
     rate: 4.6,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['BLUE'],
     collection: {
@@ -511,7 +511,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 67,
     rate: 4.1,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['L', 'XL', 'XXL'],
     colors: ['GRAY'],
     collection: {
@@ -552,7 +552,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 22,
     rate: 4.4,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['GREEN'],
     collection: {
@@ -593,7 +593,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 42,
     rate: 4.7,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['S', 'M', 'L'],
     colors: ['BLUE'],
     collection: {
@@ -629,7 +629,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 65,
     rate: 4.1,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L'],
     colors: ['BLUE'],
     collection: {
@@ -660,7 +660,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 39,
     rate: 4.0,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L'],
     colors: ['BLUE', 'PINK', 'YELLOW'],
     collection: {
@@ -701,7 +701,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 20,
     rate: 3.9,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['GRAY'],
     collection: {
@@ -732,7 +732,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 135,
     rate: 4.3,
     published: true,
-    types: 'MEN',
+    types: ['MEN'],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colors: ['GRAY'],
     collection: {
@@ -768,7 +768,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 30,
     rate: 4.1,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L'],
     colors: ['GRAY'],
     collection: {
@@ -804,7 +804,7 @@ export const products: Prisma.ProductCreateInput[] = [
     price: 45,
     rate: 4.2,
     published: true,
-    types: 'WOMEN',
+    types: ['WOMEN'],
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['RED', 'PINK', 'GRAY'],
     collection: {
