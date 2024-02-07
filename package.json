@@ -67,7 +67,7 @@
     "sharp": "^0.32.3",
     "superjson": "^1.13.1",
     "tailwind-merge": "^1.14.0",
-    "zod": "^3.21.4"
+    "zod": "^3.22.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.6",
