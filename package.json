@@ -61,7 +61,7 @@
     "react-animate-height": "^3.2.2",
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
-    "react-i18next": "^13.0.2",
+    "react-i18next": "^14.0.0",
     "react-icons": "^4.10.1",
     "react-use": "^17.4.0",
     "sharp": "^0.32.3",
