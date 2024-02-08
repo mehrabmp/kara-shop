@@ -65,7 +65,7 @@
     "react-icons": "^4.10.1",
     "react-use": "^17.4.0",
     "sharp": "^0.32.3",
-    "superjson": "^1.13.1",
+    "superjson": "^2.0.0",
     "tailwind-merge": "^1.14.0",
     "zod": "^3.22.3"
   },
