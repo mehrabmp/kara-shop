@@ -28,7 +28,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v2.4.0
+      - uses: pnpm/action-setup@v2.4.1
         with:
           version: 8
 
