@@ -46,7 +46,7 @@
     "@trpc/client": "10.45.1",
     "@trpc/next": "10.45.1",
     "@trpc/react-query": "10.45.1",
-    "@trpc/server": "10.45.1",
+    "@trpc/server": "10.45.3",
     "@vercel/analytics": "^1.0.1",
     "aos": "^2.3.4",
     "clsx": "^2.0.0",
